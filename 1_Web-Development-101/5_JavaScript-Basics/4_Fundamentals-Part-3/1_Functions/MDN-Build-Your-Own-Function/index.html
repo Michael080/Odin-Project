@@ -40,10 +40,10 @@
 <script>
     const btn = document.querySelector('button');
     btn.onclick = function() {
-        displayMessage('Woo, this is a different message!')
+        displayMessage('Your inbox is almost full — delete some mails', 'warning');
     };
 
-    function displayMessage(mstText, msgType) {
+    function displayMessage(msgText, msgType) {
         const html = document.querySelector('html');
 
         const panel = document.createElement('div');
