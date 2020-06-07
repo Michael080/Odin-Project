@@ -7,9 +7,17 @@ Try updating the live code below to recreate the finished example: */
 
 let names = ['Chris', 'Li Kang', 'Anne', 'Francesca', 'Mustafa', 'Tina', 'Bert', 'Jada']
 let para = document.createElement('p');
+let section = document.querySelector('section');
 
 // Add your code here
+section.setAttribute('class', 'preview')
 
+function chooseName(names) {
+    // para.textContent = names[Math.floor(Math.random() * names.length)]
+    return names[Math.floor(Math.random() * names.length)];
+}
+
+para.textContent = chooseName(names);
 // Don't edit the code below here!
 
 section.innerHTML = ' ';
