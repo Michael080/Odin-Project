@@ -17,9 +17,14 @@ let section = document.querySelector('section');
 // Add your code here
 section.setAttribute('class', 'preview')
 
+function randomRange(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 function chooseName(names) {
-    // para.textContent = names[Math.floor(Math.random() * names.length)]
-    return names[Math.floor(Math.random() * names.length)];
+    return names[randomRange(0, 8)];
 }
 
 para.textContent = chooseName(names);
