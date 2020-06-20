@@ -15,6 +15,8 @@
     <button class="paper">Paper</button>
     <button class="scissors">Scissors</button>
 </div>
+
+
 <script>
     let weapon = ['Rock', 'Paper', 'Scissors'];
 
@@ -55,15 +57,29 @@
         }
     }
 
-    function playRounds(rounds) {
-        for (i = 0; i < rounds; i++) {
-            var playerSelection = prompt('Choose your weapon:').toLowerCase();
-            var computerSelection = cpuWeaponSelect();
-            matchUp(playerSelection, computerSelection);
-        }
-    }
+    // function playRounds(rounds) {
+    //     for (i = 0; i < rounds; i++) {
+    //         var playerSelection = prompt('Choose your weapon:').toLowerCase();
+    //         var computerSelection = cpuWeaponSelect();
+    //         matchUp(playerSelection, computerSelection);
+    //     }
+    // }
+    // playRounds(5);
 
-    playRounds(5);
+
+    //                          Event Listeners
+
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+            let playerSelection = button.className;
+            let computerSelection = cpuWeaponSelect();
+            matchUp(playerSelection, computerSelection);
+        })
+    })
+
 
 </script>
 </body>
