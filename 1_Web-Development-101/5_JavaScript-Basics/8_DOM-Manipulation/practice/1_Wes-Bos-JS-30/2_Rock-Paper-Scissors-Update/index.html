@@ -16,12 +16,18 @@
     <button class="scissors">Scissors</button>
 </div>
 
+<div>
+    <h3 class="score"></h3>
+</div>
+
+
 
 <script>
     let weapon = ['Rock', 'Paper', 'Scissors'];
 
     let playerScore = 0;
     let computerScore = 0;
+    let scoreboard = document.querySelector('.score');
 
     function cpuWeaponSelect() {
         random_weapon = Math.floor(Math.random() * 3);
@@ -38,6 +44,7 @@
         console.log('You lose :(')
     }
 
+
     function scoreBoard(winWeapon, loseWeapon, win = false){
         console.log('');
         console.log('----------------------------')
@@ -45,6 +52,7 @@
         win ? playerOneWins():
                 computerWins();
         console.log(`You: ${playerScore} vs. CPU: ${computerScore}`);
+        scoreboard.textContent = `You: ${playerScore} vs. CPU: ${computerScore}`;
     }
 
     function matchUp(playerSelection, computerSelection) {
@@ -53,6 +61,7 @@
             console.log('----------------------------')
             console.log('Draw...');
             console.log(`You: ${playerScore} vs. CPU: ${computerScore}`);
+            scoreboard.textContent = `You: ${playerScore} vs. CPU: ${computerScore}`;
         } else {
             switch (true) {
                 case (playerSelection === 'rock' && computerSelection === 'scissors'):
