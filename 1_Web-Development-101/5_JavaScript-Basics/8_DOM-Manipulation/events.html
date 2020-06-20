@@ -8,6 +8,34 @@
     <title>Events Notes</title>
 </head>
 <body>
+    <!--  method 1  -->
+    <button onclick="alert('Hello World')">Click Me</button>
 
+    <!--  method 2  -->
+    <button id="btn">Click Me</button>
+
+    <!--  method 3  -->
+    <button id="btn3">Click Me Too!</button>
+
+    <!--  Accomplish same w/ named function:  -->
+    <button onclick="alertFunction()" id="named_func">CLICK ME BABY</button>
+
+
+    <script>
+        // method 2
+        const btn = document.querySelector('#btn');
+        btn.onclick = () => alert("Hello World");
+
+        // method 3
+        const btn3 = document.querySelector('#btn3');
+        btn3.addEventListener('click', () => {
+            alert("Hello World");
+        });
+
+        // Named function
+        function alertFunction() {
+            alert("YAY! YOU DID IT!");
+        }
+    </script>
 </body>
 </html>
