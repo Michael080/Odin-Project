@@ -28,14 +28,26 @@
         return weapon[random_weapon].toLowerCase();
     }
 
+    function playerOneWins() {
+        playerScore++;
+        console.log('You win!')
+    }
+
+    function computerWins() {
+        computerScore++;
+        console.log('You lose :(')
+    }
+
     function scoreBoard(winWeapon, loseWeapon, point, win = false){
-        point++;
+        // console.log('test from scoreBoard')
+        // console.log('point: ' + point);
         console.log('');
         console.log('----------------------------')
         console.log(`>> ${winWeapon} beats ${loseWeapon}`);
         console.log(`You: ${playerScore} vs. CPU: ${computerScore}`);
-        win ? console.log('You win!'):
-                console.log('You lose :(');
+        win ? playerOneWins():
+                computerWins();
+        return point++;
     }
 
     function matchUp(playerSelection, computerSelection) {
