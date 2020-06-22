@@ -53,7 +53,7 @@
         winRound ? playerOneWins():
                 computerWins();
         console.log(`You: ${playerScore} vs. CPU: ${computerScore}`);
-        scoreboard.textContent = `You: ${playerScore} vs. CPU: ${computerScore}`;
+        scoreBoardDisplay(`You: ${playerScore} vs. CPU: ${computerScore}`);
     }
 
     function matchUp(playerSelection, computerSelection) {
@@ -62,7 +62,7 @@
             console.log('----------------------------')
             console.log('Draw...');
             console.log(`You: ${playerScore} vs. CPU: ${computerScore}`);
-            scoreboard.textContent = `You: ${playerScore} vs. CPU: ${computerScore}`;
+            scoreBoardDisplay(`You: ${playerScore} vs. CPU: ${computerScore}`);
         } else {
             switch (true) {
                 case (playerSelection === 'rock' && computerSelection === 'scissors'):
