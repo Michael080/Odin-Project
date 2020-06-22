@@ -43,11 +43,11 @@
     }
 
 
-    function scoreBoard(winWeapon, loseWeapon, win = false){
+    function scoreBoard(winWeapon, loseWeapon, winRound = false){
         console.log('');
         console.log('----------------------------')
         console.log(`>> ${winWeapon} beats ${loseWeapon}`);
-        win ? playerOneWins():
+        winRound ? playerOneWins():
                 computerWins();
         console.log(`You: ${playerScore} vs. CPU: ${computerScore}`);
         scoreboard.textContent = `You: ${playerScore} vs. CPU: ${computerScore}`;
