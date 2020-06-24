@@ -49,6 +49,17 @@ sift through text nodes.
 <!--                        Finding Elements                            -->
 <a href="github.com"></a>
 
+
+<!--                        Changing The Document                            -->
+
+<!-- Nodes have a remove method to remove them from their current parent node.
+To add a child node to an element node, we can use appendChild, which puts it
+at the end of the list of children, or insertBefore, which inserts the node
+given as the first argument before the node given as the second argument.-->
+<p>One</p>
+<p>Two</p>
+<p>Three</p>
+
 <script>
     //                      Moving Through The Tree
 
@@ -85,6 +96,11 @@ sift through text nodes.
 
     let link = document.body.getElementsByTagName("a")[0];
     console.log(link.href);
+
+
+                           // Changing The Document                            -->
+    let paragraphs = document.body.getElementsByTagName("p");
+    document.body.insertBefore(paragraphs[6], paragraphs[4]);
 </script>
 </body>
 </html>
