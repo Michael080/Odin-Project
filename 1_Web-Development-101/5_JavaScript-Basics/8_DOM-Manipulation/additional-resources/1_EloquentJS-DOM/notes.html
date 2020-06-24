@@ -10,8 +10,9 @@
 <body>
 
 <!--
-document.querySelector('body').childNodes >
-NodeList(7) [text, h1, text, p, text, p, text]
+document.querySelector('body').childNodes
+:> NodeList(7) [text, h1, text, p, text, p, text]
+
 This NodList is somewhat different than what is shown in the book. It
 looks like each element has a text node associated w/ it by default and
 I think they are the nodes following each element. The first text node must
@@ -20,6 +21,50 @@ belong to <body>
 <h1></h1>
 <p></p>
 <p></p>
+<!--                        Trees                      -->
+<!--
+Every node has a parentNode property that points to the node it is part of,
+if any. Likewise, every element node (node type 1) has a childNodes property
+that points to an array-like object holding its children.
+-->
 
+<!-- An alternative approach: -->
+<!--
+document.querySelector('body').children
+:> HTMLCollection(3) [h1, p, p]
+
+The children property is similar to childNodes but contains only element
+(type 1) children, not other types of child nodes. So we no longer have to
+sift through text nodes.
+-->
+
+<!--                        Moving Through The Tree                      -->
+<h1> My home page</h1>
+
+<p> Hello, I am Marijn...</p>
+
+<p> I also wrote a book! ...</p>
+<script>
+    //                      Moving Through The Tree
+
+    // When dealing w/ a nested data structure, recursive functions are often
+//    useful. The following function scans a document for text nodes containing
+    // a given string and returns true when it has found one.
+
+    function talksAbout(node, string) {
+        if (node.nodeType == Node.ELEMENT_NODE) {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                if (talksAbout(node.childNodes[i], string)) {
+                    return true;
+                }
+            }
+            return false;
+        } else if (node.nodeType == Node.TEXT_NODE) {
+            return node.nodeValue.indexOf(string) > - 1;
+        }
+    }
+
+    console.log(talksAbout(document.body, "book")); // :> true
+</script>
 </body>
 </html>
