@@ -60,6 +60,13 @@ given as the first argument before the node given as the second argument.-->
 <p>Two</p>
 <p>Three</p>
 
+
+<!--                        Creating Nodes                           -->
+<p>The <img src="cat.png" alt="cat"> in the
+    <img src="hat.png" alt="hat"></p>
+
+<p><button onclick="replaceImages()">Replace</button></p>
+
 <script>
     //                      Moving Through The Tree
 
@@ -101,6 +108,23 @@ given as the first argument before the node given as the second argument.-->
                            // Changing The Document                            -->
     let paragraphs = document.body.getElementsByTagName("p");
     document.body.insertBefore(paragraphs[6], paragraphs[4]);
+
+
+    //<!--                        Creating Nodes                           -->
+    // replaceImages() very cleverly swaps out img's for a newly created
+    // text node that takes the alt text for the img as its value
+    function replaceImages() {
+        let images = document.body.getElementsByTagName("img");
+        for (let i = images.length - 1; i >= 0; i--) {
+            let image = images[i];
+            if (image.alt) {
+                let text = document.createTextNode(image.alt);
+                image.parentNode.replaceChild(text, image);
+            } else {
+                console.log('No alt here!');
+            }
+        }
+    }
 </script>
 </body>
 </html>
