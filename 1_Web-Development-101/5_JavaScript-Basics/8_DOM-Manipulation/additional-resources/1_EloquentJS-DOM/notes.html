@@ -44,6 +44,11 @@ sift through text nodes.
 <p> Hello, I am Marijn...</p>
 
 <p> I also wrote a book! ...</p>
+
+
+<!--                        Finding Elements                            -->
+<a href="github.com"></a>
+
 <script>
     //                      Moving Through The Tree
 
@@ -65,6 +70,21 @@ sift through text nodes.
     }
 
     console.log(talksAbout(document.body, "book")); // :> true
+
+    // Because childNodes is not a real array, we cannot loop over it with for/of
+    // and have to run over the index range using a for loop or use Array.from.
+
+
+    //                        Finding Elements
+
+
+    // The above exemplifies the complicating factors such as the text nodes that
+    // are created by whitespace in the HTML, or creating programs dependent on fixed
+    // paths of properties, that are worth avoiding.
+
+
+    let link = document.body.getElementsByTagName("a")[0];
+    console.log(link.href);
 </script>
 </body>
 </html>
