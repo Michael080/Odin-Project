@@ -78,6 +78,13 @@ then used to add an attribution to a quote.-->
     from it.
 </blockquote>
 
+
+<!--                        Attributes                          -->
+
+<p data-classified="secret">The launch code is 00000000.</p>
+<p data-classified="unclassified">I have two feet.</p>
+
+
 <script>
     //                      Moving Through The Tree
 
@@ -162,6 +169,15 @@ then used to add an attribution to a quote.-->
             ", preface to the second edition of ",
             elt("em", "The Open Society and Its Enemies"),
         ", 1950"));
+
+
+    <!--                        Attributes                          -->
+    let paras = document.body.getElementsByTagName("p");
+    for (let para of Array.from(paras)) {
+        if (para.getAttribute("data-classified") == "secret") {
+            para.remove();
+        }
+    }
 </script>
 </body>
 </html>
