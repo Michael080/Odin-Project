@@ -85,6 +85,17 @@ then used to add an attribution to a quote.-->
 <p data-classified="unclassified">I have two feet.</p>
 
 
+<!--                        Layout                              -->
+<!-- The offsetWidth and offsetHeight properties give you the space the element
+takes up in pixels.
+
+Similarly, clientWidth and clientHeight give yout the size fo the space inside the
+element, ignoring border width.-->
+
+<p style="border: 3px solid red">
+    I'm boxed in
+</p>
+
 <script>
     //                      Moving Through The Tree
 
@@ -178,6 +189,13 @@ then used to add an attribution to a quote.-->
             para.remove();
         }
     }
+
+
+    <!--                        Layout                              -->
+    let para = document.body.getElementsByTagName("p")[10];
+    console.log("clientHeight:", para.clientHeight);
+    console.log("offesetHeight:", para.offsetHeight);
+    // I didn't know you could do this comma trick w/ a log statement...
 </script>
 </body>
 </html>
