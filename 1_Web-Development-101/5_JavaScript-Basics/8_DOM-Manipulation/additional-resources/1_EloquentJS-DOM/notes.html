@@ -67,6 +67,17 @@ given as the first argument before the node given as the second argument.-->
 
 <p><button onclick="replaceImages()">Replace</button></p>
 
+
+<!-- The following example defines a utility elt(), such creates an element node
+and treats the rest of its arguments as children to that node. This function is
+then used to add an attribution to a quote.-->
+
+<blockquote id="quote">
+    No book can ever be finished. While working on it we
+    learn just enough to find it immature the moment we turn away
+    from it.
+</blockquote>
+
 <script>
     //                      Moving Through The Tree
 
@@ -125,6 +136,32 @@ given as the first argument before the node given as the second argument.-->
             }
         }
     }
+
+    // If you want a 'solid' collection of nodes, as opposed to a live one, you
+    // can convert the collection to a real array by calling Array.from.
+    let arrayish = {0: "one", 1: "two", length: 2};
+    let array = Array.from(arrayish);
+    console.log(array.map(s => s.toUpperCase()));
+
+
+    //  <!-- The following example defines a utility elt(), such creates an element node
+    // and treats the rest of its arguments as children to that node. This function is
+    // then used to add an attribution to a quote.-->
+    function elt(type, ...children) {
+        let node = document.createElement(type);
+        for (let child of children) {
+            if (typeof child != "string") node.appendChild(child);
+            else node.appendChild(document.createTextNode(child));
+        }
+        return node;
+    }
+
+    document.getElementById("quote").appendChild(
+        elt("footer", "-",
+            elt("strong", "Karl Popper"),
+            ", preface to the second edition of ",
+            elt("em", "The Open Society and Its Enemies"),
+        ", 1950"));
 </script>
 </body>
 </html>
