@@ -92,9 +92,35 @@ takes up in pixels.
 Similarly, clientWidth and clientHeight give yout the size fo the space inside the
 element, ignoring border width.-->
 
+
+<!--                        Style                              -->
+
 <p style="border: 3px solid red">
     I'm boxed in
 </p>
+
+<p><a href=".">Normal link</a></p>
+<p><a href="." style="color: green">Green link</a></p>
+
+This text is displayed <strong>inline</strong>,
+<strong style="display: block">as a block</strong>, and
+<strong style="display: none">not at all</strong>.
+
+<!-- JavaScript code can directly manipulate the style of an element
+through the element’s style property. This property holds an object
+that has properties for all possible style properties. The values of
+these properties are strings, which we can write to in order to change
+a particular aspect of the element’s style.-->
+
+<p id="parag" style="color: purple">
+    Nice text
+</p>
+
+<!-- Some style property names contain hyphens, such as font-family.
+Because such property names are awkward to work with in JavaScript
+(you’d have to say style["font-family"]), the property names in the
+style object for such properties have their hyphens removed and the
+letters after them capitalized (style.fontFamily).-->
 
 <script>
     //                      Moving Through The Tree
@@ -196,6 +222,12 @@ element, ignoring border width.-->
     console.log("clientHeight:", para.clientHeight);
     console.log("offesetHeight:", para.offsetHeight);
     // I didn't know you could do this comma trick w/ a log statement...
+
+
+    <!--                        Style                              -->
+    let parag = document.getElementById("parag");
+    console.log(parag.style.color);
+    parag.style.color = "magenta";
 </script>
 </body>
 </html>
