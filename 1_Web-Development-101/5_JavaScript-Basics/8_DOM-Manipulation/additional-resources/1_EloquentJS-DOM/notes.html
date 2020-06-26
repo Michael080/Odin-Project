@@ -131,6 +131,16 @@ that are direct children of <p> tags. Similarly, p a {…} applies to
 all <a> tags inside <p> tags, whether they are direct or indirect
 children.-->
 
+
+<!--                        Query Selectors                    -->
+
+<p>And if you go chasing
+    <span class="animal">rabbits</span></p>
+<p>And you know you're going to fall</p>
+<p>Tell 'em a <span class="character">hooka smoking
+    <span class="animal">caterpillar</span></span></p>
+<p>Has given you the call</p>
+
 <script>
     //                      Moving Through The Tree
 
@@ -237,6 +247,24 @@ children.-->
     let parag = document.getElementById("parag");
     console.log(parag.style.color);
     parag.style.color = "magenta";
+
+
+    <!--                        Query Selectors                    -->
+    function count(selector) {
+        return document.querySelectorAll(selector).length;
+    }
+
+    console.log(count("p"));
+    console.log(count(".animal"));
+    console.log(count("p .animal"));
+    console.log(count("p > .animal"));
+
+    // Unlike methods such as getElementsByTagName, the object
+    // returned by querySelectorAll is not live. It won’t change
+    // when you change the document. It is still not a real array,
+    // though, so you still need to call Array.from if you want to
+    // treat it like one.
+
 </script>
 </body>
 </html>
