@@ -26,13 +26,17 @@
 
     let table = document.createElement('table');
 
+    const NAME = document.createElement('th');
+    const HEIGHT = document.createElement('th');
+    const PLACE = document.createElement('th');
+
+
     function tableBuilder(table, array) {
-        const NAME = document.createElement('th');
-        const HEIGHT = document.createElement('th');
-        const PLACE = document.createElement('th');
+
         document.body.appendChild(table);
 
     }
+
 
     // MOUNTAINS.forEach((element) => {
     //     console.log(element["name"]);
