@@ -24,9 +24,11 @@
         {name: "Mont Blanc", height: 4808, place: "Italy/France"}
     ];
 
+    let div = document.getElementById('mountains');
+
     // Add 'table' to DOM
     let table = document.createElement('table');
-    document.body.appendChild(table);
+    div.appendChild(table);
 
     // Add headers to table
     const NAME = document.createElement('th');
