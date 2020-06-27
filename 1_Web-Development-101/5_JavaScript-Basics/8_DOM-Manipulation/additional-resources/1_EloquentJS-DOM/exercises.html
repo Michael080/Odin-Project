@@ -76,6 +76,36 @@
         }
     });
 
+    // function elementFactory(type, content) {
+    //     var myArray = []
+    //    // return window[myVar] = new Object();
+    //     window[type] = (function () {
+    //         return document.createElement(type);
+    //     })();
+    // }
+
+    // function elementFactory(type, content, destination) {
+    //     var myArray = []
+    //     // return window[myVar] = new Object();
+    //     window[type] = (function () {
+    //         let elementDOM = document.createElement(type);
+    //         elementDOM.textContent = content;
+    //         destination.appendChild(elementDOM);
+    //     })();
+    // }
+
+    function elementFactory(type, content, destination) {
+
+        let elementDOM = document.createElement(type);
+        elementDOM.textContent = content;
+        destination.appendChild(elementDOM);
+        elementDOM;
+    }
+
+    // const varToString = varObj => Object.keys(varObj)[0];
+
+    // elementFactory('h3', 'Fuck muh shit yo', div);
+
 </script>
 </body>
 </html>
