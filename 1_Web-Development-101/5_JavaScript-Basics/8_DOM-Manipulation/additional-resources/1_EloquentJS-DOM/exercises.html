@@ -24,13 +24,26 @@
         {name: "Mont Blanc", height: 4808, place: "Italy/France"}
     ];
 
+    // Add 'table' to DOM
     let table = document.createElement('table');
-
-    const NAME = document.createElement('th');
-    const HEIGHT = document.createElement('th');
-    const PLACE = document.createElement('th');
-
     document.body.appendChild(table);
+
+    // Add headers to table
+    const NAME = document.createElement('th');
+    NAME.textContent = 'name';
+
+    const HEIGHT = document.createElement('th');
+    HEIGHT.textContent = 'height';
+
+    const PLACE = document.createElement('th');
+    PLACE.textContent = 'place';
+
+    let headers = [NAME, HEIGHT, PLACE];
+
+    headers.forEach((header) => {
+        table.appendChild(header);
+    });
+
 
 
 
