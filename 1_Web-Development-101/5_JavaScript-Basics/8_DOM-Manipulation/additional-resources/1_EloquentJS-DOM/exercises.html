@@ -57,7 +57,6 @@
 
         let height = document.createElement('td');
         height.textContent = mountain["height"];
-        height.align = 'right';
         row.appendChild(height);
 
         let place = document.createElement('td');
@@ -66,6 +65,18 @@
 
         table.appendChild(row);
     })
+
+    // Align height data to the right
+    let content = document.querySelectorAll('td');
+    content.forEach((data) => {
+        checkNumber = data.textContent;
+
+        if (!isNaN(checkNumber)) {
+            data.align = 'right';
+
+            console.log('worked');
+        }
+    });
 
 </script>
 </body>
