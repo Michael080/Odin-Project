@@ -26,11 +26,10 @@
 
     let div = document.getElementById('mountains');
 
-    // Add 'table' to DOM
+    // Add 'table' and 'headers' to DOM
     let table = document.createElement('table');
     div.appendChild(table);
 
-    // Add headers to table
     const NAME = document.createElement('th');
     NAME.textContent = 'name';
 
@@ -94,17 +93,18 @@
     //     })();
     // }
 
-    function elementFactory(type, content, destination) {
-
-        let elementDOM = document.createElement(type);
-        elementDOM.textContent = content;
-        destination.appendChild(elementDOM);
-        elementDOM;
+    function elementFactory(type, destination, content = '') {
+        var myArray = []
+        // Use 'type' for var name, create element, and add to DOM
+        return window[type] = makeAndPlace(type, destination, content);
     }
 
-    // const varToString = varObj => Object.keys(varObj)[0];
-
-    // elementFactory('h3', 'Fuck muh shit yo', div);
+    function makeAndPlace(type, destination, content = '') {
+        elementDOM = document.createElement(type);
+        elementDOM.textContent = content;
+        destination.appendChild(elementDOM);
+        return elementDOM;
+    }
 
 </script>
 </body>
