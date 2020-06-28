@@ -37,19 +37,10 @@
     // Populate table w/ MOUNTAIN data
     MOUNTAINS.forEach((mountain) => {
         let row = document.createElement('tr');
-
-        let name = document.createElement('td');
-        name.textContent = mountain['name'];
-        row.appendChild(name);
-
-        let height = document.createElement('td');
-        height.textContent = mountain["height"];
-        row.appendChild(height);
-
-        let place = document.createElement('td');
-        place.textContent = mountain["place"];
-        row.appendChild(place);
-
+        // Add 'name', 'height', & 'place' from array to row
+        elementFactory('td', row, mountain['name']);
+        elementFactory('td', row, mountain['height']);
+        elementFactory('td', row, mountain['place']);
         table.appendChild(row);
     })
 
