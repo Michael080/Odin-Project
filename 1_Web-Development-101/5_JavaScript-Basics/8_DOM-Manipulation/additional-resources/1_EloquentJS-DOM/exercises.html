@@ -27,24 +27,12 @@
     let div = document.getElementById('mountains');
 
     // Add 'table' and 'headers' to DOM
-    let table = document.createElement('table');
-    div.appendChild(table);
+    let table = elementFactory('table', div);
 
-    const NAME = document.createElement('th');
-    NAME.textContent = 'name';
-
-    const HEIGHT = document.createElement('th');
-    HEIGHT.textContent = 'height';
+    const NAME = elementFactory('th', table, 'name');
+    const HEIGHT = elementFactory('th', table, 'height');
     HEIGHT.style.align = 'right';
-
-    const PLACE = document.createElement('th');
-    PLACE.textContent = 'place';
-
-    let headers = [NAME, HEIGHT, PLACE];
-
-    headers.forEach((header) => {
-        table.appendChild(header);
-    });
+    const PLACE = elementFactory('th', table, 'place');
 
     // Populate table w/ MOUNTAIN data
     MOUNTAINS.forEach((mountain) => {
