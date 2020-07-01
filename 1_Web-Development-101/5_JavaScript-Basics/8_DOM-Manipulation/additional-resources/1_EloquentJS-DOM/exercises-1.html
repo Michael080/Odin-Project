@@ -44,11 +44,17 @@
 let allElements = [];
 
     function byTagName(node, tagName) {
-    //    retrieve children of node
+        //    retrieve children of node
         let nodes = node.children;
         let matches = [];
-    // find all element nodes w/ children access them and repeat
-        allElements.push(nodes);
+
+        // add nodes to allElements[]
+        for (let i = 0; i < nodes.length; i++) {
+            let element = nodes[i];
+            allElements.push(element);
+        }
+
+        // find all element nodes w/ children access them and repeat
         for (let i = 0; i < nodes.length; i++) {
             let checkChildren = nodes[i];
 
@@ -56,16 +62,19 @@ let allElements = [];
                 byTagName(checkChildren);
             }
         }
+
         //   find tagName (loop over childNodes)
-        for (let i = 0; i < nodes.length; i++) {
-            let checkChild = nodes[i];
-            if (checkChild.nodeName.toLowerCase() == 'h1') {
+        for (let i = 0; i < allElements.length; i++) {
+            let checkChild = allElements[i];
+            if (checkChild.nodeName.toLowerCase() == tagName) {
             matches.push(checkChild);
+            console.log(i);
             }
         }
     //    return array of matches
-return allElements;
-    }
+    return matches;
+    //     return allElements;
+        }
 
 byTagName(document.body, 'h1');
 
