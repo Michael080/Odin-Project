@@ -43,9 +43,17 @@
 <script>
 
     function byTagName(node, tagName) {
-    //    retrieve chilren of node
+    //    retrieve children of node
+        let nodes = node.children;
+        let matches = [];
         //   find tagName (loop over childNodes)
-            //    add matches to array
+        for (let i = 0; i < nodes.length; i++) {
+            let checkChild = nodes[i];
+            if (checkChild.nodeName.toLowerCase() == 'h1') {
+            matches.push(checkChild);
+            }
+        }
+
             //    loop over looped over childNodes
                 //    add matches to array
     //    return array of matches
