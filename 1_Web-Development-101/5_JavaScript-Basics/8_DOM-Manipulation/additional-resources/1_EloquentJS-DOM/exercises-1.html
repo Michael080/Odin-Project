@@ -41,11 +41,21 @@
 </div>
 
 <script>
+let allElements = [];
 
     function byTagName(node, tagName) {
     //    retrieve children of node
         let nodes = node.children;
         let matches = [];
+    // find all element nodes w/ children access them and repeat
+        allElements.push(nodes);
+        for (let i = 0; i < nodes.length; i++) {
+            let checkChildren = nodes[i];
+
+            if (checkChildren.children.length > 0) {
+                byTagName(checkChildren);
+            }
+        }
         //   find tagName (loop over childNodes)
         for (let i = 0; i < nodes.length; i++) {
             let checkChild = nodes[i];
@@ -53,11 +63,8 @@
             matches.push(checkChild);
             }
         }
-
-            //    loop over looped over childNodes
-                //    add matches to array
     //    return array of matches
-
+return allElements;
     }
 
 byTagName(document.body, 'h1');
