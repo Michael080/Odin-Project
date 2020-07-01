@@ -17,6 +17,29 @@
     To find the tag name of an element, use its nodeName property. But
     note that this will return the tag name in all uppercase. Use the
     toLowerCase or toUpperCase string methods to compensate for this.</p>
+
+<h1>Mountains</h1>
+
+<div id="mountains">
+    <table>
+        <tr>
+            <th>name</th>
+            <th>height</th>
+            <th>place</th>
+        </tr>
+        <tr>
+            <td>Kilimanjaro</td>
+            <td>5895</td>
+            <td>Tanzania</td>
+        </tr>
+        <tr>
+            <td>Everest</td>
+            <td>8848</td>
+            <td>Nepal</td>
+        </tr>
+    </table>
+</div>
+
 <script>
 
     function byTagName(node, tagName) {
@@ -29,7 +52,7 @@
 
     }
 
-
+byTagName(document.body, 'h1');
 
 </script>
 </body>
