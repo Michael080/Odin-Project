@@ -5,14 +5,112 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>EloquentJS Handling Events Notes</title>
+    <title>EloquentJS Handling Events Notes -- NOTES</title>
 </head>
 <body>
+<!--                        Event handlers                  -->
 
+<p>Click this document to activate the handler.</p>
+
+
+
+<!--                        Events and DOM nodes                 -->
+
+<button>Click me</button>
+<p>No handler here.</p>
+
+<!--// Removing a handler-->
+<button id="button_once">Act-once button</button>
+
+
+
+<!--//                          Event Objects               -->'
+
+<button id="event_track">Click me any way you want</button>
+
+
+<!--//                          Propagation                 -->
+
+<p id="p">A paragraph with a <button id="button">button</button>.</p>
+
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+
+<!--=========================================================================-->
 <script>
 
+    //                      Event handlers
+
+// Event listener that fires when click is registered anywhere
+// on the page:
+    window.addEventListener("click", () => {
+        // console.log("You knocked?");
+        // disabled for other notes
+    });
 
 
+
+    //                      Events and DOM nodes
+
+//  Button Click = log statement
+    let button = document.querySelector("button");
+    button.addEventListener("click", () => {
+        console.log("Button clicked.");
+    });
+
+    // Removing a handler
+    // Executes log statement on first click, following clicks
+    // trigger nothing
+    let button1 = document.getElementById("button_once");
+    function once() {
+        console.log("Done.");
+        button1.removeEventListener("click", once);
+    }
+    button1.addEventListener("click", once);
+
+
+
+    //                      Event Objects
+
+    // Logs which mouse button was clicked along w/ value of 'key'
+    let buttonEvent = document.getElementById("event_track");
+    buttonEvent.addEventListener("mousedown", event => {
+        if (event.button == 0) {
+            console.log(`${event.button}: Left button`);
+        } else if (event.button == 1) {
+            console.log(`${event.button}: Middle button`);
+        } else if (event.button == 2) {
+            console.log(`${event.button}: Right button`);
+        }
+    });
+
+
+    //                      Propagation
+
+    // If button is clicked w/ left-mouse the event propagates
+    // from the button to the paragraph. If right-click,
+    // stopPropagation() prevents it and the event for
+    // 'mousedown' on button is the only one handled
+    let para = document.getElementById('p');
+    let button2 = document.getElementById('button');
+
+    para.addEventListener("mousedown", () => {
+        console.log("Handler for paragraph.");
+    });
+
+    button2.addEventListener("mousedown", event => {
+        console.log("Handler for button.");
+        if (event.button == 2) event.stopPropagation();
+    });
+
+    // Using the 'target' property to register ALL button
+    // clicks in the document
+    document.body.addEventListener("click", event => {
+        if (event.target.nodeName == "BUTTON") {
+            console.log("Clicked", event.target.textContent);
+        }
+    });
 </script>
 </body>
 </html>
