@@ -18,18 +18,24 @@
 <script>
     //                  Balloon
     let balloon = document.querySelector("p");
-    let size = 10;
+    let size = 30;
     window.addEventListener("keydown", event => {
-        if (event.key == "ArrowUp") {
-            size += 10;
-            balloon.style.fontSize = size + "px";
-            event.preventDefault();
+        switch (true) {
+            case event.key == "ArrowUp":
+                size += 10;
+                balloon.style.fontSize = size + "px";
+                event.preventDefault();
+                break;
+            case event.key == "ArrowDown":
+                size -= 10;
+                balloon.style.fontSize = size + "px";
+                event.preventDefault();
+                break;
         }
-        if (event.key == "ArrowDown") {
-            size -= 10;
-            balloon.style.fontSize = size + "px";
-            event.preventDefault();
-        }
+
+    if (size >= 150) {
+        balloon.textContent = "💥";
+    }
     });
 
 </script>
