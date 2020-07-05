@@ -317,6 +317,23 @@
         clearTimeout(timeout);
         timeout = setTimeout(() => console.log("Typed!"), 500);
     });
+
+    // prints coordinates of mouse on 'mousemove' every quarter
+    // second
+    let scheduled = null;
+
+    window.addEventListener("mousemove", event => {
+        if (!scheduled) {
+            setTimeout(() => {
+                document.body.textContent =
+                    `Mouse at ${scheduled.pageX}, ${scheduled.pageY}`;
+                console.log(`scheduled from eventListener: ${scheduled}`);
+                console.log(scheduled);
+                scheduled = null;
+            }, 250);
+        }
+        scheduled = event;
+    })
 </script>
 </body>
 </html>
