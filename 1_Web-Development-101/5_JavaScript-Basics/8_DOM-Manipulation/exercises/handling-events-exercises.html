@@ -6,12 +6,31 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EloquentJS Handling Events Exercises</title>
+    <style>
+        p {
+            font-size: 10px;
+        }
+    </style>
 </head>
 <body>
+<!--//                       Balloon                    -->
 <p>🎈</p>
 <script>
-
-
+    //                  Balloon
+    let balloon = document.querySelector("p");
+    let size = 10;
+    window.addEventListener("keydown", event => {
+        if (event.key == "ArrowUp") {
+            size += 10;
+            balloon.style.fontSize = size + "px";
+            event.preventDefault();
+        }
+        if (event.key == "ArrowDown") {
+            size -= 10;
+            balloon.style.fontSize = size + "px";
+            event.preventDefault();
+        }
+    });
 
 </script>
 </body>
