@@ -6,6 +6,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>EloquentJS Handling Events Notes -- NOTES</title>
+    <style>
+        body {
+            height: 200px;
+            background: beige;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 4px;
+            background: blue;
+            position: absolute;
+        }
+
+    /*    Scroll Events     */
+        #progress {
+            border-bottom: 2px solid blue;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
 <!--                        Event handlers                  -->
@@ -37,6 +60,41 @@
 <button id="b">B</button>
 <button id="c">C</button>
 
+
+<!--//                          Default Actions                 -->
+<a href="https://developer.mozilla.org/">MDN</a>
+
+
+<!--//                            Key Events                    -->
+
+<p id="v_key">This page violet when you hold the V key.</p>
+
+
+<!--// key combination example:-->
+<p id="continue">Press Control-Space to continue.</p>
+
+
+<!--                            Mouse Motion                     -->
+
+<p>Drag the bar to change its width:</p>
+<div style="background: orange; width: 60px; height: 20px"></div>
+
+
+<!--//                          Scroll Events                    -->
+
+<div id="progress"></div>
+
+
+<!--//                           Focus Events                    -->
+
+<p>Name: <input type="text" data-help="Your full name"></p>
+<p>Age: <input type="text" data-help="Your age in years"></p>
+<p id="help"></p>
+
+
+<!--//                            Debouncing                    -->
+
+<textarea>Type something here...</textarea>
 <!--=========================================================================-->
 <script>
 
@@ -110,6 +168,154 @@
         if (event.target.nodeName == "BUTTON") {
             console.log("Clicked", event.target.textContent);
         }
+    });
+
+
+    //                  Default Actions
+
+    // This script prevents the link from opening the target URL
+    let link = document.querySelector("a");
+
+    link.addEventListener("click", event => {
+        console.log("Nope");
+        event.preventDefault();
+    });
+
+
+    //                  Key Events
+
+    window.addEventListener("keydown", event => {
+        if (event.key == "v") {
+            document.body.style.background = "violet";
+        }
+    });
+    window.addEventListener("keyup", event => {
+        if (event.key == "v") {
+            document.body.style.background = "";
+        }
+    });
+
+    // 'Modifier" key combination example:
+    window.addEventListener("keydown", event => {
+        if(event.key == " " && event.ctrlKey) {
+            console.log("Continuing!");
+        }
+    });
+    // change text on 'continue'
+    let cont = document.getElementById("continue");
+
+    window.addEventListener("keydown", event => {
+        if(event.key == " " && event.ctrlKey) {
+            cont.textContent = 'CONTINUING FOO';
+        }
+    })
+
+    //                  Pointer Events
+
+            //      Mouse Clicks
+    window.addEventListener("click", event => {
+        let dot = document.createElement("div");
+        dot.className = "dot";
+        dot.style.left = (event.pageX - 4) + "px";
+        dot.style.top = (event.pageY - 4) + "px";
+    });
+
+
+    //                    Mouse Motion
+    // Drag the bar to change its width:
+    let lastX; // Tracks the last observed mouse X position
+    let bar = document.querySelector("div");
+    bar.addEventListener("mousedown", event => {
+        if (event.button == 0) {
+            lastX = event.clientX;
+            window.addEventListener("mousemove", moved);
+            event.preventDefault(); // Prevent selection
+        }
+    });
+
+    function moved(event) {
+        if (event.buttons == 0) {
+            window.removeEventListener("mousemove", moved);
+        } else {
+            let dist = event.clientX - lastX;
+            let newWidth = Math.max(10, bar.offsetWidth + dist);
+            bar.style.width = newWidth + "px";
+            lastX = event.clientX
+        }
+    }
+
+
+    //                      Scroll Events
+    //    Draws a progress bar above the document and updates it to fill
+    //    up as you scroll down
+    document.body.appendChild(document.createTextNode(
+        "supercalifragilisticexpialidocious ".repeat(80)));
+
+    let bar1 = document.querySelector("#progress");
+    window.addEventListener("scroll", () => {
+        let max = document.body.scrollHeight - innerHeight;
+        bar1.style.width = `${(pageYOffset / max) * 100}%`;
+    });
+
+
+    //                      Focus Events
+
+    let help = document.querySelector("#help");
+    let fields = document.querySelectorAll("input");
+
+    for (let field of Array.from(fields)) {
+        field.addEventListener("focus", event => {
+            let text = event.target.getAttribute("data-help");
+            help.textContent = text;
+        });
+        field.addEventListener("blur", event => {
+            help.textContent = "";
+        });
+    }
+
+
+    //                  Events and the Event Loop
+
+    // let squareWorker = new Worker("squareworker.js");
+    //
+    // squareWorker.addEventListener("message", event => {
+    //     console.log("The worker responded:", event.data);
+    // });
+
+    // squareWorker.postMessage(10);
+    // squareWorker.postMessage(24);
+
+
+    //                      Timers
+
+    let bombTimer = setTimeout(() => {
+        console.log("BOOM!");
+    }, 500);
+
+    if (Math.random() < 0.5) { // 50% chance
+        console.log("Defused.");
+        clearTimeout(bombTimer);
+    }
+
+    // similar to setTimeout() -- clearInterval()
+    let ticks = 0;
+    let clock = setInterval(() => {
+        console.log("tick", ticks++);
+        if (ticks == 10) {
+            clearInterval(clock);
+            console.log("stop.");
+        }
+    }, 200)
+
+
+    //                  Debouncing
+    // 'timing out' an event handler
+    let textarea = document.querySelector("textarea");
+    let timeout;
+
+    textarea.addEventListener("input", () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => console.log("Typed!"), 500);
     });
 </script>
 </body>
