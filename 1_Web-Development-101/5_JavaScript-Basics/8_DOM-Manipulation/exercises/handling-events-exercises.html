@@ -10,11 +10,24 @@
         p {
             font-size: 10px;
         }
+
+        /*Mouse Trail*/
+        .trail { /* className for the trail elements */
+            position: absolute;
+            height: 6px; width: 6px;
+            border-radius: 3px;
+            background: teal;
+        }
+
+        body {
+            height: 300px;
+        }
     </style>
 </head>
 <body>
 <!--//                       Balloon                    -->
 <p>🎈</p>
+<div id="outerDiv"></div>
 <script>
     //                  Balloon
     let balloon = document.querySelector("p");
@@ -37,6 +50,18 @@
         balloon.textContent = "💥";
     }
     });
+
+    //                      Mouse Trail
+    window.addEventListener("mousemove", event => {
+        let trail = document.createElement("div");
+        trail.className = "trail";
+
+        trail.style.left = (event.pageX) + "px";
+        trail.style.top = (event.pageY) + "px";
+        document.body.appendChild(trail);
+        console.log(`X: ${event.pageX}, Y: ${event.pageY}`);
+    });
+
 
 </script>
 </body>
