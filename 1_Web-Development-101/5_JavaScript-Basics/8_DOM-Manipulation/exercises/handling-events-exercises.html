@@ -52,16 +52,24 @@
     });
 
     //                      Mouse Trail
+    // let trailElems = [];
+    let trailNodes = document.body.children;
     window.addEventListener("mousemove", event => {
         let trail = document.createElement("div");
+        let trailNodes = document.body.children;
         trail.className = "trail";
 
         trail.style.left = (event.pageX) + "px";
         trail.style.top = (event.pageY) + "px";
-        document.body.appendChild(trail);
-        console.log(`X: ${event.pageX}, Y: ${event.pageY}`);
-    });
 
+        if (trailNodes.length > 4) {
+            trailNodes[0].remove();
+        }
+
+        document.body.appendChild(trail);
+        // console.log(`X: ${event.pageX}, Y: ${event.pageY}`);
+
+    });
 
 </script>
 </body>
