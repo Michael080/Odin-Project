@@ -62,12 +62,14 @@
         trail.style.left = (event.pageX) + "px";
         trail.style.top = (event.pageY) + "px";
 
-        if (trailNodes.length > 4) {
-            trailNodes[0].remove();
-        }
-
         document.body.appendChild(trail);
+
+        setTimeout(removeTail(trailNodes[0]), 1000);
     });
+
+    function removeTail(node) {
+        node.remove();
+    }
 
 </script>
 </body>
