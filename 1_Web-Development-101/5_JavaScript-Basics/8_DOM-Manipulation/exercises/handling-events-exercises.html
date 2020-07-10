@@ -28,6 +28,18 @@
 <!--//                       Balloon                    -->
 <p>🎈</p>
 <div id="outerDiv"></div>
+
+
+
+
+
+<!--//                            Tabs                  -->
+<tab-panel>
+    <div data-tabname="one">Tab one</div>
+    <div data-tabname="two">Tab two</div>
+    <div data-tabname="three">Tab three</div>
+</tab-panel>
+
 <script>
     //                  Balloon
     let balloon = document.querySelector("p");
@@ -58,10 +70,13 @@
 
     let mouseMoving = null;
     let stopTrail;
+    let tailLength;
     let trailNodes = document.body.children;
 
     window.addEventListener("mousemove", event => {
+        mouseMoving = event;
         clearTimeout(stopTrail);
+        clearTimeout(tailLength);
 
         let trail = document.createElement("div");
         let trailNodes = document.body.children;
@@ -71,7 +86,7 @@
         trail.style.top = (event.pageY) + "px";
         document.body.appendChild(trail);
 
-        setTimeout(removeTail(trailNodes[0]), 5000);
+        tailLength = setTimeout(removeTail(trailNodes[0]), 5000);
 
         if (!mouseMoving) {
             let tail = document.getElementsByClassName("trail");
@@ -82,16 +97,21 @@
 
                 tail[0].remove();
                 mouseMoving = null;
-            }, 250);
+            }, 1000);
         }
+
+        mouseMoving = event;
 
         function removeTail(node) {
             node.remove();
         }
 
-        mouseMoving = event;
     });
 
+
+
+
+    //                      Tabs
 </script>
 </body>
 </html>
