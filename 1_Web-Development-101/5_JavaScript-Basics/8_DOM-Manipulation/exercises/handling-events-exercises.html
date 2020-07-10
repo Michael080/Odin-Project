@@ -51,25 +51,46 @@
     }
     });
 
+
+
+
     //                      Mouse Trail
 
+    let mouseMoving = null;
+    let stopTrail;
     let trailNodes = document.body.children;
+
     window.addEventListener("mousemove", event => {
+        clearTimeout(stopTrail);
+
         let trail = document.createElement("div");
         let trailNodes = document.body.children;
-        trail.className = "trail";
 
+        trail.className = "trail";
         trail.style.left = (event.pageX) + "px";
         trail.style.top = (event.pageY) + "px";
-
         document.body.appendChild(trail);
 
-        setTimeout(removeTail(trailNodes[0]), 1000);
-    });
+        setTimeout(removeTail(trailNodes[0]), 5000);
 
-    function removeTail(node) {
-        node.remove();
-    }
+        if (!mouseMoving) {
+            let tail = document.getElementsByClassName("trail");
+            stopTrail = setTimeout(() => {
+                for (let i = 0; i < tail.length-1; i++) {
+                    tail[i].remove();
+                }
+
+                tail[0].remove();
+                mouseMoving = null;
+            }, 250);
+        }
+
+        function removeTail(node) {
+            node.remove();
+        }
+
+        mouseMoving = event;
+    });
 
 </script>
 </body>
