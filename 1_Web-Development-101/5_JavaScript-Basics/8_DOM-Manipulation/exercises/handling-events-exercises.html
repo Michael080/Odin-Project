@@ -117,11 +117,17 @@
 
     //                      Tabs
 
+    let tabs = document.getElementsByClassName('tabs');
+
+    for (i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = 'none';
+    }
+
     function asTabs(node) {
 
     }
 
-    asTabs(document.querySelector("tab-panel"));
+    asTabs(document.querySelector('tab-panel'));
 </script>
 </body>
 </html>
