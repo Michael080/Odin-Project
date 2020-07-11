@@ -34,9 +34,6 @@
 
 
 <!--//                            Tabs                  -->
-<button class="one">Uno</button>
-<button class="two">Dos</button>
-<button class="two">Tres</button>
 
 <tab-panel id="panel">
     <div data-tabname="one" class="tabs">Tab one</div>
@@ -118,13 +115,17 @@
     //                      Tabs
 
     let tabs = document.getElementsByClassName('tabs');
-
-    for (i = 0; i < tabs.length; i++) {
-        tabs[i].style.display = 'none';
-    }
+    let panel = document.getElementById('panel');
 
     function asTabs(node) {
+        // Create buttons
+        let buttonOne = document.createElement('button');
+        buttonOne.className = "one";
+        // Use data-attribute to populate button-text
+        buttonOne.textContent = tabs[0].dataset.tabname;
+        node.appendChild(buttonOne);
 
+        // node.style.display = '';
     }
 
     asTabs(document.querySelector('tab-panel'));
