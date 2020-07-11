@@ -118,6 +118,7 @@
     let panel = document.getElementById('panel');
 
     function asTabs(node) {
+        hideElements(tabs); // Hide tabs
         // Create buttons
         let buttonOne = document.createElement('button');
         buttonOne.className = "one";
@@ -126,6 +127,12 @@
         node.appendChild(buttonOne);
 
         // node.style.display = '';
+    }
+
+    function hideElements(elems) {
+        for (i = 0; i < elems.length; i++) {
+            elems[i].style.display = 'none';
+        }
     }
 
     asTabs(document.querySelector('tab-panel'));
