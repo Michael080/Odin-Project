@@ -34,10 +34,14 @@
 
 
 <!--//                            Tabs                  -->
-<tab-panel>
-    <div data-tabname="one">Tab one</div>
-    <div data-tabname="two">Tab two</div>
-    <div data-tabname="three">Tab three</div>
+<button class="one">Uno</button>
+<button class="two">Dos</button>
+<button class="two">Tres</button>
+
+<tab-panel id="panel">
+    <div data-tabname="one" class="tabs">Tab one</div>
+    <div data-tabname="two" class="tabs">Tab two</div>
+    <div data-tabname="three" class="tabs">Tab three</div>
 </tab-panel>
 
 <script>
@@ -68,45 +72,45 @@
 
     //                      Mouse Trail
 
-    let mouseMoving = null;
-    let stopTrail;
-    let tailLength;
-    let trailNodes = document.body.children;
-
-    window.addEventListener("mousemove", event => {
-        mouseMoving = event;
-        clearTimeout(stopTrail);
-        clearTimeout(tailLength);
-
-        let trail = document.createElement("div");
-        let trailNodes = document.body.children;
-
-        trail.className = "trail";
-        trail.style.left = (event.pageX) + "px";
-        trail.style.top = (event.pageY) + "px";
-        document.body.appendChild(trail);
-
-        tailLength = setTimeout(removeTail(trailNodes[0]), 5000);
-
-        if (!mouseMoving) {
-            let tail = document.getElementsByClassName("trail");
-            stopTrail = setTimeout(() => {
-                for (let i = 0; i < tail.length-1; i++) {
-                    tail[i].remove();
-                }
-
-                tail[0].remove();
-                mouseMoving = null;
-            }, 1000);
-        }
-
-        mouseMoving = event;
-
-        function removeTail(node) {
-            node.remove();
-        }
-
-    });
+    // let mouseMoving = null;
+    // let stopTrail;
+    // let tailLength;
+    // let trailNodes = document.body.children;
+    //
+    // window.addEventListener("mousemove", event => {
+    //     mouseMoving = event;
+    //     clearTimeout(stopTrail);
+    //     clearTimeout(tailLength);
+    //
+    //     let trail = document.createElement("div");
+    //     let trailNodes = document.body.children;
+    //
+    //     trail.className = "trail";
+    //     trail.style.left = (event.pageX) + "px";
+    //     trail.style.top = (event.pageY) + "px";
+    //     document.body.appendChild(trail);
+    //
+    //     tailLength = setTimeout(removeTail(trailNodes[0]), 5000);
+    //
+    //     if (!mouseMoving) {
+    //         let tail = document.getElementsByClassName("trail");
+    //         stopTrail = setTimeout(() => {
+    //             for (let i = 0; i < tail.length-1; i++) {
+    //                 tail[i].remove();
+    //             }
+    //
+    //             tail[0].remove();
+    //             mouseMoving = null;
+    //         }, 1000);
+    //     }
+    //
+    //     mouseMoving = event;
+    //
+    //     function removeTail(node) {
+    //         node.remove();
+    //     }
+    //
+    // });
 
 
 
