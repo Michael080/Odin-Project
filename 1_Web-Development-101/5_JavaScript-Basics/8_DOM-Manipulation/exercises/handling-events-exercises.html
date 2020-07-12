@@ -22,6 +22,17 @@
         body {
             height: 300px;
         }
+
+    /*    Tabs    */
+
+        .hidden {
+            display: none;
+            /*visibility: hidden;*/
+        }
+
+        .visible {
+            display: '';
+        }
     </style>
 </head>
 <body>
@@ -118,19 +129,41 @@
     let panel = document.getElementById('panel');
 
     function asTabs(node) {
+        let nodesList = [];
         hideElements(tabs); // Hide tabs
-        // Create and append buttons to tab-panel
-        createNode('button', tabs[0].dataset.tabname, panel, 'button', 'one');
-        createNode('button', tabs[1].dataset.tabname, panel, 'button', 'two');
-        createNode('button', tabs[2].dataset.tabname, panel, 'button', 'three');
+        // Create, append buttons to tab-panel, and add to 'nodesList'
+        nodesList.push(createNode('button', tabs[0].dataset.tabname, panel, 'button', 'one'));
+        nodesList.push(createNode('button', tabs[1].dataset.tabname, panel, 'button', 'two'));
+        nodesList.push(createNode('button', tabs[2].dataset.tabname, panel, 'button', 'three'));
         // Display corresponding tab on button click
+            nodesList[0].addEventListener('click', () => {
+                // Hide 'other' tabs
+                tabs[1].classList.add('hidden');
+                tabs[2].classList.add('hidden');
+                // toggle visibility on
+                    tabs[0].classList.remove('hidden');
+            })
 
-        // node.style.display = '';
+        nodesList[1].addEventListener('click', () => {
+            // Hide 'other' tabs
+            tabs[0].classList.add('hidden');
+            tabs[2].classList.add('hidden');
+            // toggle visibility on
+            tabs[1].classList.remove('hidden');
+        })
+
+        nodesList[2].addEventListener('click', () => {
+            // Hide 'other' tabs
+            tabs[0].classList.add('hidden');
+            tabs[1].classList.add('hidden');
+            // toggle visibility on
+            tabs[2].classList.remove('hidden');
+        })
     }
 
     function hideElements(elems) {
         for (i = 0; i < elems.length; i++) {
-            elems[i].style.display = 'none';
+            elems[i].classList.toggle('hidden');
         }
     }
 
@@ -142,9 +175,8 @@
         }
         elem.textContent = elementText;
         location.appendChild(elem);
+        return elem;
     }
-
-
 
     asTabs(document.querySelector('tab-panel'));
 </script>
