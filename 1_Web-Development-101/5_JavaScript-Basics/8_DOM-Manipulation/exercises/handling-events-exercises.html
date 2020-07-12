@@ -119,13 +119,9 @@
 
     function asTabs(node) {
         hideElements(tabs); // Hide tabs
-        // Create buttons
-        let buttonOne = document.createElement('button');
-        buttonOne.className = "one";
-        // Use data-attribute to populate button-text
-        buttonOne.textContent = tabs[0].dataset.tabname;
-        node.appendChild(buttonOne);
-
+        createNode('button', 'one', tabs[0].dataset.tabname, panel);
+        createNode('button', 'two', tabs[1].dataset.tabname, panel);
+        createNode('button', 'two', tabs[2].dataset.tabname, panel);
         // node.style.display = '';
     }
 
@@ -133,6 +129,13 @@
         for (i = 0; i < elems.length; i++) {
             elems[i].style.display = 'none';
         }
+    }
+
+    function createNode(type, classNm, elementText, location) {
+        let elem = document.createElement(type); // Create element
+        elem.className = classNm;
+        elem.textContent = elementText;
+        location.appendChild(elem);
     }
 
     asTabs(document.querySelector('tab-panel'));
