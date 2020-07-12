@@ -120,9 +120,11 @@
     function asTabs(node) {
         hideElements(tabs); // Hide tabs
         // Create and append buttons to tab-panel
-        createNode('button', 'one', tabs[0].dataset.tabname, panel);
-        createNode('button', 'two', tabs[1].dataset.tabname, panel);
-        createNode('button', 'two', tabs[2].dataset.tabname, panel);
+        createNode('button', tabs[0].dataset.tabname, panel, 'button', 'one');
+        createNode('button', tabs[1].dataset.tabname, panel, 'button', 'two');
+        createNode('button', tabs[2].dataset.tabname, panel, 'button', 'three');
+        // Display corresponding tab on button click
+
         // node.style.display = '';
     }
 
@@ -132,12 +134,17 @@
         }
     }
 
-    function createNode(type, classNm, elementText, location) {
+    function createNode(type, elementText, location, ...classNm) {
         let elem = document.createElement(type); // Create element
-        elem.className = classNm;
+        // Add class name/s to element
+        for (i = 0; i < classNm.length; i++) {
+            elem.classList.add(classNm[i]);
+        }
         elem.textContent = elementText;
         location.appendChild(elem);
     }
+
+
 
     asTabs(document.querySelector('tab-panel'));
 </script>
