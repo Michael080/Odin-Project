@@ -119,6 +119,7 @@
 
     function asTabs(node) {
         hideElements(tabs); // Hide tabs
+        // Create and append buttons to tab-panel
         createNode('button', 'one', tabs[0].dataset.tabname, panel);
         createNode('button', 'two', tabs[1].dataset.tabname, panel);
         createNode('button', 'two', tabs[2].dataset.tabname, panel);
