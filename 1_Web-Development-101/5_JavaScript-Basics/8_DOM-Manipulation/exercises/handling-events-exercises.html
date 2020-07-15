@@ -127,7 +127,7 @@
     function asTabs(node) {
         let nodesList = [];
         hideElements(tabs); // Hide tabs
-        // Create, append buttons to tab-panel, and add to 'nodesList'
+
         nodesList.push(createNode('button', tabs[0].dataset.tabname, panel, 'button', 'one'));
         nodesList.push(createNode('button', tabs[1].dataset.tabname, panel, 'button', 'two'));
         nodesList.push(createNode('button', tabs[2].dataset.tabname, panel, 'button', 'three'));
@@ -138,7 +138,7 @@
                 tabs[2].classList.add('hidden');
                 // toggle visibility on
                     tabs[0].classList.remove('hidden');
-            })
+            });
 
         nodesList[1].addEventListener('click', () => {
             // Hide 'other' tabs
@@ -146,7 +146,7 @@
             tabs[2].classList.add('hidden');
             // toggle visibility on
             tabs[1].classList.remove('hidden');
-        })
+        });
 
         nodesList[2].addEventListener('click', () => {
             // Hide 'other' tabs
@@ -154,7 +154,7 @@
             tabs[1].classList.add('hidden');
             // toggle visibility on
             tabs[2].classList.remove('hidden');
-        })
+        });
     }
 
     function hideElements(elems) {
