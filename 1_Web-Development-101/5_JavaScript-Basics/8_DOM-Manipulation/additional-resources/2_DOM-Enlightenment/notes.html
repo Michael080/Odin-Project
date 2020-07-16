@@ -6,8 +6,25 @@
     <title>DOM Enlightenment</title>
 </head>
 <body>
+    <a href="#"></a>
+
+
+
+
     <script>
-        
+        // get reference to element node object
+        let nodeAnchor = document.querySelector('a');
+
+        // create props aray to store property keys for element node object
+        let props = [];
+
+        // log alphabetical list of properties & methods
+        for(var key in nodeAnchor) {
+            props.push(key);
+        }
+
+        // log alphabetical list of properties & methods
+        console.log(props.sort());
     </script>
 </body>
 </html>
