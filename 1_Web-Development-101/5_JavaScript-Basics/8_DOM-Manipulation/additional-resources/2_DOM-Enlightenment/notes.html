@@ -6,12 +6,19 @@
     <title>DOM Enlightenment</title>
 </head>
 <body>
-    <a href="#"></a>
+    <!-- // --------------------------------------------------- -->
+
+    <!-- 1.3 Sub-node objects inherit from the 'Node' object -->
+    <a href="#">Hola</a>
 
 
 
 
     <script>
+        // ---------------------------------------------------
+        console.log("----------------------");
+        console.log("1.3");
+        // 1.3 Sub-node objects inherit from the 'Node' object
         // get reference to element node object
         let nodeAnchor = document.querySelector('a');
 
@@ -26,6 +33,77 @@
         // log alphabetical list of properties & methods
         console.log(props.sort());
         // returns array of 319 items
+
+        // -----------------------------------------------
+        console.log("----------------------");
+        console.log("1.5");
+        // 1.5 Identifying the type and name of a node
+        console.log(
+            document.doctype.nodeName, //>> 'html'
+            document.doctype.nodeType //>> 10
+        );
+
+        // This is DOCUMENT_NODE or nodeType 9 because Node.DOCUMENT_TYPE_NODE == 10
+        console.log(
+            document.nodeName, //>> '#document'
+            document.nodeType //>> 9
+        );
+
+        // This is DOCUMENT_FRAGMENT_NODE or nodeType 11 because Node.DOCUMENT_FRAGMENT_NODE == 11
+        console.log(
+            document.createDocumentFragment().nodeName, //>> '#document-fragment'
+            document.createDocumentFragment().nodeType // >> 11
+        );
+
+        // This is ELEMENT_NODE or nodeType 1 because Node.ELEMENT_NODE == 1
+        console.log(
+            document.querySelector('a').nodeName, //>> 'A'
+            document.querySelector('a').nodeType //>> 3
+        );
+
+        //This is TEXT_NODE or nodeType 3 because Node.TEXT_NODE == 3
+        console.log(
+            document.querySelector('a').firstChild.nodeName, //>> '#text'
+            document.querySelector('a').firstChild.nodeType //>> 3
+        );
+
+        // Check if node is ELEMENT_NODE
+        // is <a> a ELEMENT_NODE
+        if (document.querySelector('a').nodeType === 1) {
+            console.log('Node is an ELEMENT_NODE!');
+        }
+
+        //or use Node.ELEMENT_NODE which is a property containing the numeric value of 1
+        if (document.querySelector('a').nodeType === Node.ELEMENT_NODE) {
+            console.log('It is a mahfuckin ELEMENT_NODE for sure yo...');
+        }
+
+        // The nodeValue property returns null for most of the node types (except Text, and 
+        // Comment). It's use is centered around extracting actual text strings from Text 
+        // and Comment node
+
+        //logs null for DOCUMENT_TYPE_NODE, DOCUMENT_NODE, DOCUMENT_FRAGMENT_NODE, ELEMENT_NODE below
+
+        console.log(
+            'document.doctype.nodeValue: ', 
+            document.doctype.nodeValue
+            );
+        console.log('document.nodeValue: ', document.nodeValue);
+        console.log(
+            'document.createDocumentFragment().nodeValue: ', 
+            document.createDocumentFragment().nodeValue
+        );
+        console.log(
+            "document.querySelector('a').nodeValue: ",
+            document.querySelector('a').nodeValue
+            );
+
+        // logs of string of text
+        console.log(
+            "document.querySelector('a').firstChild.nodeValue: ",
+            document.querySelector('a').firstChild.nodeValue
+            );
+
     </script>
 </body>
 </html>
