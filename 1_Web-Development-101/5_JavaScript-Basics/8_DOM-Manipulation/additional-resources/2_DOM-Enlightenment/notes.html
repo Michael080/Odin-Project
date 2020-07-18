@@ -12,7 +12,13 @@
     <a href="#">Hola</a>
 
 
-
+<!--    // 1.8 Creating and adding element and text nodes to the DOM using  -->
+<!--    // JavaScript strings                                               -->
+    <div id="A"></div>
+    <span id="B"></span>
+    <div id="C"></div>
+    <div id="D"></div>
+    <div id="E"></div>
 
     <script>
         // ---------------------------------------------------
@@ -35,9 +41,10 @@
         // returns array of 319 items
 
         // -----------------------------------------------
+        // 1.5 Identifying the type and name of a node
         console.log("----------------------");
         console.log("1.5");
-        // 1.5 Identifying the type and name of a node
+
         console.log(
             document.doctype.nodeName, //>> 'html'
             document.doctype.nodeType //>> 10
@@ -103,6 +110,58 @@
             "document.querySelector('a').firstChild.nodeValue: ",
             document.querySelector('a').firstChild.nodeValue
             );
+
+
+        // -----------------------------------------------
+        // 1.7 Creating element and text nodes using JavaScript methods
+        console.log("----------------------");
+        console.log("1.7");
+
+        //When a browser parses an HTML document it constructs the nodes
+        // and tree based on the contents of the HTML file. The browser
+        // deals with the creation of nodes for the intial loading of
+        // the HTML document. However its possible to create your own
+        // nodes using JavaScript. The following two methods allow us to
+        // programatically create Element and Text nodes using JavaScript.
+
+        let elementNode = document.createElement('div');
+        console.log(elementNode, elementNode.nodeType); //>> <div> 1
+
+        var textNode = document.createTextNode('Hi');
+        console.log(textNode, textNode.nodeType); //>> Text {} 3
+
+
+
+
+
+
+    // 1.8 Creating and adding element and text nodes to the DOM using
+    // JavaScript strings
+    console.log("----------------------");
+    console.log("1.8");
+
+    // Using innerHTML, outerHTML, textContent properties to create nodes
+    // from JavaScript strings
+
+    //create a strong element and text node and add it to the DOM
+    document.getElementById('A').innerHTML = '<strong>Hi</strong>';
+    // In the DOM this strong tag is nested in element w/ id='A'
+
+    //create a div element and text node to replace <span id='B'></div>
+    document.getElementById('B').outerHTML = '<div id="B" class="new">What is Shaking</div>';
+
+    //create a text node and update the div#C w/ the text node
+    document.getElementById('C').textContent = 'dude';
+
+    //Non-standard extension below i.e. innerText & outerText
+
+    //create a text node and update the div#D w/ the text node
+    document.getElementById('D').innerText = 'Keep it';
+
+    //create a text node and replace the div#E w/ the text node
+    // (notice div#E is gone)
+    document.getElementById('E').outerText = 'real!';
+
 
     </script>
 </body>
