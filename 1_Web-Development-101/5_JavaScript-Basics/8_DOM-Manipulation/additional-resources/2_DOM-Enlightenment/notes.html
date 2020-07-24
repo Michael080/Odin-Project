@@ -20,6 +20,9 @@
     <div id="D"></div>
     <div id="E"></div>
 
+    <br>
+
+    <i id="elm">how</i>
     <script>
         // ---------------------------------------------------
         console.log("----------------------");
@@ -134,7 +137,7 @@
 
 
 
-
+    //----------------------------------------------------
     // 1.8 Creating and adding element and text nodes to the DOM using
     // JavaScript strings
     console.log("----------------------");
@@ -161,6 +164,28 @@
     //create a text node and replace the div#E w/ the text node
     // (notice div#E is gone)
     document.getElementById('E').outerText = 'real!';
+
+    // <div id="A"><strong>Hi</strong></div>
+    // <div id="B" class="new">Whats Shaking</div>
+    // <span id="C">dude</span>
+    // <div id="D">Keep it</div>
+    // "
+    //     real!
+    //
+    //     "
+
+    // The insertAdjacentHTML() method which only works on Element
+    // nodes is a good deal more precise than the previously mentioned
+    // methods. Using this method its possible to insert nodes before
+    // the beginning tag, after the beginning tag, before the end tag,
+    // and after the end tag.
+
+    var elm = document.getElementById('elm');
+
+    elm.insertAdjacentHTML('beforebegin', '<span>Hey-</span>');
+    elm.insertAdjacentHTML('afterbegin', '<span>dude-</span>');
+    elm.insertAdjacentHTML('beforeend', '<span>-are</span>');
+    elm.insertAdjacentHTML('afterend', '<span>-you?</span>');
 
 
     </script>
