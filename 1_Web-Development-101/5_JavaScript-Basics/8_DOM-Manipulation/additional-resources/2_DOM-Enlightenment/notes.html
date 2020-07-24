@@ -22,8 +22,17 @@
 
     <br>
 
+<!--    1.8 Creating and adding element and text nodes to the DOM using JavaScript strings-->
     <i id="elm">how</i>
+
+<!--    // 1.9 Extracting parts of the DOM tree as JavaScript strings-->
+    <div id="a"><i>Hi</i></div>
+    <div id="b">Dude<strong> !</strong></div>
+
+<!--    // 1.10 Adding node objects to the DOM using appendChild()& insertBefore()-->
+    <p class="hola" id="hola">Hola</p>
     <script>
+
         // ---------------------------------------------------
         console.log("----------------------");
         console.log("1.3");
@@ -115,6 +124,8 @@
             );
 
 
+
+
         // -----------------------------------------------
         // 1.7 Creating element and text nodes using JavaScript methods
         console.log("----------------------");
@@ -186,6 +197,46 @@
     elm.insertAdjacentHTML('afterbegin', '<span>dude-</span>');
     elm.insertAdjacentHTML('beforeend', '<span>-are</span>');
     elm.insertAdjacentHTML('afterend', '<span>-you?</span>');
+
+
+
+
+        //----------------------------------------------------
+
+        // 1.9 Extracting parts of the DOM tree as JavaScript strings
+        console.log("----------------------");
+        console.log("1.9");
+
+        console.log(document.getElementById('a').innerHTML); //>> <i>Hi</i>
+        // logs div#a and its parent node:
+        console.log(document.getElementById('a').outerHTML); //>> <div id="a"><i>Hi</i></div>
+
+        // logs all text even the child element node's:
+        console.log(document.getElementById('b').textContent); //>> 'Dude !'
+
+        //NON standard extensions below i.e. innerText & outerText
+
+        console.log(document.getElementById('b').innerText); //>> 'Dude !'
+
+        console.log(document.getElementById('b').outerText);  //>> 'Dude !'
+
+
+
+
+        //----------------------------------------------------
+
+
+        // 1.10 Adding node objects to the DOM using appendChild()& insertBefore()
+        console.log("----------------------");
+        console.log("1.10");
+
+        //create a blank element node and a text node
+        var myElemento = document.createElement('strong');
+        var textNode = document.createTextNode(' Dude');
+
+        //append these nodes to the DOM
+        document.getElementById('hola').appendChild(myElemento);
+        document.querySelectorAll('strong')[2].appendChild(textNode);
 
 
     </script>
