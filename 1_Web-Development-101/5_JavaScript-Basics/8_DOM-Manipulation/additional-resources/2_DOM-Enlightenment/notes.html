@@ -31,6 +31,11 @@
 
 <!--    // 1.10 Adding node objects to the DOM using appendChild()& insertBefore()-->
     <p class="hola" id="hola">Hola</p>
+
+    <ul>
+        <li>2</li>
+        <li>3</li>
+    </ul>
     <script>
 
         // ---------------------------------------------------
@@ -237,6 +242,33 @@
         //append these nodes to the DOM
         document.getElementById('hola').appendChild(myElemento);
         document.querySelectorAll('strong')[2].appendChild(textNode);
+
+        // When it becomes necessary to control the location of
+        // insertion beyond appending nodes to the end of a child
+        // list of nodes we can use insertBefore(). In the code
+        // below I am inserting the <li> element before the first
+        // child node of the <ul> element.
+
+        //create a text node and li element node and append the
+        // text to the li
+
+        var text1 = document.createTextNode('1');
+        var li = document.createElement('li');
+        li.appendChild(text1);
+
+        //select the ul in the document
+        var ul = document.querySelector('ul');
+
+    //add the li element we created above to the DOM, notice I call <ul> and
+    //pass reference to <li>2</li>
+        ul.insertBefore(li,ul.firstChild);
+
+
+
+        //----------------------------------------------------
+
+
+        //1.11 Removing and replacing nodes using removeChild() and replaceChild()
 
 
     </script>
