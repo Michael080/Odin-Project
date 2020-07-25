@@ -36,6 +36,22 @@
         <li>2</li>
         <li>3</li>
     </ul>
+
+    <!-- //1.11 Removing and replacing nodes using removeChild() and replaceChild()-->
+    <div id="Y">Yo</div>
+    <div id="Bi">Biyatch</div>
+
+<!--    //Replacing an element-->
+    <div id="blam">Blam</div>
+    <div id="yo">Yo'!</div>
+
+
+<!--    //1.12 Cloning nodes using cloneNode()-->
+    <ul class="ul">
+        <li>Hi</li>
+        <li>There</li>
+    </ul>
+
     <script>
 
         // ---------------------------------------------------
@@ -259,8 +275,8 @@
         //select the ul in the document
         var ul = document.querySelector('ul');
 
-    //add the li element we created above to the DOM, notice I call <ul> and
-    //pass reference to <li>2</li>
+        //add the li element we created above to the DOM, notice I call <ul> and
+        //pass reference to <li>2</li>
         ul.insertBefore(li,ul.firstChild);
 
 
@@ -270,6 +286,46 @@
 
         //1.11 Removing and replacing nodes using removeChild() and replaceChild()
 
+        //remove element node
+        var divY = document.getElementById('Y');
+        divY.parentNode.removeChild(divY);
+        //OR this works:
+        // document.body.removeChild(divY);
+
+        //remove text node
+        var divB = document.getElementById('Bi').firstChild;
+        divB.parentNode.removeChild(divB);
+
+
+        //Replacing an element node
+        //replace node
+        var divBlam = document.getElementById('blam');
+        var newSpan = document.createElement('span');
+        newSpan.textContent = 'Howdy';
+        divBlam.parentNode.replaceChild(newSpan,divBlam);
+
+        //replace text node
+        var divYo = document.getElementById('yo');
+        var newText = document.createTextNode('buddy ol pal');
+        divYo.parentNode.replaceChild(newText, divYo);
+
+
+
+        //1.12 Cloning nodes using cloneNode()
+
+        var cloneUL = document.querySelector('.ul').cloneNode();
+
+        console.log(cloneUL.constructor); //logs HTMLUListElement()
+        console.log(cloneUL.innerHTML); //logs (an empty string) as only the ul was cloned
+        //To clone a node and all of its children nodes you pass the cloneNode()
+        // method a parameter of of true. Below I use the cloneNode() method
+        // again but this time we clone all of the child nodes as well.
+        var cloneUL = document.querySelector('.ul').cloneNode(true);
+
+        console.log(cloneUL.constructor); //logs HTMLUListElement()
+        console.log(cloneUL.innerHTML); //logs <li>Hi</li><li>there</li>
+
+        document.body.appendChild(cloneUL);
 
     </script>
 </body>
