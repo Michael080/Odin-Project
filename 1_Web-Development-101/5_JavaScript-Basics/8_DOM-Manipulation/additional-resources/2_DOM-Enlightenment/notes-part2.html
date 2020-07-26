@@ -9,9 +9,56 @@
 </head>
 <body>
 
+<!--//1.14 Gettting a list/collection of all immediate child nodes-->
+<ul>
+    <li id="A">Hi</li>
+    <li id="B">There</li>
+</ul>
 
-
+<!--//1.15 Convert a NodeList or HTMLCollection to JavaScript Array-->
+<a href="#"></a>
 <script>
+    //=========================================================================
+    //1.14 Gettting a list/collection of all immediate child nodes
+
+    var ulElementChildNodes = document.querySelector('ul').childNodes;
+
+    console.log('ulElementChildNodes: ', ulElementChildNodes); //>> array of childNodes
+
+    //Call forEach as if its a method of NodeLists so we can loop over the
+    // NodeList. Done because NodeLists are array like, but do not directly
+    // inherit from Array
+    Array.prototype.forEach.call(ulElementChildNodes, function(item){
+        console.log(item); //logs each item in the array
+    })
+
+    // OR like this:
+    ulElementChildNodes.forEach(item => console.log(item));
+
+
+
+    //=========================================================================
+    //1.15 Convert a NodeList or HTMLCollection to JavaScript Array
+
+    console.log(Array.isArray(document.links)); //>> false
+    console.log(Array.isArray(document.querySelectorAll('a'))); //>> false
+
+    //Converting a node list or html collection to an array can be done
+    //using slice w/out 'actually slicing' because slice() returns an array
+    console.log(Array.isArray(Array.prototype.slice.call(document.links))); //returns true
+    console.log(Array.prototype.slice.call(document.querySelectorAll('a'))); //returns true
+
+
+
+
+    //=========================================================================
+    // 1.17 Verify a node position in the DOM tree with contains() &
+    // compareDocumentPosition()
+
+    // is <body> inside <html lang="en"> ?
+    var inside = document.querySelector('html').contains(document.querySelector('body'));
+
+    console.log('inside: ', inside);
 
 </script>
 </body>
