@@ -139,7 +139,6 @@
 
 
     //=========================================================================
-
     //2.4 document child nodes
     console.log('--------------------------');
     console.log('2.4');
@@ -151,6 +150,16 @@
     //This is the <html> element
     console.log(document.childNodes[1].nodeType);
     //logs 1, which is a numeric key mapping to ELEMENT_TYPE_NODE
+
+
+    //=========================================================================
+    //2.6 Detecting DOM specifications/features using
+    // document.implementation.hasFeature()
+    console.log('--------------------------');
+    console.log('2.6');
+
+    console.log(document.implementation.hasFeature('Core', '2.0'));
+    console.log(document.implementation.hasFeature('Core', '3.0'));
 </script>
 </body>
 </html>
