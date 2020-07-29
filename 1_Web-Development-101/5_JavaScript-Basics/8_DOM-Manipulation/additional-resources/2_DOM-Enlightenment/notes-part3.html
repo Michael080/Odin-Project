@@ -8,10 +8,131 @@
     <title>DOM Enlightenment Notes Part 3</title>
 </head>
 <body>
+<!--//3.1 HTML*Element object overview-->
+<a href='#' title="title" data-foo="dataFoo" class="yes" style="margin:0;" foo="boo">Hi</a>
 
+
+<!--//3.6 Getting, Setting, & Removing an element's attribute value-->
+<a href='#' title="title" data-foo="dataFoo" class="yip" style="margin:0;" foo="boo" hidden="hidden">Hi</a>
 
 <script>
+    //=================================================================
+    //3.1 HTML*Element object overview
+    console.log("------------------");
+    console.log('3.1');
 
+    //grab <a> element node from DOM and ask for the name of the
+    // constructor that constructed it
+    console.log('<a> constructor:',document.querySelector('a').constructor);
+    //:>> ƒ HTMLAnchorElement() { [native code] }
+
+
+
+    //=================================================================
+    //3.2 HTML*Element object properties and methods (including inherited)
+    console.log("------------------");
+    console.log('3.2');
+
+    var anchor = document.querySelector('a');
+
+    //element own properties
+    console.log('Object.keys:',Object.keys(anchor).sort());
+    //:>> returns empty HTML collection
+
+    //element own properties & inherited properties
+    var documentPropertiesIncludeInherited= [];
+    for (var p in document){
+        documentPropertiesIncludeInherited.push(p)
+    }
+    console.log('Inherited properties included:', documentPropertiesIncludeInherited.sort());
+    //:>> 262 properties
+
+    //element inherited properties only
+    var documentPropertiesOnlyInherited = [];
+    for (var p in document){
+        if (!document.hasOwnProperty(p)){
+            documentPropertiesOnlyInherited.push(p);
+        }
+    }
+    console.log('Only inherited properties:', documentPropertiesOnlyInherited.sort());
+    //:>> 261 properties
+
+    var documentHasProperty = [];
+    for (var p in document){
+        if (document.hasOwnProperty(p)){
+            documentHasProperty.push(p);
+        }
+    }
+    console.log('Own properties:', documentHasProperty.sort());
+    //:>> ["location"]
+
+
+    //=================================================================
+    //3.5 Getting a list/collection of element attributes and values
+    console.log("------------------");
+    console.log('3.5')
+
+    var atts = document.querySelector('a').attributes;
+    atts = Array.from(atts); //convert attribute collection to array
+    for (var a in atts) {
+        console.log(atts[a].nodeName, ':', atts[a].nodeValue);
+    }
+
+
+
+    //=================================================================
+    //3.6 Getting, Setting, & Removing an element's attribute value
+    console.log("------------------");
+    console.log('3.5')
+
+    var atts = document.querySelector('.yip');
+
+    //remove attributes
+    atts.removeAttribute('href');
+    atts.removeAttribute('title');
+    atts.removeAttribute('style');
+    atts.removeAttribute('data-foo');
+    atts.removeAttribute('class');
+    atts.removeAttribute('foo'); //custom attribute
+    atts.removeAttribute('hidden'); //boolean attribute
+    console.log('attributes:', atts.attributes); //:>> NamedNodeMap {length: 0}
+
+    //set (really re-set) attributes
+    atts.setAttribute('href', '#');
+    atts.setAttribute('title', 'title');
+    atts.setAttribute('style', 'margin:0;');
+    atts.setAttribute('data-foo','dataFoo');
+    atts.setAttribute('class','yes');
+    atts.setAttribute('foo','boo');
+    atts.setAttribute('hidden','hidden'); //boolean attribute requires sending the attribute as the value
+    console.log('attributes:', atts.attributes); //:>> NamedNodeMap {length: 7}
+
+    //get attributes
+    console.log(atts.getAttribute('href'));
+    console.log(atts.getAttribute('title'));
+    console.log(atts.getAttribute('style'));
+    console.log(atts.getAttribute('data-foo'));
+    console.log(atts.getAttribute('class'));
+    console.log(atts.getAttribute('foo'));
+    console.log(atts.getAttribute('hidden'));
+
+
+
+    //=================================================================
+    // 3.7 Verifying an element has a specific attribute
+    console.log("------------------");
+    console.log('3.7')
+
+    //** Note: hasAttribute() returns 'true' for attributes that are present
+    //regardless of whether or not they have a value assigned **
+    console.log(
+        atts.hasAttribute('href'),
+        atts.hasAttribute('title'),
+        atts.hasAttribute('style'),
+        atts.hasAttribute('data-foo'),
+        atts.hasAttribute('class'),
+        atts.hasAttribute('goo') //Notice this is true regardless if a value is defined
+    );
 </script>
 </body>
 </html>
