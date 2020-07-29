@@ -15,8 +15,10 @@
     <li id="B">There</li>
 </ul>
 
+
 <!--//1.15 Convert a NodeList or HTMLCollection to JavaScript Array-->
 <a href="#"></a>
+
 
 <!--// 1.18 How to determine if two nodes are identical-->
 <input type="text">
@@ -24,6 +26,10 @@
 
 <textarea>foo</textarea>
 <textarea>bar</textarea>
+
+
+<!--//2.7 Get a reference to the focus/active node in the document-->
+<textarea id="ref"></textarea>
 
 <script>
     //=========================================================================
@@ -160,6 +166,19 @@
 
     console.log(document.implementation.hasFeature('Core', '2.0'));
     console.log(document.implementation.hasFeature('Core', '3.0'));
+
+
+
+    //=========================================================================
+    //2.7 Get a reference to the focus/active node in the document
+    console.log('--------------------------');
+    console.log('2.7');
+
+    //sets focus to <textarea>
+    document.getElementById('ref').focus();
+
+    //get reference to element that is focused/active in the document
+    console.log(document.activeElement);
 </script>
 </body>
 </html>
