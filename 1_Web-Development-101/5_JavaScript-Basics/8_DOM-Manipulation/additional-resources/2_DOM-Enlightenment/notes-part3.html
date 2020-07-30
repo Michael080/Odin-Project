@@ -15,6 +15,14 @@
 <!--//3.6 Getting, Setting, & Removing an element's attribute value-->
 <a href='#' title="title" data-foo="dataFoo" class="yip" style="margin:0;" foo="boo" hidden="hidden">Hi</a>
 
+
+<!--// 3.7 Verifying an element has a specific attribute-->
+<input type="checkbox" checked>
+
+
+<!--// 3.8 Getting a list of class attribute values-->
+<div class="big brown bear"></div>
+
 <script>
     //=================================================================
     //3.1 HTML*Element object overview
@@ -70,7 +78,7 @@
     //=================================================================
     //3.5 Getting a list/collection of element attributes and values
     console.log("------------------");
-    console.log('3.5')
+    console.log('3.5');
 
     var atts = document.querySelector('a').attributes;
     atts = Array.from(atts); //convert attribute collection to array
@@ -83,7 +91,7 @@
     //=================================================================
     //3.6 Getting, Setting, & Removing an element's attribute value
     console.log("------------------");
-    console.log('3.5')
+    console.log('3.5');
 
     var atts = document.querySelector('.yip');
 
@@ -121,7 +129,7 @@
     //=================================================================
     // 3.7 Verifying an element has a specific attribute
     console.log("------------------");
-    console.log('3.7')
+    console.log('3.7');
 
     //** Note: hasAttribute() returns 'true' for attributes that are present
     //regardless of whether or not they have a value assigned **
@@ -133,6 +141,21 @@
         atts.hasAttribute('class'),
         atts.hasAttribute('goo') //Notice this is true regardless if a value is defined
     );
+
+    var myInput = document.querySelector('input');
+    console.log('myInput == checked:', myInput.hasAttribute('checked'));
+
+
+
+    //=================================================================
+    // 3.8 Getting a list of class attribute values
+    console.log("------------------");
+    console.log('3.8');
+
+    var elm = document.querySelector('.bear');
+
+    console.log(elm.classList);
+    console.log(elm.className);
 </script>
 </body>
 </html>
