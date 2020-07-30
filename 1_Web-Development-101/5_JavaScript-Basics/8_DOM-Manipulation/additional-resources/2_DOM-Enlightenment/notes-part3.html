@@ -21,7 +21,12 @@
 
 
 <!--// 3.8 Getting a list of class attribute values-->
-<div class="big brown bear"></div>
+<div class="big brown bear dog"></div>
+
+<!--// 3.10 Toggling a class attribute value-->
+<div class="visible"></div>
+
+
 
 <script>
     //=================================================================
@@ -156,6 +161,39 @@
 
     console.log(elm.classList);
     console.log(elm.className);
+
+
+
+    //=================================================================
+    // 3.9 Adding & removing sub-values to a class attribute
+    console.log("------------------");
+    console.log('3.9');
+
+    elm.classList.add('cat');
+    elm.classList.remove('dog');
+    console.log(elm.className);
+
+
+
+    //=================================================================
+    // 3.10 Toggling a class attribute value
+    console.log("------------------");
+    console.log('3.10');
+
+    var vis = document.querySelector('.visible');
+
+    vis.classList.toggle('visible');
+    vis.classList.toggle('grow');
+    console.log('vis.className:', vis.className);
+
+
+
+    //=================================================================
+    // 3.11 Determining if a class attribute value contains a specific value
+    console.log("------------------");
+    console.log('3.11');
+
+
 </script>
 </body>
 </html>
