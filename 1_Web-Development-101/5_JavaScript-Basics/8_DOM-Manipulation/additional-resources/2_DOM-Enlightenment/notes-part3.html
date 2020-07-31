@@ -28,6 +28,9 @@
 
 
 
+<!--// 3.12 Getting & Setting data-* attributes-->
+<div class="blam" data-foo-foo="foo" data-bar-bar="bar"></div>
+
 <script>
     //=================================================================
     //3.1 HTML*Element object overview
@@ -193,7 +196,22 @@
     console.log("------------------");
     console.log('3.11');
 
+    console.log(elm.classList.contains('brown')); //logs true
 
+    //=================================================================
+    // 3.12 Getting & Setting data-* attributes
+    console.log("------------------");
+    console.log('3.12');
+
+    var foo = document.querySelector('.blam');
+
+    //get
+    console.log('foo.dataset.fooFoo:' , foo.dataset.fooFoo); //logs 'foo'
+    console.log('foo.dataset.barBar' , foo.dataset.barBar); //logs 'bar'
+
+    //set
+    elm.dataset.gooGoo = 'goo';
+    console.log(elm.dataset); //>>: DOMStringMap { gooGoo → "goo" }
 </script>
 </body>
 </html>
