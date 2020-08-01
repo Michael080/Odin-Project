@@ -31,6 +31,16 @@
 <!--// 3.12 Getting & Setting data-* attributes-->
 <div class="blam" data-foo-foo="foo" data-bar-bar="bar"></div>
 
+
+<!--// 4.1 Selecting a specific element node-->
+<ul>
+    <li>Hello</li>
+    <li>Big</li>
+    <li>Bad</li>
+    <li id="last">world</li>
+</ul>
+
+
 <script>
     //=================================================================
     //3.1 HTML*Element object overview
@@ -212,6 +222,56 @@
     //set
     elm.dataset.gooGoo = 'goo';
     console.log(elm.dataset); //>>: DOMStringMap { gooGoo → "goo" }
+
+    //what the element looks like in the DOM
+    console.log(foo);
+
+
+
+    //=================================================================
+    // 4.1 Selecting a specific element node
+    console.log("------------------");
+    console.log('4.1');
+
+    console.log(document.querySelector('li').textContent); //>>: Hello
+    console.log(document.getElementById('last').textContent); //>>: world
+
+
+    //=================================================================
+    // 4.4 Contextual element selecting
+    console.log("------------------");
+    console.log('4.4');
+
+    //create DOM structure
+    var divElm = document.createElement('div');
+    var ulElm = document.createElement('ul');
+    var liElm = document.createElement('li');
+    liElm.setAttribute('class', 'liClass');
+    ulElm.appendChild(liElm);
+    divElm.appendChild(ulElm);
+
+    //use selecting methods on DOM structure
+    console.log(divElm.querySelector('ul'));
+    console.log(divElm.querySelectorAll('li'));
+    console.log(divElm.getElementsByTagName('li'));
+    console.log(divElm.getElementsByClassName('liClass'));
+
+
+
+    //=================================================================
+    // 4.5 Pre-configured selections/lists of element nodes
+    console.log("------------------");
+    console.log('4.5');
+
+    //You should be aware that there are some legacy, pre-configured arrays-like-lists, containing element nodes from an HTML document. Below I list a couple of these (not the complete list) that might be handy to be aware of.
+
+    // document.all - all elements in HTML document **Not recommended by MDN
+    // document.forms - all <form> elements in HTML document
+    // document.images - all <img> elements in HTML document
+    // document.links - all <a> elements in HTML document
+    // document.scripts - all <script> elements in HTML document
+    // document.styleSheets - all <link> or <style> objects in HTML document
+
 </script>
 </body>
 </html>
