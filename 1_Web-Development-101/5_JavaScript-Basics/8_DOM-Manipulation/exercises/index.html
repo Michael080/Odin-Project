@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Odin DOM Exercises</title>
+</head>
+<body>
+
+    <div id="container">
+        <div class="content">
+            This is the glorious text-content!
+        </div>
+    </div>
+
+    <script>
+// 1. a <p> with red text that says “Hey I’m red!”
+        const container = document.querySelector('#container');
+
+        const para = document.createElement('p');
+        para.style.color = 'red';
+        para.textContent = "Hey I'm red!";
+
+        container.appendChild(para);
+// 2. an <h3> with blue text that says “I’m a blue h3!”
+        const subHeader = document.createElement('h3');
+        subHeader.style.color = 'blue';
+        subHeader.textContent = "I'm a blue h3!";
+
+        container.append(subHeader);
+/* 3. a <div> with a black border and pink background color with the following
+elements inside of it:
+    1. another <h1> that says “I’m in a div”
+    2. a <p> that says “ME TOO!”
+    3. Hint for this one: after creating the div with createElement, append the
+<h1> and <p> to it before adding it to the container. */
+        const pinkBox = document.createElement('div');
+
+        pinkBox.setAttribute('style', 'border: 1px solid black; background: pink');
+        pinkBox.textContent = "I'm in a div";
+
+        const header = document.createElement('h1');
+        header.textContent = "I'm in a div";
+        pinkBox.append(header);
+
+        const nestedPara = document.createElement('p');
+        nestedPara.textContent = 'ME TOO!';
+        pinkBox.append(nestedPara);
+
+        container.append(pinkBox);
+
+    </script>
+</body>
+</html>

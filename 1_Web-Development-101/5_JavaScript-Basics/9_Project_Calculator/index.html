@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculator</title>
+</head>
+<body>
+  
+  <div class="container-calc">
+    <div class="container-display">
+      <div class="display" data-display="">0 <div class="spacing"></div></div>
+    </div>
+    
+
+    <div class="upper-row">
+      <div class="button edit edit-clear" data-clear="clear">clear</div>
+      <div class="button edit edit-delete" data-delete="delete">delete</div>
+    </div>
+<!-- TODO --- Check - If not using second class btn-[number/operator] remove -->
+    <div class="button btn-number" data-number="7">7</div>
+    <div class="button btn-number" data-number="">8</div>
+    <div class="button btn-number" data-number="">9</div>
+    <div class="button btn-operator" data-operator="percent">%</div>
+    <div class="button btn-number" data-number="">4</div>
+    <div class="button btn-number" data-number="">5</div>
+    <div class="button btn-number" data-number="">6</div>
+    <div class="button btn-operator" data-operator="">x</div>
+    <div class="button btn-number" data-number="">1</div>
+    <div class="button btn-number" data-number="">2</div>
+    <div class="button btn-number" data-number="">3</div>
+    <div class="button btn-operator" data-operator="">-</div>
+    <div class="button btn-operator" data-operator="">.</div>
+    <div class="button btn-number" data-number="">0</div>
+    <div class="button btn-operator" data-operator="">=</div>
+    <div class="button btn-operator" data-operator="">+</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

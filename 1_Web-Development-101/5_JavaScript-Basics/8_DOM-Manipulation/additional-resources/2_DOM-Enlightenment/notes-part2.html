@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Enlightenment Notes Part 2</title>
+</head>
+<body>
+
+<!--//1.14 Gettting a list/collection of all immediate child nodes-->
+<ul>
+    <li id="A">Hi</li>
+    <li id="B">There</li>
+</ul>
+
+
+<!--//1.15 Convert a NodeList or HTMLCollection to JavaScript Array-->
+<a href="#"></a>
+
+
+<!--// 1.18 How to determine if two nodes are identical-->
+<input type="text">
+<input type="text">
+
+<textarea>foo</textarea>
+<textarea>bar</textarea>
+
+
+<!--//2.7 Get a reference to the focus/active node in the document-->
+<textarea id="ref"></textarea>
+
+<script>
+    //=========================================================================
+    //1.14 Gettting a list/collection of all immediate child nodes
+    console.log('--------------------------');
+    console.log('1.14');
+
+    var ulElementChildNodes = document.querySelector('ul').childNodes;
+
+    console.log('ulElementChildNodes: ', ulElementChildNodes); //>> array of childNodes
+
+    //Call forEach as if its a method of NodeLists so we can loop over the
+    // NodeList. Done because NodeLists are array like, but do not directly
+    // inherit from Array
+    Array.prototype.forEach.call(ulElementChildNodes, function(item){
+        console.log(item); //logs each item in the array
+    })
+
+    // OR like this:
+    ulElementChildNodes.forEach(item => console.log(item));
+
+
+
+    //=========================================================================
+    //1.15 Convert a NodeList or HTMLCollection to JavaScript Array
+    console.log('--------------------------');
+    console.log('1.15');
+
+    console.log(Array.isArray(document.links)); //>> false
+    console.log(Array.isArray(document.querySelectorAll('a'))); //>> false
+
+    //Converting a node list or html collection to an array can be done
+    //using slice w/out 'actually slicing' because slice() returns an array
+    console.log(Array.isArray(Array.prototype.slice.call(document.links))); //returns true
+    console.log(Array.prototype.slice.call(document.querySelectorAll('a'))); //returns true
+
+
+
+
+    //=========================================================================
+    // 1.17 Verify a node position in the DOM tree with contains() &
+    // compareDocumentPosition()
+    console.log('--------------------------');
+    console.log('1.17');
+
+    // is <body> inside <html lang="en"> ?
+    var inside = document.querySelector('html').contains(document.querySelector('body'));
+
+    console.log('inside: ', inside);
+
+
+
+    //=========================================================================
+    // 1.18 How to determine if two nodes are identical
+    console.log('--------------------------');
+    console.log('1.18');
+
+    //logs true, because they are exactly identical
+    var input = document.querySelectorAll('input');
+    console.log('input[0] == input[1]', input[0].isEqualNode(input[1]));
+
+    //logs false, because the child text node is not the same
+    var textarea = document.querySelectorAll('textarea');
+    console.log('textarea[0] == textarea[1]', textarea[0].isEqualNode(textarea[1]));
+
+    //to check if nodes are same type w/out concern about the text nodes
+    console.log('textarea[0] === textarea[1] same type ?', textarea[0].nodeType === textarea[1].nodeType);
+
+
+
+
+    //=========================================================================
+    // 2.2 HTMLDocument properties and methods (including inherited)
+    console.log('--------------------------');
+    console.log('2.2');
+
+    //document own properties
+    console.log(Object.keys(document).sort());
+
+    //document own properties & inherited properties
+    var documentPropertiesIncludeInherited = [];
+    for (var p in document){
+        documentPropertiesIncludeInherited.push(p);
+    }
+    console.log(documentPropertiesIncludeInherited.sort());
+
+    //document inherited properties only
+    var documentPropertiesOnlyInherited = [];
+    for (var p in document){
+        if (!document.hasOwnProperty(p)){
+            documentPropertiesOnlyInherited.push(p);
+        }
+    }
+    console.log(documentPropertiesOnlyInherited.sort());
+
+
+
+    //=========================================================================
+    //2.3 Getting general HTML document information (title, url,
+    // referrer, lastModified, compatMode)
+    console.log('--------------------------');
+    console.log('2.3');
+
+    var d = document;
+    console.log('title: ' + d.title);
+    console.log('url: ' + d.URL);
+    console.log('referrer: ' + d.referrer);
+    console.log('lastModified: ' + d.lastModified);
+
+    //logs either BackCompat (Quirks Mode) or CSS1Compat (Strict Mode)
+    console.log('compatibility mode: ' + d.compatMode);
+
+
+
+    //=========================================================================
+    //2.4 document child nodes
+    console.log('--------------------------');
+    console.log('2.4');
+
+    //This is the doctypeDTD
+    console.log(document.childNodes[0].nodeType);
+    //logs 10, which is a numeric key mapping to DOCUMENT_TYPE_NODE
+
+    //This is the <html> element
+    console.log(document.childNodes[1].nodeType);
+    //logs 1, which is a numeric key mapping to ELEMENT_TYPE_NODE
+
+
+    //=========================================================================
+    //2.6 Detecting DOM specifications/features using
+    // document.implementation.hasFeature()
+    console.log('--------------------------');
+    console.log('2.6');
+
+    console.log(document.implementation.hasFeature('Core', '2.0'));
+    console.log(document.implementation.hasFeature('Core', '3.0'));
+
+
+
+    //=========================================================================
+    //2.7 Get a reference to the focus/active node in the document
+    console.log('--------------------------');
+    console.log('2.7');
+
+    //sets focus to <textarea>
+    document.getElementById('ref').focus();
+
+    //get reference to element that is focused/active in the document
+    console.log(document.activeElement);
+</script>
+</body>
+</html>

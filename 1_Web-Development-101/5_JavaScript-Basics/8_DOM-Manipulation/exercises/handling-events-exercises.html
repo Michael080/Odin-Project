@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EloquentJS Handling Events Exercises</title>
+    <style>
+        p {
+            font-size: 10px;
+        }
+
+        /*Mouse Trail*/
+        .trail { /* className for the trail elements */
+            position: absolute;
+            height: 6px; width: 6px;
+            border-radius: 3px;
+            background: teal;
+        }
+
+        body {
+            height: 300px;
+        }
+
+    /*    Tabs    */
+
+        .hidden {
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<!--//                       Balloon                    -->
+<p>🎈</p>
+<div id="outerDiv"></div>
+
+
+
+
+
+<!--//                            Tabs                  -->
+
+<tab-panel id="panel">
+    <div data-tabname="one" class="tabs">Tab one</div>
+    <div data-tabname="two" class="tabs">Tab two</div>
+    <div data-tabname="three" class="tabs">Tab three</div>
+</tab-panel>
+
+<script>
+    //                  Balloon
+    let balloon = document.querySelector("p");
+    let size = 30;
+    window.addEventListener("keydown", event => {
+        switch (true) {
+            case event.key == "ArrowUp":
+                size += 10;
+                balloon.style.fontSize = size + "px";
+                event.preventDefault();
+                break;
+            case event.key == "ArrowDown":
+                size -= 10;
+                balloon.style.fontSize = size + "px";
+                event.preventDefault();
+                break;
+        }
+
+    if (size >= 150) {
+        balloon.textContent = "💥";
+    }
+    });
+
+
+
+
+    //                      Mouse Trail
+
+    // let mouseMoving = null;
+    // let stopTrail;
+    // let tailLength;
+    // let trailNodes = document.body.children;
+    //
+    // window.addEventListener("mousemove", event => {
+    //     mouseMoving = event;
+    //     clearTimeout(stopTrail);
+    //     clearTimeout(tailLength);
+    //
+    //     let trail = document.createElement("div");
+    //     let trailNodes = document.body.children;
+    //
+    //     trail.className = "trail";
+    //     trail.style.left = (event.pageX) + "px";
+    //     trail.style.top = (event.pageY) + "px";
+    //     document.body.appendChild(trail);
+    //
+    //     tailLength = setTimeout(removeTail(trailNodes[0]), 5000);
+    //
+    //     if (!mouseMoving) {
+    //         let tail = document.getElementsByClassName("trail");
+    //         stopTrail = setTimeout(() => {
+    //             for (let i = 0; i < tail.length-1; i++) {
+    //                 tail[i].remove();
+    //             }
+    //
+    //             tail[0].remove();
+    //             mouseMoving = null;
+    //         }, 1000);
+    //     }
+    //
+    //     mouseMoving = event;
+    //
+    //     function removeTail(node) {
+    //         node.remove();
+    //     }
+    //
+    // });
+
+
+
+
+    //                      Tabs
+
+    let tabs = document.getElementsByClassName('tabs');
+    let panel = document.getElementById('panel');
+
+    function asTabs(node) {
+        let nodesList = [];
+        hideElements(tabs); // Hide tabs
+
+        nodesList.push(createNode('button', tabs[0].dataset.tabname, panel, 'button', 'one'));
+        nodesList.push(createNode('button', tabs[1].dataset.tabname, panel, 'button', 'two'));
+        nodesList.push(createNode('button', tabs[2].dataset.tabname, panel, 'button', 'three'));
+        // Display corresponding tab on button click
+            nodesList[0].addEventListener('click', () => {
+                // Hide 'other' tabs
+                tabs[1].classList.add('hidden');
+                tabs[2].classList.add('hidden');
+                // toggle visibility on
+                    tabs[0].classList.remove('hidden');
+            });
+
+        nodesList[1].addEventListener('click', () => {
+            // Hide 'other' tabs
+            tabs[0].classList.add('hidden');
+            tabs[2].classList.add('hidden');
+            // toggle visibility on
+            tabs[1].classList.remove('hidden');
+        });
+
+        nodesList[2].addEventListener('click', () => {
+            // Hide 'other' tabs
+            tabs[0].classList.add('hidden');
+            tabs[1].classList.add('hidden');
+            // toggle visibility on
+            tabs[2].classList.remove('hidden');
+        });
+    }
+
+    function hideElements(elems) {
+        for (i = 0; i < elems.length; i++) {
+            elems[i].classList.toggle('hidden');
+        }
+    }
+
+    function createNode(type, elementText, location, ...classNm) {
+        let elem = document.createElement(type); // Create element
+        // Add class name/s to element
+        for (i = 0; i < classNm.length; i++) {
+            elem.classList.add(classNm[i]);
+        }
+        elem.textContent = elementText;
+        location.appendChild(elem);
+        return elem;
+    }
+
+    asTabs(document.querySelector('tab-panel'));
+</script>
+</body>
+</html>

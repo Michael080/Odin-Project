@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EloquentJS Handling Events Notes -- NOTES</title>
+    <style>
+        body {
+            height: 200px;
+            background: beige;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 4px;
+            background: blue;
+            position: absolute;
+        }
+
+    /*    Scroll Events     */
+        #progress {
+            border-bottom: 2px solid blue;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<!--                        Event handlers                  -->
+
+<p>Click this document to activate the handler.</p>
+
+
+
+<!--                        Events and DOM nodes                 -->
+
+<button>Click me</button>
+<p>No handler here.</p>
+
+<!--// Removing a handler-->
+<button id="button_once">Act-once button</button>
+
+
+
+<!--//                          Event Objects               -->'
+
+<button id="event_track">Click me any way you want</button>
+
+
+<!--//                          Propagation                 -->
+
+<p id="p">A paragraph with a <button id="button">button</button>.</p>
+
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+
+
+<!--//                          Default Actions                 -->
+<a href="https://developer.mozilla.org/">MDN</a>
+
+
+<!--//                            Key Events                    -->
+
+<p id="v_key">This page violet when you hold the V key.</p>
+
+
+<!--// key combination example:-->
+<p id="continue">Press Control-Space to continue.</p>
+
+
+<!--                            Mouse Motion                     -->
+
+<p>Drag the bar to change its width:</p>
+<div style="background: orange; width: 60px; height: 20px"></div>
+
+
+<!--//                          Scroll Events                    -->
+
+<div id="progress"></div>
+
+
+<!--//                           Focus Events                    -->
+
+<p>Name: <input type="text" data-help="Your full name"></p>
+<p>Age: <input type="text" data-help="Your age in years"></p>
+<p id="help"></p>
+
+
+<!--//                            Debouncing                    -->
+
+<textarea>Type something here...</textarea>
+<!--=========================================================================-->
+<script>
+
+    //                      Event handlers
+
+// Event listener that fires when click is registered anywhere
+// on the page:
+    window.addEventListener("click", () => {
+        // console.log("You knocked?");
+        // disabled for other notes
+    });
+
+
+
+    //                      Events and DOM nodes
+
+//  Button Click = log statement
+    let button = document.querySelector("button");
+    button.addEventListener("click", () => {
+        console.log("Button clicked.");
+    });
+
+    // Removing a handler
+    // Executes log statement on first click, following clicks
+    // trigger nothing
+    let button1 = document.getElementById("button_once");
+    function once() {
+        console.log("Done.");
+        button1.removeEventListener("click", once);
+    }
+    button1.addEventListener("click", once);
+
+
+
+    //                      Event Objects
+
+    // Logs which mouse button was clicked along w/ value of 'key'
+    let buttonEvent = document.getElementById("event_track");
+    buttonEvent.addEventListener("mousedown", event => {
+        if (event.button == 0) {
+            console.log(`${event.button}: Left button`);
+        } else if (event.button == 1) {
+            console.log(`${event.button}: Middle button`);
+        } else if (event.button == 2) {
+            console.log(`${event.button}: Right button`);
+        }
+    });
+
+
+    //                      Propagation
+
+    // If button is clicked w/ left-mouse the event propagates
+    // from the button to the paragraph. If right-click,
+    // stopPropagation() prevents it and the event for
+    // 'mousedown' on button is the only one handled
+    let para = document.getElementById('p');
+    let button2 = document.getElementById('button');
+
+    para.addEventListener("mousedown", () => {
+        console.log("Handler for paragraph.");
+    });
+
+    button2.addEventListener("mousedown", event => {
+        console.log("Handler for button.");
+        if (event.button == 2) event.stopPropagation();
+    });
+
+    // Using the 'target' property to register ALL button
+    // clicks in the document
+    document.body.addEventListener("click", event => {
+        if (event.target.nodeName == "BUTTON") {
+            console.log("Clicked", event.target.textContent);
+        }
+    });
+
+
+    //                  Default Actions
+
+    // This script prevents the link from opening the target URL
+    let link = document.querySelector("a");
+
+    link.addEventListener("click", event => {
+        console.log("Nope");
+        event.preventDefault();
+    });
+
+
+    //                  Key Events
+
+    window.addEventListener("keydown", event => {
+        if (event.key == "v") {
+            document.body.style.background = "violet";
+        }
+    });
+    window.addEventListener("keyup", event => {
+        if (event.key == "v") {
+            document.body.style.background = "";
+        }
+    });
+
+    // 'Modifier" key combination example:
+    window.addEventListener("keydown", event => {
+        if(event.key == " " && event.ctrlKey) {
+            console.log("Continuing!");
+        }
+    });
+    // change text on 'continue'
+    let cont = document.getElementById("continue");
+
+    window.addEventListener("keydown", event => {
+        if(event.key == " " && event.ctrlKey) {
+            cont.textContent = 'CONTINUING FOO';
+        }
+    })
+
+    //                  Pointer Events
+
+            //      Mouse Clicks
+    window.addEventListener("click", event => {
+        let dot = document.createElement("div");
+        dot.className = "dot";
+        dot.style.left = (event.pageX - 4) + "px";
+        dot.style.top = (event.pageY - 4) + "px";
+    });
+
+
+    //                    Mouse Motion
+    // Drag the bar to change its width:
+    let lastX; // Tracks the last observed mouse X position
+    let bar = document.querySelector("div");
+    bar.addEventListener("mousedown", event => {
+        if (event.button == 0) {
+            lastX = event.clientX;
+            window.addEventListener("mousemove", moved);
+            event.preventDefault(); // Prevent selection
+        }
+    });
+
+    function moved(event) {
+        if (event.buttons == 0) {
+            window.removeEventListener("mousemove", moved);
+        } else {
+            let dist = event.clientX - lastX;
+            let newWidth = Math.max(10, bar.offsetWidth + dist);
+            bar.style.width = newWidth + "px";
+            lastX = event.clientX
+        }
+    }
+
+
+    //                      Scroll Events
+    //    Draws a progress bar above the document and updates it to fill
+    //    up as you scroll down
+    document.body.appendChild(document.createTextNode(
+        "supercalifragilisticexpialidocious ".repeat(80)));
+
+    let bar1 = document.querySelector("#progress");
+    window.addEventListener("scroll", () => {
+        let max = document.body.scrollHeight - innerHeight;
+        bar1.style.width = `${(pageYOffset / max) * 100}%`;
+    });
+
+
+    //                      Focus Events
+
+    let help = document.querySelector("#help");
+    let fields = document.querySelectorAll("input");
+
+    for (let field of Array.from(fields)) {
+        field.addEventListener("focus", event => {
+            let text = event.target.getAttribute("data-help");
+            help.textContent = text;
+        });
+        field.addEventListener("blur", event => {
+            help.textContent = "";
+        });
+    }
+
+
+    //                  Events and the Event Loop
+
+    // let squareWorker = new Worker("squareworker.js");
+    //
+    // squareWorker.addEventListener("message", event => {
+    //     console.log("The worker responded:", event.data);
+    // });
+
+    // squareWorker.postMessage(10);
+    // squareWorker.postMessage(24);
+
+
+    //                      Timers
+
+    let bombTimer = setTimeout(() => {
+        console.log("BOOM!");
+    }, 500);
+
+    if (Math.random() < 0.5) { // 50% chance
+        console.log("Defused.");
+        clearTimeout(bombTimer);
+    }
+
+    // similar to setTimeout() -- clearInterval()
+    let ticks = 0;
+    let clock = setInterval(() => {
+        console.log("tick", ticks++);
+        if (ticks == 10) {
+            clearInterval(clock);
+            console.log("stop.");
+        }
+    }, 200)
+
+
+    //                  Debouncing
+    // 'timing out' an event handler
+    let textarea = document.querySelector("textarea");
+    let timeout;
+
+    textarea.addEventListener("input", () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => console.log("Typed!"), 500);
+    });
+
+    // prints coordinates of mouse on 'mousemove' every quarter
+    // second
+    let scheduled = null;
+
+    window.addEventListener("mousemove", event => {
+        if (!scheduled) {
+            setTimeout(() => {
+                document.body.textContent =
+                    `Mouse at ${scheduled.pageX}, ${scheduled.pageY}`;
+                console.log(`scheduled from eventListener: ${scheduled}`);
+                console.log(scheduled);
+                scheduled = null;
+            }, 250);
+        }
+        scheduled = event;
+    })
+</script>
+</body>
+</html>

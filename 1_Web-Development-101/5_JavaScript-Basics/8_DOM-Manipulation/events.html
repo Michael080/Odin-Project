@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Events Notes</title>
+</head>
+<body>
+    <!--  method 1  -->
+    <button onclick="alert('Hello World')">Click Me</button>
+
+    <!--  method 2  -->
+    <button id="btn">Click Me</button>
+
+    <!--  method 3  -->
+    <button id="btn3">Click Me Too!</button>
+
+    <!--  Accomplish same w/ named function:  -->
+    <button onclick="alertFunction()" id="named_func">CLICK ME BABY</button>
+
+<!--            Attaching listeners to groups of nodes  -->
+    <div id="container">
+        <button id="1">Click Me</button>
+        <button id="2">Click Me</button>
+        <button id="3">Click Me</button>
+    </div>
+
+    <script>
+        //              Events
+
+
+        // method 2
+        const btn = document.querySelector('#btn');
+        btn.onclick = () => alert("Hello World");
+
+        // method 3
+        const btn3 = document.querySelector('#btn3');
+        btn3.addEventListener('click', () => {
+            alert("Hello World");
+        });
+
+        // Named function
+        function alertFunction() {
+            alert("YAY! YOU DID IT!");
+        }
+
+
+        //           Attaching listeners to groups of nodes
+        const buttons = document.querySelectorAll('button');
+
+        // we use the .forEach method to iterate through each button
+        buttons.forEach((button) => {
+           button.addEventListener('click', (e) => {
+               alert(button.id);
+           });
+        });
+    </script>
+</body>
+</html>

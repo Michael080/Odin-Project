@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eloquent JS DOM</title>
+</head>
+<body>
+
+<!--
+document.querySelector('body').childNodes
+:> NodeList(7) [text, h1, text, p, text, p, text]
+
+This NodList is somewhat different than what is shown in the book. It
+looks like each element has a text node associated w/ it by default and
+I think they are the nodes following each element. The first text node must
+belong to <body>
+-->
+<h1></h1>
+<p></p>
+<p></p>
+<!--                        Trees                      -->
+<!--
+Every node has a parentNode property that points to the node it is part of,
+if any. Likewise, every element node (node type 1) has a childNodes property
+that points to an array-like object holding its children.
+-->
+
+<!-- An alternative approach: -->
+<!--
+document.querySelector('body').children
+:> HTMLCollection(3) [h1, p, p]
+
+The children property is similar to childNodes but contains only element
+(type 1) children, not other types of child nodes. So we no longer have to
+sift through text nodes.
+-->
+
+<!--                        Moving Through The Tree                      -->
+<h1> My home page</h1>
+
+<p> Hello, I am Marijn...</p>
+
+<p> I also wrote a book! ...</p>
+
+
+<!--                        Finding Elements                            -->
+<a href="github.com"></a>
+
+
+<!--                        Changing The Document                            -->
+
+<!-- Nodes have a remove method to remove them from their current parent node.
+To add a child node to an element node, we can use appendChild, which puts it
+at the end of the list of children, or insertBefore, which inserts the node
+given as the first argument before the node given as the second argument.-->
+<p>One</p>
+<p>Two</p>
+<p>Three</p>
+
+
+<!--                        Creating Nodes                           -->
+<p>The <img src="cat.png" alt="cat"> in the
+    <img src="hat.png" alt="hat"></p>
+
+<p><button onclick="replaceImages()">Replace</button></p>
+
+
+<!-- The following example defines a utility elt(), such creates an element node
+and treats the rest of its arguments as children to that node. This function is
+then used to add an attribution to a quote.-->
+
+<blockquote id="quote">
+    No book can ever be finished. While working on it we
+    learn just enough to find it immature the moment we turn away
+    from it.
+</blockquote>
+
+
+<!--                        Attributes                          -->
+
+<p data-classified="secret">The launch code is 00000000.</p>
+<p data-classified="unclassified">I have two feet.</p>
+
+
+<!--                        Layout                              -->
+<!-- The offsetWidth and offsetHeight properties give you the space the element
+takes up in pixels.
+
+Similarly, clientWidth and clientHeight give yout the size fo the space inside the
+element, ignoring border width.-->
+
+
+<!--                        Style                              -->
+
+<p style="border: 3px solid red">
+    I'm boxed in
+</p>
+
+<p><a href=".">Normal link</a></p>
+<p><a href="." style="color: green">Green link</a></p>
+
+This text is displayed <strong>inline</strong>,
+<strong style="display: block">as a block</strong>, and
+<strong style="display: none">not at all</strong>.
+
+<!-- JavaScript code can directly manipulate the style of an element
+through the element’s style property. This property holds an object
+that has properties for all possible style properties. The values of
+these properties are strings, which we can write to in order to change
+a particular aspect of the element’s style.-->
+
+<p id="parag" style="color: purple">
+    Nice text
+</p>
+
+<!-- Some style property names contain hyphens, such as font-family.
+Because such property names are awkward to work with in JavaScript
+(you’d have to say style["font-family"]), the property names in the
+style object for such properties have their hyphens removed and the
+letters after them capitalized (style.fontFamily).-->
+
+
+<!--                        Cascading Styles                    -->
+
+<!-- Interesting tidbit...-->
+<!-- The notation p > a {…} applies the given styles to all <a> tags
+that are direct children of <p> tags. Similarly, p a {…} applies to
+all <a> tags inside <p> tags, whether they are direct or indirect
+children.-->
+
+
+<!--                        Query Selectors                    -->
+
+<p>And if you go chasing
+    <span class="animal">rabbits</span></p>
+<p>And you know you're going to fall</p>
+<p>Tell 'em a <span class="character">hooka smoking
+    <span class="animal">caterpillar</span></span></p>
+<p>Has given you the call</p>
+
+<script>
+    //                      Moving Through The Tree
+
+    // When dealing w/ a nested data structure, recursive functions are often
+//    useful. The following function scans a document for text nodes containing
+    // a given string and returns true when it has found one.
+
+    function talksAbout(node, string) {
+        if (node.nodeType == Node.ELEMENT_NODE) {
+            for (let i = 0; i < node.childNodes.length; i++) {
+                if (talksAbout(node.childNodes[i], string)) {
+                    return true;
+                }
+            }
+            return false;
+        } else if (node.nodeType == Node.TEXT_NODE) {
+            return node.nodeValue.indexOf(string) > - 1;
+        }
+    }
+
+    console.log(talksAbout(document.body, "book")); // :> true
+
+    // Because childNodes is not a real array, we cannot loop over it with for/of
+    // and have to run over the index range using a for loop or use Array.from.
+
+
+    //                        Finding Elements
+
+
+    // The above exemplifies the complicating factors such as the text nodes that
+    // are created by whitespace in the HTML, or creating programs dependent on fixed
+    // paths of properties, that are worth avoiding.
+
+
+    let link = document.body.getElementsByTagName("a")[0];
+    console.log(link.href);
+
+
+                           // Changing The Document                            -->
+    let paragraphs = document.body.getElementsByTagName("p");
+    document.body.insertBefore(paragraphs[6], paragraphs[4]);
+
+
+    //<!--                        Creating Nodes                           -->
+    // replaceImages() very cleverly swaps out img's for a newly created
+    // text node that takes the alt text for the img as its value
+    function replaceImages() {
+        let images = document.body.getElementsByTagName("img");
+        for (let i = images.length - 1; i >= 0; i--) {
+            let image = images[i];
+            if (image.alt) {
+                let text = document.createTextNode(image.alt);
+                image.parentNode.replaceChild(text, image);
+            } else {
+                console.log('No alt here!');
+            }
+        }
+    }
+
+    // If you want a 'solid' collection of nodes, as opposed to a live one, you
+    // can convert the collection to a real array by calling Array.from.
+    let arrayish = {0: "one", 1: "two", length: 2};
+    let array = Array.from(arrayish);
+    console.log(array.map(s => s.toUpperCase()));
+
+
+    //  <!-- The following example defines a utility elt(), such creates an element node
+    // and treats the rest of its arguments as children to that node. This function is
+    // then used to add an attribution to a quote.-->
+    function elt(type, ...children) {
+        let node = document.createElement(type);
+        for (let child of children) {
+            if (typeof child != "string") node.appendChild(child);
+            else node.appendChild(document.createTextNode(child));
+        }
+        return node;
+    }
+
+    document.getElementById("quote").appendChild(
+        elt("footer", "-",
+            elt("strong", "Karl Popper"),
+            ", preface to the second edition of ",
+            elt("em", "The Open Society and Its Enemies"),
+        ", 1950"));
+
+
+    <!--                        Attributes                          -->
+    let paras = document.body.getElementsByTagName("p");
+    for (let para of Array.from(paras)) {
+        if (para.getAttribute("data-classified") == "secret") {
+            para.remove();
+        }
+    }
+
+
+    <!--                        Layout                              -->
+    let para = document.body.getElementsByTagName("p")[10];
+    console.log("clientHeight:", para.clientHeight);
+    console.log("offesetHeight:", para.offsetHeight);
+    // I didn't know you could do this comma trick w/ a log statement...
+
+
+    <!--                        Style                              -->
+    let parag = document.getElementById("parag");
+    console.log(parag.style.color);
+    parag.style.color = "magenta";
+
+
+    <!--                        Query Selectors                    -->
+    function count(selector) {
+        return document.querySelectorAll(selector).length;
+    }
+
+    console.log(count("p"));
+    console.log(count(".animal"));
+    console.log(count("p .animal"));
+    console.log(count("p > .animal"));
+
+    // Unlike methods such as getElementsByTagName, the object
+    // returned by querySelectorAll is not live. It won’t change
+    // when you change the document. It is still not a real array,
+    // though, so you still need to call Array.from if you want to
+    // treat it like one.
+
+</script>
+</body>
+</html>

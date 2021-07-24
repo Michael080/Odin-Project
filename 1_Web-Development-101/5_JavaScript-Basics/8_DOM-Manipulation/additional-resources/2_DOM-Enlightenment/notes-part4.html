@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Enlightenment Notes Part 4</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #blue {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            border: 10px solid gray;
+            padding: 25px;
+            margin: 25px;
+        }
+
+        #red {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border: 10px solid gray;
+        }
+
+        #bloob {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+            border: 10px solid gray;
+            padding: 25px;
+            margin: 25px;
+            position: absolute;
+        }
+
+        #reed {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border: 10px solid gray;
+        }
+
+        #rect {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border: 10px solid gray;
+            margin: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<!--// 5.2 Getting an elements offsetTop and offsetLeft values relative to the offsetParent-->
+<div id="blue"><div id="red"></div></div>
+
+<div id="bloob"><div id="reed"></div></div>
+
+<ul>
+    <li>Hello</li>
+    <li>world</li>
+</ul>
+
+
+<!--// 5.3 Getting an elements top, right, bottom and left border edge-->
+<div id="rect"></div>
+
+<script>
+    //=================================================================
+    // 4.6 Verify an element will be selected using matchesSelector()
+    console.log("------------------");
+    console.log('4.6');
+
+    //fails in modern browser must use browser prefix moz, webkit, o, and ms
+    // console.log(document.querySelector('li').matchesSelector('li:first-child'));
+    //>>: TypeError:
+
+    //prefix moz
+    console.log('mozMatchesSelector():', document.querySelector('li').mozMatchesSelector('li:first-child'));
+    //>>: true on firefox
+
+    //prefix webkit
+    //console.log(document.querySelector('li').webkitMatchesSelector('li:first-child'));
+
+    //prefix o
+    //console.log(document.querySelector('li').oMatchesSelector('li:first-child'));
+
+    //prefix ms
+    //console.log(document.querySelector('li').msMatchesSelector('li:first-child'));
+
+    // ** OR **
+    console.log('matches():', document.querySelector('li').matches('li:first-child'));
+
+
+
+    //=================================================================
+    // 5.2 Getting an elements offsetTop and offsetLeft values relative to the offsetParent
+    console.log("------------------");
+    console.log('5.2');
+
+    let div = document.querySelector('#red');
+
+    //offsetParent: body
+    console.log('offsetLeft:', div.offsetLeft);
+    console.log('offsetTop:', div.offsetTop);
+    console.log('offsetParent', div.offsetParent);
+
+
+    //offsetParent: div#bloob
+    let divi = document.querySelector('#reed');
+
+    console.log('offsetParent: div#bloob -- offsetLeft:', divi.offsetLeft);
+    console.log('offsetParent: div#bloob -- offsetTop:', divi.offsetTop);
+    console.log('offsetParent: div#bloob -- offsetParent', divi.offsetParent);
+
+
+
+    //=================================================================
+    // 5.3 Getting an elements top, right, bottom and left border edge
+    // offset relative to the viewport using getBoundingClientRect()
+    console.log("------------------");
+    console.log('5.3');
+
+    var divEdges = document.querySelector('#rect').getBoundingClientRect();
+
+    console.log(
+        'top, right, bottom, left',
+        divEdges.top, divEdges.right, divEdges.bottom, divEdges.left
+    );
+
+</script>
+</body>
+</html>

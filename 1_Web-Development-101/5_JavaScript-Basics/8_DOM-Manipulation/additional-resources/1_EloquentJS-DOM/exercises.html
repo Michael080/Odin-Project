@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EloquentJS Exercises</title>
+</head>
+<body>
+
+<h1>Mountains</h1>
+
+<div id="mountains"></div>
+
+<script>
+    const MOUNTAINS = [
+        {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+        {name: "Everest", height: 8848, place: "Nepal"},
+        {name: "Mount Fuji", height: 3776, place: "Japan"},
+        {name: "Vaalserberg", height: 323, place: "Netherlands"},
+        {name: "Denali", height: 6168, place: "United States"},
+        {name: "Popocatepetl", height: 5465, place: "Mexico"},
+        {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+    ];
+
+    let div = document.getElementById('mountains');
+
+    // Add 'table' and 'headers' to DOM
+    let table = elementFactory('table', div);
+
+    const NAME = elementFactory('th', table, 'name');
+    const HEIGHT = elementFactory('th', table, 'height');
+    HEIGHT.style.align = 'right';
+    const PLACE = elementFactory('th', table, 'place');
+
+    // Populate table w/ MOUNTAIN data
+    MOUNTAINS.forEach((mountain) => {
+        let row = document.createElement('tr');
+        // Add 'name', 'height', & 'place' from array to row
+        elementFactory('td', row, mountain['name']);
+        elementFactory('td', row, mountain['height']);
+        elementFactory('td', row, mountain['place']);
+        table.appendChild(row);
+    })
+
+    // Align height data to the right
+    let content = document.querySelectorAll('td');
+    content.forEach((data) => {
+        checkNumber = data.textContent;
+
+        if (!isNaN(checkNumber)) {
+            data.align = 'right';
+        }
+    });
+
+    function elementFactory(type, destination, content = '') {
+        var myArray = []
+        // Use 'type' for var name, create element, and add to DOM
+        return window[type] = makeAndPlace(type, destination, content);
+    }
+
+    function makeAndPlace(type, destination, content = '') {
+        elementDOM = document.createElement(type);
+        elementDOM.textContent = content;
+        destination.appendChild(elementDOM);
+        return elementDOM;
+    }
+
+</script>
+</body>
+</html>

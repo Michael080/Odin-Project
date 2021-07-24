@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Enlightenment Notes Part 3</title>
+</head>
+<body>
+<!--//3.1 HTML*Element object overview-->
+<a href='#' title="title" data-foo="dataFoo" class="yes" style="margin:0;" foo="boo">Hi</a>
+
+
+<!--//3.6 Getting, Setting, & Removing an element's attribute value-->
+<a href='#' title="title" data-foo="dataFoo" class="yip" style="margin:0;" foo="boo" hidden="hidden">Hi</a>
+
+
+<!--// 3.7 Verifying an element has a specific attribute-->
+<input type="checkbox" checked>
+
+
+<!--// 3.8 Getting a list of class attribute values-->
+<div class="big brown bear dog"></div>
+
+<!--// 3.10 Toggling a class attribute value-->
+<div class="visible"></div>
+
+
+
+<!--// 3.12 Getting & Setting data-* attributes-->
+<div class="blam" data-foo-foo="foo" data-bar-bar="bar"></div>
+
+
+<!--// 4.1 Selecting a specific element node-->
+<ul>
+    <li>Hello</li>
+    <li>Big</li>
+    <li>Bad</li>
+    <li id="last">world</li>
+</ul>
+
+
+<script>
+    //=================================================================
+    //3.1 HTML*Element object overview
+    console.log("------------------");
+    console.log('3.1');
+
+    //grab <a> element node from DOM and ask for the name of the
+    // constructor that constructed it
+    console.log('<a> constructor:',document.querySelector('a').constructor);
+    //:>> ƒ HTMLAnchorElement() { [native code] }
+
+
+
+    //=================================================================
+    //3.2 HTML*Element object properties and methods (including inherited)
+    console.log("------------------");
+    console.log('3.2');
+
+    var anchor = document.querySelector('a');
+
+    //element own properties
+    console.log('Object.keys:',Object.keys(anchor).sort());
+    //:>> returns empty HTML collection
+
+    //element own properties & inherited properties
+    var documentPropertiesIncludeInherited= [];
+    for (var p in document){
+        documentPropertiesIncludeInherited.push(p)
+    }
+    console.log('Inherited properties included:', documentPropertiesIncludeInherited.sort());
+    //:>> 262 properties
+
+    //element inherited properties only
+    var documentPropertiesOnlyInherited = [];
+    for (var p in document){
+        if (!document.hasOwnProperty(p)){
+            documentPropertiesOnlyInherited.push(p);
+        }
+    }
+    console.log('Only inherited properties:', documentPropertiesOnlyInherited.sort());
+    //:>> 261 properties
+
+    var documentHasProperty = [];
+    for (var p in document){
+        if (document.hasOwnProperty(p)){
+            documentHasProperty.push(p);
+        }
+    }
+    console.log('Own properties:', documentHasProperty.sort());
+    //:>> ["location"]
+
+
+    //=================================================================
+    //3.5 Getting a list/collection of element attributes and values
+    console.log("------------------");
+    console.log('3.5');
+
+    var atts = document.querySelector('a').attributes;
+    atts = Array.from(atts); //convert attribute collection to array
+    for (var a in atts) {
+        console.log(atts[a].nodeName, ':', atts[a].nodeValue);
+    }
+
+
+
+    //=================================================================
+    //3.6 Getting, Setting, & Removing an element's attribute value
+    console.log("------------------");
+    console.log('3.5');
+
+    var atts = document.querySelector('.yip');
+
+    //remove attributes
+    atts.removeAttribute('href');
+    atts.removeAttribute('title');
+    atts.removeAttribute('style');
+    atts.removeAttribute('data-foo');
+    atts.removeAttribute('class');
+    atts.removeAttribute('foo'); //custom attribute
+    atts.removeAttribute('hidden'); //boolean attribute
+    console.log('attributes:', atts.attributes); //:>> NamedNodeMap {length: 0}
+
+    //set (really re-set) attributes
+    atts.setAttribute('href', '#');
+    atts.setAttribute('title', 'title');
+    atts.setAttribute('style', 'margin:0;');
+    atts.setAttribute('data-foo','dataFoo');
+    atts.setAttribute('class','yes');
+    atts.setAttribute('foo','boo');
+    atts.setAttribute('hidden','hidden'); //boolean attribute requires sending the attribute as the value
+    console.log('attributes:', atts.attributes); //:>> NamedNodeMap {length: 7}
+
+    //get attributes
+    console.log(atts.getAttribute('href'));
+    console.log(atts.getAttribute('title'));
+    console.log(atts.getAttribute('style'));
+    console.log(atts.getAttribute('data-foo'));
+    console.log(atts.getAttribute('class'));
+    console.log(atts.getAttribute('foo'));
+    console.log(atts.getAttribute('hidden'));
+
+
+
+    //=================================================================
+    // 3.7 Verifying an element has a specific attribute
+    console.log("------------------");
+    console.log('3.7');
+
+    //** Note: hasAttribute() returns 'true' for attributes that are present
+    //regardless of whether or not they have a value assigned **
+    console.log(
+        atts.hasAttribute('href'),
+        atts.hasAttribute('title'),
+        atts.hasAttribute('style'),
+        atts.hasAttribute('data-foo'),
+        atts.hasAttribute('class'),
+        atts.hasAttribute('goo') //Notice this is true regardless if a value is defined
+    );
+
+    var myInput = document.querySelector('input');
+    console.log('myInput == checked:', myInput.hasAttribute('checked'));
+
+
+
+    //=================================================================
+    // 3.8 Getting a list of class attribute values
+    console.log("------------------");
+    console.log('3.8');
+
+    var elm = document.querySelector('.bear');
+
+    console.log(elm.classList);
+    console.log(elm.className);
+
+
+
+    //=================================================================
+    // 3.9 Adding & removing sub-values to a class attribute
+    console.log("------------------");
+    console.log('3.9');
+
+    elm.classList.add('cat');
+    elm.classList.remove('dog');
+    console.log(elm.className);
+
+
+
+    //=================================================================
+    // 3.10 Toggling a class attribute value
+    console.log("------------------");
+    console.log('3.10');
+
+    var vis = document.querySelector('.visible');
+
+    vis.classList.toggle('visible');
+    vis.classList.toggle('grow');
+    console.log('vis.className:', vis.className);
+
+
+
+    //=================================================================
+    // 3.11 Determining if a class attribute value contains a specific value
+    console.log("------------------");
+    console.log('3.11');
+
+    console.log(elm.classList.contains('brown')); //logs true
+
+    //=================================================================
+    // 3.12 Getting & Setting data-* attributes
+    console.log("------------------");
+    console.log('3.12');
+
+    var foo = document.querySelector('.blam');
+
+    //get
+    console.log('foo.dataset.fooFoo:' , foo.dataset.fooFoo); //logs 'foo'
+    console.log('foo.dataset.barBar' , foo.dataset.barBar); //logs 'bar'
+
+    //set
+    elm.dataset.gooGoo = 'goo';
+    console.log(elm.dataset); //>>: DOMStringMap { gooGoo → "goo" }
+
+    //what the element looks like in the DOM
+    console.log(foo);
+
+
+
+    //=================================================================
+    // 4.1 Selecting a specific element node
+    console.log("------------------");
+    console.log('4.1');
+
+    console.log(document.querySelector('li').textContent); //>>: Hello
+    console.log(document.getElementById('last').textContent); //>>: world
+
+
+    //=================================================================
+    // 4.4 Contextual element selecting
+    console.log("------------------");
+    console.log('4.4');
+
+    //create DOM structure
+    var divElm = document.createElement('div');
+    var ulElm = document.createElement('ul');
+    var liElm = document.createElement('li');
+    liElm.setAttribute('class', 'liClass');
+    ulElm.appendChild(liElm);
+    divElm.appendChild(ulElm);
+
+    //use selecting methods on DOM structure
+    console.log(divElm.querySelector('ul'));
+    console.log(divElm.querySelectorAll('li'));
+    console.log(divElm.getElementsByTagName('li'));
+    console.log(divElm.getElementsByClassName('liClass'));
+
+
+
+    //=================================================================
+    // 4.5 Pre-configured selections/lists of element nodes
+    console.log("------------------");
+    console.log('4.5');
+
+    //You should be aware that there are some legacy, pre-configured arrays-like-lists, containing element nodes from an HTML document. Below I list a couple of these (not the complete list) that might be handy to be aware of.
+
+    // document.all - all elements in HTML document **Not recommended by MDN
+    // document.forms - all <form> elements in HTML document
+    // document.images - all <img> elements in HTML document
+    // document.links - all <a> elements in HTML document
+    // document.scripts - all <script> elements in HTML document
+    // document.styleSheets - all <link> or <style> objects in HTML document
+
+
+</script>
+</body>
+</html>

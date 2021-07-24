@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Enlightenment</title>
+</head>
+<body>
+    <!-- // --------------------------------------------------- -->
+
+    <!-- 1.3 Sub-node objects inherit from the 'Node' object -->
+    <a href="#">Hola</a>
+
+
+<!--    // 1.8 Creating and adding element and text nodes to the DOM using  -->
+<!--    // JavaScript strings                                               -->
+    <div id="A"></div>
+    <span id="B"></span>
+    <div id="C"></div>
+    <div id="D"></div>
+    <div id="E"></div>
+
+    <br>
+
+<!--    1.8 Creating and adding element and text nodes to the DOM using JavaScript strings-->
+    <i id="elm">how</i>
+
+<!--    // 1.9 Extracting parts of the DOM tree as JavaScript strings-->
+    <div id="a"><i>Hi</i></div>
+    <div id="b">Dude<strong> !</strong></div>
+
+<!--    // 1.10 Adding node objects to the DOM using appendChild()& insertBefore()-->
+    <p class="hola" id="hola">Hola</p>
+
+    <ul>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+
+    <!-- //1.11 Removing and replacing nodes using removeChild() and replaceChild()-->
+    <div id="Y">Yo</div>
+    <div id="Bi">Biyatch</div>
+
+<!--    //Replacing an element-->
+    <div id="blam">Blam</div>
+    <div id="yo">Yo'!</div>
+
+
+<!--    //1.12 Cloning nodes using cloneNode()-->
+    <ul class="ul">
+        <li>Hi</li>
+        <li>There</li>
+    </ul>
+
+    <script>
+
+        // ---------------------------------------------------
+        console.log("----------------------");
+        console.log("1.3");
+        // 1.3 Sub-node objects inherit from the 'Node' object
+        // get reference to element node object
+        let nodeAnchor = document.querySelector('a');
+
+        // create props aray to store property keys for element node object
+        let props = [];
+
+        // log alphabetical list of properties & methods
+        for(var key in nodeAnchor) {
+            props.push(key);
+        }
+
+        // log alphabetical list of properties & methods
+        console.log(props.sort());
+        // returns array of 319 items
+
+        // -----------------------------------------------
+        // 1.5 Identifying the type and name of a node
+        console.log("----------------------");
+        console.log("1.5");
+
+        console.log(
+            document.doctype.nodeName, //>> 'html'
+            document.doctype.nodeType //>> 10
+        );
+
+        // This is DOCUMENT_NODE or nodeType 9 because Node.DOCUMENT_TYPE_NODE == 10
+        console.log(
+            document.nodeName, //>> '#document'
+            document.nodeType //>> 9
+        );
+
+        // This is DOCUMENT_FRAGMENT_NODE or nodeType 11 because Node.DOCUMENT_FRAGMENT_NODE == 11
+        console.log(
+            document.createDocumentFragment().nodeName, //>> '#document-fragment'
+            document.createDocumentFragment().nodeType // >> 11
+        );
+
+        // This is ELEMENT_NODE or nodeType 1 because Node.ELEMENT_NODE == 1
+        console.log(
+            document.querySelector('a').nodeName, //>> 'A'
+            document.querySelector('a').nodeType //>> 3
+        );
+
+        //This is TEXT_NODE or nodeType 3 because Node.TEXT_NODE == 3
+        console.log(
+            document.querySelector('a').firstChild.nodeName, //>> '#text'
+            document.querySelector('a').firstChild.nodeType //>> 3
+        );
+
+        // Check if node is ELEMENT_NODE
+        // is <a> a ELEMENT_NODE
+        if (document.querySelector('a').nodeType === 1) {
+            console.log('Node is an ELEMENT_NODE!');
+        }
+
+        //or use Node.ELEMENT_NODE which is a property containing the numeric value of 1
+        if (document.querySelector('a').nodeType === Node.ELEMENT_NODE) {
+            console.log('It is a mahfuckin ELEMENT_NODE for sure yo...');
+        }
+
+        // The nodeValue property returns null for most of the node types (except Text, and 
+        // Comment). It's use is centered around extracting actual text strings from Text 
+        // and Comment node
+
+        //logs null for DOCUMENT_TYPE_NODE, DOCUMENT_NODE, DOCUMENT_FRAGMENT_NODE, ELEMENT_NODE below
+
+        console.log(
+            'document.doctype.nodeValue: ', 
+            document.doctype.nodeValue
+            );
+        console.log('document.nodeValue: ', document.nodeValue);
+        console.log(
+            'document.createDocumentFragment().nodeValue: ', 
+            document.createDocumentFragment().nodeValue
+        );
+        console.log(
+            "document.querySelector('a').nodeValue: ",
+            document.querySelector('a').nodeValue
+            );
+
+        // logs of string of text
+        console.log(
+            "document.querySelector('a').firstChild.nodeValue: ",
+            document.querySelector('a').firstChild.nodeValue
+            );
+
+
+
+
+        // -----------------------------------------------
+        // 1.7 Creating element and text nodes using JavaScript methods
+        console.log("----------------------");
+        console.log("1.7");
+
+        //When a browser parses an HTML document it constructs the nodes
+        // and tree based on the contents of the HTML file. The browser
+        // deals with the creation of nodes for the intial loading of
+        // the HTML document. However its possible to create your own
+        // nodes using JavaScript. The following two methods allow us to
+        // programatically create Element and Text nodes using JavaScript.
+
+        let elementNode = document.createElement('div');
+        console.log(elementNode, elementNode.nodeType); //>> <div> 1
+
+        var textNode = document.createTextNode('Hi');
+        console.log(textNode, textNode.nodeType); //>> Text {} 3
+
+
+
+
+
+    //----------------------------------------------------
+    // 1.8 Creating and adding element and text nodes to the DOM using
+    // JavaScript strings
+    console.log("----------------------");
+    console.log("1.8");
+
+    // Using innerHTML, outerHTML, textContent properties to create nodes
+    // from JavaScript strings
+
+    //create a strong element and text node and add it to the DOM
+    document.getElementById('A').innerHTML = '<strong>Hi</strong>';
+    // In the DOM this strong tag is nested in element w/ id='A'
+
+    //create a div element and text node to replace <span id='B'></div>
+    document.getElementById('B').outerHTML = '<div id="B" class="new">What is Shaking</div>';
+
+    //create a text node and update the div#C w/ the text node
+    document.getElementById('C').textContent = 'dude';
+
+    //Non-standard extension below i.e. innerText & outerText
+
+    //create a text node and update the div#D w/ the text node
+    document.getElementById('D').innerText = 'Keep it';
+
+    //create a text node and replace the div#E w/ the text node
+    // (notice div#E is gone)
+    document.getElementById('E').outerText = 'real!';
+
+    // <div id="A"><strong>Hi</strong></div>
+    // <div id="B" class="new">Whats Shaking</div>
+    // <span id="C">dude</span>
+    // <div id="D">Keep it</div>
+    // "
+    //     real!
+    //
+    //     "
+
+    // The insertAdjacentHTML() method which only works on Element
+    // nodes is a good deal more precise than the previously mentioned
+    // methods. Using this method its possible to insert nodes before
+    // the beginning tag, after the beginning tag, before the end tag,
+    // and after the end tag.
+
+    var elm = document.getElementById('elm');
+
+    elm.insertAdjacentHTML('beforebegin', '<span>Hey-</span>');
+    elm.insertAdjacentHTML('afterbegin', '<span>dude-</span>');
+    elm.insertAdjacentHTML('beforeend', '<span>-are</span>');
+    elm.insertAdjacentHTML('afterend', '<span>-you?</span>');
+
+
+
+
+        //----------------------------------------------------
+
+        // 1.9 Extracting parts of the DOM tree as JavaScript strings
+        console.log("----------------------");
+        console.log("1.9");
+
+        console.log(document.getElementById('a').innerHTML); //>> <i>Hi</i>
+        // logs div#a and its parent node:
+        console.log(document.getElementById('a').outerHTML); //>> <div id="a"><i>Hi</i></div>
+
+        // logs all text even the child element node's:
+        console.log(document.getElementById('b').textContent); //>> 'Dude !'
+
+        //NON standard extensions below i.e. innerText & outerText
+
+        console.log(document.getElementById('b').innerText); //>> 'Dude !'
+
+        console.log(document.getElementById('b').outerText);  //>> 'Dude !'
+
+
+
+
+        //----------------------------------------------------
+
+
+        // 1.10 Adding node objects to the DOM using appendChild()& insertBefore()
+        console.log("----------------------");
+        console.log("1.10");
+
+        //create a blank element node and a text node
+        var myElemento = document.createElement('strong');
+        var textNode = document.createTextNode(' Dude');
+
+        //append these nodes to the DOM
+        document.getElementById('hola').appendChild(myElemento);
+        document.querySelectorAll('strong')[2].appendChild(textNode);
+
+        // When it becomes necessary to control the location of
+        // insertion beyond appending nodes to the end of a child
+        // list of nodes we can use insertBefore(). In the code
+        // below I am inserting the <li> element before the first
+        // child node of the <ul> element.
+
+        //create a text node and li element node and append the
+        // text to the li
+
+        var text1 = document.createTextNode('1');
+        var li = document.createElement('li');
+        li.appendChild(text1);
+
+        //select the ul in the document
+        var ul = document.querySelector('ul');
+
+        //add the li element we created above to the DOM, notice I call <ul> and
+        //pass reference to <li>2</li>
+        ul.insertBefore(li,ul.firstChild);
+
+
+
+        //----------------------------------------------------
+
+
+        //1.11 Removing and replacing nodes using removeChild() and replaceChild()
+
+        //remove element node
+        var divY = document.getElementById('Y');
+        divY.parentNode.removeChild(divY);
+        //OR this works:
+        // document.body.removeChild(divY);
+
+        //remove text node
+        var divB = document.getElementById('Bi').firstChild;
+        divB.parentNode.removeChild(divB);
+
+
+        //Replacing an element node
+        //replace node
+        var divBlam = document.getElementById('blam');
+        var newSpan = document.createElement('span');
+        newSpan.textContent = 'Howdy';
+        divBlam.parentNode.replaceChild(newSpan,divBlam);
+
+        //replace text node
+        var divYo = document.getElementById('yo');
+        var newText = document.createTextNode('buddy ol pal');
+        divYo.parentNode.replaceChild(newText, divYo);
+
+
+
+        //1.12 Cloning nodes using cloneNode()
+
+        var cloneUL = document.querySelector('.ul').cloneNode();
+
+        console.log(cloneUL.constructor); //logs HTMLUListElement()
+        console.log(cloneUL.innerHTML); //logs (an empty string) as only the ul was cloned
+        //To clone a node and all of its children nodes you pass the cloneNode()
+        // method a parameter of of true. Below I use the cloneNode() method
+        // again but this time we clone all of the child nodes as well.
+        var cloneUL = document.querySelector('.ul').cloneNode(true);
+
+        console.log(cloneUL.constructor); //logs HTMLUListElement()
+        console.log(cloneUL.innerHTML); //logs <li>Hi</li><li>there</li>
+
+        document.body.appendChild(cloneUL);
+
+    </script>
+</body>
+</html>

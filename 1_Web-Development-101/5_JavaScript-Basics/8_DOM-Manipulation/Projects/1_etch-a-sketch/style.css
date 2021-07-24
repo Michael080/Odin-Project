@@ -1,0 +1,50 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: 0 auto;
+  color: rgb(0, 0, 0);
+}
+
+.container {
+  display: grid;
+  background-color: green;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  align-self: flex-end;
+  background-color: aqua;
+  color: rgb(1, 56, 56);
+  width: 100px;
+  height: 25px;
+  padding: 7px;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: aqua;
+  background-color: rgb(1, 56, 56);
+}
+
+.grid {
+  background-color: blue;
+}

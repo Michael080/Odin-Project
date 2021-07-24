@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EloquentJS Exercises-1</title>
+</head>
+<body>
+<p>The document.getElementsByTagName method returns all child elements
+    with a given tag name. Implement your own version of this as a
+    function that takes a node and a string (the tag name) as arguments
+    and returns an array containing all descendant element nodes with
+    the given tag name.
+
+    To find the tag name of an element, use its nodeName property. But
+    note that this will return the tag name in all uppercase. Use the
+    toLowerCase or toUpperCase string methods to compensate for this.</p>
+
+<h1>Mountains</h1>
+
+<div id="mountains">
+    <table>
+        <tr>
+            <th>name</th>
+            <th>height</th>
+            <th>place</th>
+        </tr>
+        <tr>
+            <td>Kilimanjaro</td>
+            <td>5895</td>
+            <td>Tanzania</td>
+        </tr>
+        <tr>
+            <td>Everest</td>
+            <td>8848</td>
+            <td>Nepal</td>
+        </tr>
+    </table>
+</div>
+
+<script>
+let allElements = [];
+
+    function byTagName(node, tagName) {
+        //    retrieve children of node
+        let nodes = node.children;
+        let matches = [];
+
+        // add nodes to allElements[]
+        for (let i = 0; i < nodes.length; i++) {
+            let element = nodes[i];
+            allElements.push(element);
+        }
+
+        // find all element nodes w/ children access them and repeat
+        for (let i = 0; i < nodes.length; i++) {
+            let checkChildren = nodes[i];
+
+            if (checkChildren.children.length > 0) {
+                byTagName(checkChildren);
+            }
+        }
+
+        //   find tagName (loop over childNodes)
+        for (let i = 0; i < allElements.length; i++) {
+            let checkChild = allElements[i];
+            if (checkChild.nodeName.toLowerCase() == tagName) {
+            matches.push(checkChild);
+            }
+        }
+    //    return array of matches
+    console.log(`${matches.length} ${tagName}'s match your search`)
+    return matches;
+    //     return allElements;
+        }
+
+byTagName(document.body, 'h1');
+
+</script>
+</body>
+</html>
