@@ -1,0 +1,52 @@
+# ---------- 2.4 Git Basics - Undoing Things ---------- 
+# https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things
+
+#---- Undoing Things ----
+
+To fix a previous commit that has NOT yet been pushed:
+
+$ git commit --amend
+
+This will effectively replace the previous commit, and will
+not show up in the commit history. This will not work for
+commits that have already been pushed upstream though.
+
+
+#---- Unstaging a Staged File ----
+
+Ex:
+Staged -
+temp1.txt
+temp2.txt
+
+$ git status => (right below  “Changes to be committed”)
+    use "git reset HEAD <file>..." to unstage (per Pro Git) ||
+    use "git restore --staged <file>..." to unstage (my terminal says)
+
+* git restore is intended to replace functionality of git reset in
+  future versions of git
+
+
+#---- Unmodifying a Modified File ----
+             
+To revert a file back to state of previous commit:
+
+$ git status => (right below  “Changes to be committed”)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+$ git checkout -- 'myFile.txt' => reverts to previous state    
+
+
+#---- Unmodifying a Modified Files w/ git restore ----
+
+Revert file to state of previous commit:
+
+$ git status => (right below  “Changes to be committed”)
+  (use "git restore <file>..." to discard changes in working directory)
+
+
+
+
+
+
+
