@@ -1,0 +1,137 @@
+# ---------- 2.6 Git Basics - Tagging ---------- 
+# https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+#---- Listing Your Tags ----
+
+List tags:
+
+$ git tag => v1.0
+           v2.0
+* returns alphabetized list
+
+Search for tags that match a pattern:
+
+$ git tag -l "v1.8.5*" => v1.8.5
+                          v1.8.5-rc0
+                          v1.8.5-rc1
+                          v1.8.5-rc2
+                          v1.8.5-rc3
+                          v1.8.5.1
+                          v1.8.5.2
+                          v1.8.5.3
+                          v1.8.5.4
+                          v1.8.5.5
+
+
+#---- Creating Tags ----
+
+Two types of tags: lightweight and annotated:
+
+lightweight - like a branch that doesn't change -- points to a specific commit.
+
+annotated - stored as full object in Git database. They are checksummed, contain information about the tagger, & can be signed and verified w/ GNU Privacy Guard. (recommended)
+
+
+#---- Annotated Tags ----
+
+Specify -a when running the 'tag' command:
+
+$ git tag -a v1.4 -m "my version 1.4"
+* -m specs tagging a message
+
+Show tag data & commit that was tagged:
+
+$ git show v1.4 => tag v1.4
+                   Tagger: Ben Straub <ben@straub.cc>
+                   Date:   Sat May 3 20:19:12 2014 -0700
+
+                   my version 1.4
+
+                   commit ca82a6dff817ec66f44342007202690a93763949
+                   Author: Scott Chacon <schacon@gee-mail.com>
+                   Date:   Mon Mar 17 21:52:11 2008 -0700
+
+
+#---- Lightweight Tags ----
+
+Lightweight tags are a commit checksum stored in a file w/out any other info. These tags are created w/ just tha tag name:
+
+$ git tag v1.4-1w
+
+git show won't return the same info as w/ an annotated tag:
+
+$ git show v1.4-1w => commit ca82a6dff817ec66f44342007202690a93763949
+                      Author: Scott Chacon <schacon@gee-mail.com>
+                      Date:   Mon Mar 17 21:52:11 2008 -0700
+
+                          Change version number
+
+
+#---- Tagging Later ----
+
+Commits can be tagged after they have been moved past.
+
+Ex. commit history:
+
+$ git log --pretty=oneline => 
+    a6b4c97498bd301d84096da251c98a07c7723e65 Create write support
+    0d52aaab4479697da7686c15f77a3d64d9165190 One more thing
+    6d52a271eda8725415634dd79daabbc4d9b6008e Merge branch 'experiment'
+    0b7434d86859cc7b8c3d5e1dddfed66ff742fcbc Add commit function
+    4682c3261057305bdd616e23b64b0857d832627b Add todo file
+    166ae0c4d3f420721acbb115cc33848dfcc2121a Create write support
+    9fceb02d0ae598e95dc970b74767f19372d61af8 Update rakefile
+    964f16d36dfccde844893cac5b347e7b3d44abbc Commit the todo
+    8a5cbc430f1a9c3d00faaeffd07798508422908a Update readme
+
+If you meant to tag project @ v1.2 at the "Update rakefile" commit. Spec the commit checksum, part of it, at the end of the command:
+
+$ git tag -a v1.2 9fceb02 =>  tag @ "Update rakefile"
+
+
+#---- Sharing Tags ----
+
+By default, the git push command doesn’t transfer tags to remote servers. 
+
+Explicitly push tags via - git push origin <tagname>:
+
+$ git push origin v1.5
+
+To push multiple tags via - --tags option:
+
+$ git push origin --tags => transfer all 'unpushed' tags to remote
+
+
+#---- Deleting Tags ----
+
+$ git tag -d v1.4-1w => Deleted tag 'v1.4-1w' (was e7d5add)
+
+* this doesn't remove the tag from remote servers so would only be effective if the tag has not already been pushed
+
+Push a 'blank' tag to remote to effectively overwrite tag via - 
+git push <remote> :refs/tags/<tagname>:
+
+$ git push origin :refs/tags/v1.4-1w => 
+    To /git@github.com:schacon/simplegit.git
+    - [deleted]         v1.4-lw
+
+A more intuitive syntax for deleting remote tag:
+
+$ git push origin --delete <tagname>
+
+
+#---- Checking out Tags ----
+
+To view versions of files a tag is pointing to via - git checkout:
+
+$ git checkout v2.0.0
+
+* this puts repo into "detached HEAD state, which has ill side effects requiring creating a new branch if you're fixing a bug on an older version.
+
+Create a branch:
+
+$ git checkout -b version2 v2.0.0 =>  Switched to a new branch 'version2'
+
+* If you do this and make a commit, your version2 branch will be slightly different than your v2.0.0 tag since it will move forward with your new changes, so do be careful.
+
+
