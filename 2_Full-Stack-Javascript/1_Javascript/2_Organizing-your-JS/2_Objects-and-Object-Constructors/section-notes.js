@@ -58,6 +58,8 @@ function EighthGrader(name) {
 }
 
 EighthGrader.prototype = Object.create(Student.prototype);
+// * this works too
+// EighthGrader.__proto__ = Object.create(Student.prototype);
 
 const carl = new EighthGrader("carl");
 carl.sayName();
