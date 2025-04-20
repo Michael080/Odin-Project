@@ -1,0 +1,33 @@
+* {
+	/*	outline: solid lightpink;*/
+}
+
+body {
+	background: #ddd;
+	margin: 0;
+	font-family: "Open Sans", sans-serif;
+}
+
+main {
+	background-color: lightgreen;
+}
+
+.module {
+	padding: 1rem;
+	background: white;
+}
+
+.module h2 {
+	background-color: gray;
+	padding: 1rem;
+	margin: -1rem;
+}
+
+p {
+	outline: solid lightpink;
+}
+
+p.neg-margins {
+	margin: 0 -1rem;
+	outline: solid lightblue;
+}
