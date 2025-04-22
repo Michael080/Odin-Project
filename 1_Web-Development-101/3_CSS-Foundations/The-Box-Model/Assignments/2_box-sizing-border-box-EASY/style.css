@@ -1,0 +1,36 @@
+* {
+	/* default box-sizing value: */
+	/** box-sizing value doesn't become important until values for 
+	padding, margin, height, and width are used **/
+	box-sizing: content-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: lightgrey;
+}
+
+.box-1,
+.box-2 {
+	margin: 2em auto;
+}
+
+.box-1 {
+	background-color: lightyellow;
+	border: 3em solid black;
+	width: 700px;
+	height: 300px;
+
+	padding: 50px;
+}
+
+.box-2 {
+	background-color: lightblue;
+	border: 1em solid black;
+	width: 700px;
+	height: 300px;
+
+	padding: 5px;
+}
