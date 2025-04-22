@@ -1,0 +1,42 @@
+body {
+	font-family: sans-serif;
+	color: darkgrey;
+}
+
+p {
+	border: 2px solid rebeccapurple;
+	width: 300px;
+}
+
+.uno {
+	font-weight: bold;
+	background-color: lightcoral;
+	color: darkblue;
+	margin: 20px;
+	padding: 20px;
+	height: 50px;
+	width: 80px;
+	border: 2px solid blue;
+	/** w/out inline-block the following are ignored: **/
+	/* margin-top/bottom */
+	/* width/height */
+	/* w/ inline-block: margin-left/right respected completely, but padding, while applied to the element can result in overlapping text/lines */
+	display: inline-block;
+}
+
+.note {
+	color: black;
+}
+
+.padded {
+	display: inline-block;
+	background-color: lightblue;
+	border: 1px solid blue;
+	padding: .5rem;
+}
+
+.no-pad {
+	background-color: lightblue;
+	border: 1px solid blue;
+	padding: .5rem;
+}
