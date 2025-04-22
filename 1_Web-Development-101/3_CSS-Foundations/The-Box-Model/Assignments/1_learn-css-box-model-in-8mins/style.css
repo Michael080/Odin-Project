@@ -1,0 +1,29 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-size: 40px;
+	/* w/out border-box, the size of an element =
+* 	/* (border*2) + (padding*2) + height or width (depending)
+	/*should be universally applied to ALL projects!!!*/
+	box-sizing: border-box;
+	/*constrain sizing to width/height specs*/
+}
+
+.box-one {
+	background-color: salmon;
+	padding: 10px;
+	height: 150px;
+	width: 150px;
+	border: 30px solid purple;
+	margin: 100px;
+}
+
+.box-two {
+	background-color: blue;
+	border: 0 solid green;
+	padding: 20px;
+	margin: 20px;
+	height: 100px;
+	width: 100px;
+	margin: 60px;
+}
