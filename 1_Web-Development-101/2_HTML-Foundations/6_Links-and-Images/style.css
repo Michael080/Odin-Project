@@ -1,0 +1,18 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+a {
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+	background-color: lightsalmon;
+	margin: 1em;
+	padding: .5rem;
+	width: 150px;
+}

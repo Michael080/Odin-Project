@@ -7,5 +7,55 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <h1>Links & Images</h1>
+    <p>Most of this is review but there appears to be a nugget or two worth peeping.</p>
+    <h2>Links</h2>
+    <h3><code>target</code>
+      Attribute</h3>
+    <p><code>a</code>
+      tag attribute
+      <code>target</code>
+      spec where link will be opened:</p>
+    <ul>
+      <li><code>_blank</code>: opens in new window</li>
+      <li><code>_self</code>:opens in same "frame" as it was clicked
+        <strong>default</strong></li>
+      <li><code>_parent</code>: opens in parent frame</li>
+      <li><code>_top</code>: opens in
+        <em>the full body</em>
+        of the window</li>
+      <li><em>framename</em></li>
+    </ul>
+    <sub>Frames are no longer recommended for use in modern web design due to their limitations and the introduction of
+    more flexible layout options in HTML5.
+      <strong>It looks like this stuff has been deprecated, it's possible this info
+      is irrelevant/out-of-date.</strong></sub>
+    <h3>Opening Links in New Tab</h3>
+    <p>Link to Odin Project about page w/ the following
+      <code>rel</code>
+      attribute (used to describe relation between
+    current page and linked doc) values:</p>
+    <ul>
+      <li><code>noopener</code>:<em>
+          "... attribute ensures that a link opened in a new tab or window cannot interact with
+        or access the original page. Without it, the new page can use JavaScript to manipulate the original page, which
+        poses a security risk."
+        </em></li>
+      <li><code>noreferrer</code>:
+        <em>"attribute provides both privacy and security. It prevents the new page from
+        knowing where the user came from (hiding the referrer) and also includes the behavior of noopener, preventing
+        the new page from accessing the original page."</em></li>
+    </ul>
+    <sub>The
+      <code>rel</code>
+      attribute value
+      <code>noreferrer</code>
+      includes the functionality of
+      <code>noopener</code>
+      so must be sufficient on its own.
+      <strong>These two attributes are solely for security/privacy and are used for
+      preventing
+        <em>phishing attacks</em>.</strong></sub>
+    <a href="https://www.theodinproject.com/about" target="_blank" rel="noopener norefferrer">Odin About Page</a>
   </body>
 </html>
