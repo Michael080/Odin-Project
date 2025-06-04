@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+code {
+	display: inline-block;
+	font-family: Consolas, 'Courier New', Courier, monospace;
+	color: crimson;
+	border: 2px dashed #c1c1c1;
+	background-color: #f1f1f1;
+	margin-top: 2px;
+	padding: 2px;
+}
+
+#puggy-wuggy {
+	width: 310px;
+	height: 310px;
+}
