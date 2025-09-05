@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+.subsection.header {
+	color: red;
+}
+
+.subsection#preview {
+	color: blue;
+}
+
+div.subsection {
+	font-weight: bold;
+}
+
+p#preview {
+	text-decoration: underline;
+}
+
+div h2 {
+	background-color: lightseagreen;
+	width: 400px;
+}
