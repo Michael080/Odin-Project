@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ems vs Rems Demo</title>
+    <style>
+      html {
+      font-size: 16px;
+    }
+
+    i {
+      color: #626262;
+    }
+
+    .ems li,
+    .rems li {
+      font-size: 1.3em;
+    }
+
+    .rems li {
+      font-size
+    }
+
+    body {
+      font-family: sans-serif;
+      background-color: lemonchiffon;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>ems vs rems</h1>
+    <h2>ems</h2>
+    <ul class="ems">
+      <li>Uno.0
+        <code><i>20.8px</i></code></li>
+      <li>Dos.0
+        <code><i>20.8px</i></code></li>
+      <li>
+        Tres.0
+        <code><i>20.8px</i></code>
+        <ul>
+          <li>Tres.1
+            <code><i>27.04px</i></code></li>
+          <li>Dos.1
+            <code><i>27.04px</i></code>
+            <ul>
+              <li>Tres.2
+                <i>35.152px</i></li>
+            </ul></li>
+        </ul>
+      </li>
+    </ul>
+    <!-- ems -->
+    <h2>rems</h2>
+    <ul class="rems">
+      <li>Uno.0
+        <i>20.8px</i></li>
+      <li>Dos.0
+        <i>20.8px</i></li>
+      <li>
+        Tres.0
+        <i>20.8px</i>
+        <ul>
+          <li>Tres.1
+            <i>27.04</i></li>
+          <li>Dos.1
+            <i>27.04</i></li>
+          <ul>
+            <li>Tres.3
+              <i>27.04</i></li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
