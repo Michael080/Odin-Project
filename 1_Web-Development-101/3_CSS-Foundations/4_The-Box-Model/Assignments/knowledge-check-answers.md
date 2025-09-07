@@ -36,7 +36,22 @@ Sets parent-child inheritance & or default *content box-model* behavior vs *alte
 ---
 
 **6. How do you set the alternative box model for all of your elements?
-By using *universal* css selector @ top of stylesheet: `* { box-sizing: border-box; }`
+By using *universal* css selector @ top of stylesheet: 
+~~`* { box-sizing: border-box; }`~~
+| *To use the alternative box model for all of your elements (which is a common choice among developers), set the `box-sizing` property on the `<html>` element and set all other elements to `inherit` that value:*
+| - [MDN Docs](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Box_model#the_alternative_css_box_model)
+
+```css
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+```
 
 ---
 
