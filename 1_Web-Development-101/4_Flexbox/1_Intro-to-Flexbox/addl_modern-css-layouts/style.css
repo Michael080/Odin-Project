@@ -12,6 +12,8 @@ body {
 	font-family: sans-serif;
 }
 
+/* # Nav */
+
 .menu-container {
 	display: flex;
 	/* flex property  for horizontal alignment */
@@ -43,6 +45,112 @@ body {
 	/*border: 1px solid #fff;*/
 }
 
+.login,
+.signup {
+	border: 1px solid peachpuff;
+}
+
 .login {
 	margin-left: 20px;
+}
+
+.signup {
+	margin-left: auto;
+}
+
+/* # Header */
+
+.header-container {
+	display: flex;
+	justify-content: center;
+	color: #5995DA;
+	background-color: #D6E9FE;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	/* cross-axis (vertical alignment) */
+	align-items: center;
+	width: 900px;
+	height: 300px;
+	/* debugging */
+	border: 1px solid white;
+}
+
+.social,
+.logo,
+.subscribe {
+	border: 1px solid #5995DA;
+}
+
+.social,
+.subscribe {
+	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+.header>div {
+	/* debugging */
+	/*border: 2px dashed peachpuff;*/
+}
+
+/* # Photo-Grid */
+
+.photo-grid-container {
+	display: flex;
+	justify-content: center;
+}
+
+.photo-grid {
+	width: 900px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+}
+
+.photo-grid-item {
+	border: 1px solid #fff;
+	width: 300px;
+	height: 300px;
+}
+
+.first-item {
+	order: 1;
+}
+
+.last-item {
+	order: -1;
+}
+
+/** # Footer **/
+
+.footer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-item {
+	border: 1px solid #fff;
+	background-color: #D6E9FE;
+	height: 200px;
+	/** all items stretch equally **/
+	flex: 1;
+}
+
+.footer-one,
+.footer-three {
+	background-color: #5995DA;
+	flex: initial;
+	width: 300px;
+}
+
+.footer-two {
+	flex: 1;
+}
+
+.footer-three {
+	/**flex: 2;**/
 }
