@@ -18,10 +18,29 @@ body {
 	background: peachpuff;
 	border: 4px solid brown;
 	height: 100px;
-	width: 600px;
+	width: 390px;
+	/** example 0 -- flex shorthand **/
+	/** === *-grow: 1, *-shrink: 1, *-basis: 0 **/
+	flex: 1;
+	/**example 1 -- flex-grow **/
+	flex: 1 1 0%;
+	/** grow | shrink | basis **/
+	/**example 2 -- flex-shrink **/
 	flex: 1 1 auto;
+	/** OR: ** **/
+	flex: auto;
+	/**example 3 -- flex-basis **/
 }
 
+.flex-container .one {}
+
+.flex-container .three {}
+
 .flex-container .two {
+	/**example 1  -- flex-grow **/
+	/**flex: 2 1 0%;**/
+	/**example 2  -- flex-shrink **/
 	flex-shrink: 0;
+	/**example 3 -- flex-basis **/
+
 }
