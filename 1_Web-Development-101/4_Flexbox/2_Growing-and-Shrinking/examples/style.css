@@ -14,6 +14,7 @@ body {
 	display: flex;
 }
 
+/**NOTE: default grow,shrink,basis - `flex: 0 1 auto` **/
 .flex-container div {
 	background: peachpuff;
 	border: 4px solid brown;
@@ -25,9 +26,10 @@ body {
 	/**example 1 -- flex-grow **/
 	flex: 1 1 0%;
 	/** grow | shrink | basis **/
+	/** ------ **/
 	/**example 2 -- flex-shrink **/
 	flex: 1 1 auto;
-	/** OR: ** **/
+	/** OR (*equivalently*): ** **/
 	flex: auto;
 	/**example 3 -- flex-basis **/
 }
