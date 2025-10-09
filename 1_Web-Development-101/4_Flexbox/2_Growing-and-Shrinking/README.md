@@ -10,6 +10,10 @@
 - [*Video*: How Flexbox works and why | *Kevin Powell*](https://www.youtube.com/watch?v=u044iM9xsWU&t=1s)
 - [*Scrimba*: Scrim on flex shorthand](https://scrimba.com/learn/flexbox/the-flex-property-flexbox-tutorial-cGNKJTv)
 
+### *Add'l* Add'l Resources
+- [Equal Columns W/ Flexbox - Kevin Powell](https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/)
+    - demonstration of how `grid` is the better solution to the problem than flexbox
+
 ## Highlight/s / New
 ### `space-evenly` *what `space-around` should've been*
 ```css
