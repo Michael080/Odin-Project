@@ -9,3 +9,9 @@
 ## [Add'l resources](https://www.theodinproject.com/lessons/foundations-growing-and-shrinking#additional-resources)
 - [*Video*: How Flexbox works and why | *Kevin Powell*](https://www.youtube.com/watch?v=u044iM9xsWU&t=1s)
 - [*Scrimba*: Scrim on flex shorthand](https://scrimba.com/learn/flexbox/the-flex-property-flexbox-tutorial-cGNKJTv)
+
+## Highlight/s / New
+### `space-evenly` *what `space-around` should've been*
+```css
+justify-content: space-evenly;
+```
