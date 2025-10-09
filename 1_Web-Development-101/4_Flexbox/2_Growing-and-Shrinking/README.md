@@ -14,6 +14,11 @@
 - [Equal Columns W/ Flexbox - Kevin Powell](https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/)
     - demonstration of how `grid` is the better solution to the problem than flexbox
 
+**Kevin Powell's suggested resources:**
+- [Game - Flexbox Zombies](https://mastery.games/flexboxzombies/)
+- [Game - Flexbox Froggies](https://click.convertkit-mail.com/v8up6z99plimummdnwtghv2xemlls9hxg5z/kkhmh6h8m685gwbk/aHR0cHM6Ly9mbGV4Ym94ZnJvZ2d5LmNvbS8=)
+- [Video Series - Flexbox](https://click.convertkit-mail.com/v8up6z99plimummdnwtghv2xemlls9hxg5z/58hvh7h57k5np2s7/aHR0cHM6Ly95b3V0dWJlLmNvbS9wbGF5bGlzdD9saXN0PVBMNC1JSzBBVmhWak1TYjljMDZBalJsVHB2eEwzb3RwVWQ=)
+
 ## Highlight/s / New
 ### `space-evenly` *what `space-around` should've been*
 ```css
