@@ -9,6 +9,7 @@
 ## [Add'l resources](https://www.theodinproject.com/lessons/foundations-growing-and-shrinking#additional-resources)
 - [*Video*: How Flexbox works and why | *Kevin Powell*](https://www.youtube.com/watch?v=u044iM9xsWU&t=1s)
 - [*Scrimba*: Scrim on flex shorthand](https://scrimba.com/learn/flexbox/the-flex-property-flexbox-tutorial-cGNKJTv)
+- [*Scrimba*: flex-grow, flex-shrink, and flex-basis](https://scrimba.com/learn/flexbox/flex-grow-shrink-basis-flexbox-tutorial-ck6L7fv)
 
 ### *Add'l* Add'l Resources
 - [Equal Columns W/ Flexbox - Kevin Powell](https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/)
