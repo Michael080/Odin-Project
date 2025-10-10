@@ -20,6 +20,32 @@
 - [Video Series - Flexbox](https://click.convertkit-mail.com/v8up6z99plimummdnwtghv2xemlls9hxg5z/58hvh7h57k5np2s7/aHR0cHM6Ly95b3V0dWJlLmNvbS9wbGF5bGlzdD9saXN0PVBMNC1JSzBBVmhWak1TYjljMDZBalJsVHB2eEwzb3RwVWQ=)
 
 ## Highlight/s / New
+### `flex` shorthand
+```css
+.flex-container {
+	display: flex;
+}
+
+/**NOTE: default grow,shrink,basis - `flex: 0 1 auto` **/
+.flex-container div {
+	background: peachpuff;
+	border: 4px solid brown;
+	height: 100px;
+	width: 390px;
+	/** example 0 -- flex shorthand **/
+	/** === *-grow: 1, *-shrink: 1, *-basis: 0 **/
+	flex: 1;
+	/**example 1 -- flex-grow **/
+	flex: 1 1 0%;
+	/** grow | shrink | basis **/
+	/** ------ **/
+	/**example 2 -- flex-shrink **/
+	flex: 1 1 auto;
+	/** OR (*equivalently*): ** **/
+	flex: auto;
+	/**example 3 -- flex-basis **/
+}
+```
 ### `space-evenly` *what `space-around` should've been*
 ```css
 justify-content: space-evenly;
