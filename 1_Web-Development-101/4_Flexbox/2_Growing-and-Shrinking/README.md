@@ -13,6 +13,12 @@
 ### *Add'l* Add'l Resources
 - [Equal Columns W/ Flexbox - Kevin Powell](https://css-tricks.com/equal-columns-with-flexbox-its-more-complicated-than-you-might-think/)
     - demonstration of how `grid` is the better solution to the problem than flexbox
+- [Flexbox or grid - How to decide? - Kevin Powel](https://www.youtube.com/watch?v=3elGSZSWTbM)
+    - breakdown of differences between **flex** and **grid**
+    - main factors:
+        - Do you want to rely on the *intrinsic sizing* of items? *As in **flexbox***
+	- **OR:** Do you want to have more *structured control*? *As in **grid***
+	- If one of the options requires less, or no, tweaking *at the level of child-elements*, it may be the better option **i.e.** *This three-card-layout requires use of multiple `flex` properties on individual cards to achieve the desired layout. Using grid, this layout can be achieved by using three properties on the parent element. This is likely a case where a grid-layout is the better approach*
 
 **Kevin Powell's suggested resources:**
 - [Game - Flexbox Zombies](https://mastery.games/flexboxzombies/)
