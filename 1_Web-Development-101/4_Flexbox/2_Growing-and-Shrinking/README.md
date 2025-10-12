@@ -28,6 +28,7 @@
 
 ## Highlight/s / New
 ### `flex` shorthand
+>[!tip] `flex-basis` serves the same purpose as `width`
 ```css
 .flex-container {
 	display: flex;
