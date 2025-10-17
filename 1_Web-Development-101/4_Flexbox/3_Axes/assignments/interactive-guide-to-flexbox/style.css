@@ -37,6 +37,7 @@ hr {
 	background-color: #b8b8b8;
 	width: 200px;
 	padding: .5em;
+	margin-top: 1em;
 }
 
 #search {
@@ -90,6 +91,11 @@ ul a {
 .logo a {
 	font-size: 1.125rem;
 	font-weight: 500;
+}
+
+/* align-content section */
+.flex-container {
+	display: flex;
 }
 
 code {

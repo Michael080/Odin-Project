@@ -12,13 +12,19 @@
       <div class="item"></div>
     </div>
     <hr>
+    <!-------------------------------------------------------------------->
     <h2>Overflow Fix via
       <code>min-width</code></h2>
+    <div class="search">
+      <label for="search-field" class="search-item">Search:</label>
+      <input type="text" class="search-item field-broken" id="search-field" minlength="12" placeholder="fancy pants">
+    </div>
     <div class="search">
       <label for="search-field" class="search-item">Search:</label>
       <input type="text" class="search-item field" id="search-field" minlength="12" placeholder="fancy pants">
     </div>
     <hr>
+    <!-------------------------------------------------------------------->
     <h2 id="quick">Common Nav via
       <code>margin: auto</code></h2>
     <nav>
@@ -40,5 +46,17 @@
         </li>
       </ul>
     </nav>
+    <hr>
+    <!-------------------------------------------------------------------->
+    <h2><code>align-content</code></h2>
+    <p><code>align-content</code>
+      manipulates space between items along the cross axis, only when there are multiple rows
+      <em>via
+        <code>flex-wrap: wrap</code></em></p>
+    <div class="flex-container">
+      <div class="flex-item"></div>
+      <div class="flex-item"></div>
+      <div class="flex-item"></div>
+    </div>
   </body>
 </html>
