@@ -15,7 +15,7 @@
 - [X] Review parts 1-3 and part 5 *don’t worry about the media query parts*
     - [X] [1. Background](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-background)
     - [X] [2. Basics and terminology](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-basics-and-terminology)
-    - [ ] [3. Flexbox properties](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties)
+    - [X] [3. Flexbox properties](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flexbox-properties)
     >[!note] New
     > **`gap`, `row-gap`, `column-gap`
     > To apply a gap specifically at the level of rows or columns use 
