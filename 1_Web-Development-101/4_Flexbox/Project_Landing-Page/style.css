@@ -1,5 +1,9 @@
+/** Resets & Variables **/
 * {
 	box-sizing: border-box;
+	--testing-bg-color: #b457c7;
+	--white-text: #f5f5f5;
+	--blue-highlight: #3b82f6;
 }
 
 html {
@@ -10,73 +14,96 @@ body {
 	font-family: sans-serif;
 	background-color: #f5f5f5;
 	margin: 0;
+	height: 100%;
 }
 
-h1 {
-	margin-bottom: 0;
+/** ------------------------------ **/
+
+span {
+	font-size: 3em;
 }
 
-sub {
-	color: #e3e3e3;
-	font-size: .90em;
+.testing {
+	background-color: var(--testing-bg-color);
 }
 
-.sub-container {
-	padding-left: 4em;
-	padding-right: 4em;
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
 }
 
-nav,
-header,
-button {
+.blue {
 	background-color: #1f2937;
-	color: #f5f5f5;
 }
 
-nav {
-	padding-top: 1em;
+.section {
+	/*background-color: pink;*/
+	width: 1100px;
 }
 
-ul {
-	margin: 0;
+nav {}
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1em;
 }
 
 .nav-list {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	list-style-type: none;
-	padding-left: 0;
+	color: var(--white-text);
 }
 
 .nav-list li {
-	padding-right: 1em;
+	justify-content: space-between;
 }
 
-.nav-list>li:nth-of-type(1) {
-	margin-right: auto;
-}
-
-.nav-list>li:nth-of-type(4) {
-	padding-right: 0;
+ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/*width: 100%;*/
+	width: 360px;
+	margin: 0;
+	list-style-type: none;
+	padding: 1em 0;
 }
 
 .logo {
 	max-width: 5em;
 }
 
+/** Header (Hero) Section **/
 header {
 	display: flex;
-	justify-content: space-between;
+	color: var(--white-text);
+	box-sizing: border-box;
+	height: 292px;
+	height: 350px;
 	padding-top: 2em;
 	padding-bottom: 2em;
 }
 
+.call-to-action-content,
 .call-to-action-header {
 	display: flex;
+}
+
+/**.call-to-action-header {
+	flex-direction: column;
+	flex-basis: 375px;
+}**/
+
+.call-to-action-content {
+	justify-content: space-between;
+}
+
+.call-to-action-header {
 	flex-direction: column;
 	flex-basis: 375px;
 }
+
 
 button {
 	/*display: block;*/
@@ -91,4 +118,5 @@ button {
 
 .hero-image {
 	/*width: 65vw;*/
+	margin-left: auto;
 }
