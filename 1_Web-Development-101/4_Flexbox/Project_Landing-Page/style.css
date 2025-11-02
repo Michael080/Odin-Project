@@ -121,3 +121,32 @@ button {
 	/*width: 65vw;*/
 	margin-left: auto;
 }
+
+/** Cards Section **/
+
+.random-section {
+	flex-direction: column;
+}
+
+.cards {
+	display: flex;
+	justify-content: space-between;
+}
+
+figure {
+	margin: 0;
+}
+
+figcaption {
+	font-size: .85em;
+	text-wrap: wrap;
+	max-width: 125px;
+}
+
+figure>img {
+	flex-basis: 100px;
+	max-width: 125px;
+	border: 3px solid #3b82f6;
+
+	border-radius: .5em;
+}
