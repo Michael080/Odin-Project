@@ -191,9 +191,10 @@ blockquote {
 .call-to-action-footer {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	background-color: var(--blue-highlight);
 	border-radius: .5em;
-	padding: 2em 6em;
+	padding: 2em 5em;
 }
 
 .call-to-action-footer,
@@ -204,7 +205,8 @@ blockquote {
 
 .call-to-action-footer button {
 	border: 2px solid var(--white-text);
-	width: 105px;
+	width: 118px;
+	height: 33px;
 }
 
 .call-to-action {
@@ -215,4 +217,12 @@ blockquote {
 
 .click-to-action {
 	margin-top: 0;
+}
+
+/** Footer **/
+footer {
+	text-align: center;
+	color: var(--white-text);
+	background-color: var(--dark-blue);
+	padding: .5em;
 }
