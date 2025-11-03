@@ -314,3 +314,14 @@ footer {
 		margin-left: 74px;
 	}
 }
+
+@media (max-width:890px) {
+	.call-to-action-footer {
+		flex-direction: column;
+		padding-bottom: 4em;
+	}
+
+	.call-to-action-footer button {
+		width: 100%;
+	}
+}
