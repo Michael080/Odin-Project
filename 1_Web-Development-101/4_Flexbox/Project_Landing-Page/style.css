@@ -292,4 +292,25 @@ footer {
 	.sign-up {
 		width: 100%;
 	}
+
+	/* cards - wrap */
+	.cards {
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	figure {
+		width: 50%;
+	}
+
+	figure:nth-of-type(-n +2) {
+		margin-bottom: 74px;
+	}
+
+	figure:nth-child(2)>img,
+	figure:nth-child(2)>figcaption,
+	figure:nth-child(4)>img,
+	figure:nth-child(4)>figcaption {
+		margin-left: 74px;
+	}
 }
