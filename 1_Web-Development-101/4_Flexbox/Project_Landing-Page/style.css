@@ -141,6 +141,13 @@ button {
 
 /** Cards Section **/
 
+.quotation-container,
+.random-section,
+.call-to-action-footer {
+	margin-bottom: 5em;
+}
+
+
 .random-section {
 	flex-direction: column;
 }
