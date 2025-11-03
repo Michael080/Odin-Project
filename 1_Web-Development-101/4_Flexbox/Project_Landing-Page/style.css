@@ -247,3 +247,49 @@ footer {
 		width: 425px;
 	}
 }
+
+/** Media Queries **/
+
+@media (max-width: 825px) {
+
+	.section {
+		max-width: 400px !important;
+	}
+
+	/* header - "stack" via column */
+	header {
+		min-height: 475px;
+		margin-bottom: 1em;
+	}
+
+	h1 {
+		margin-bottom: .25em;
+	}
+
+	.call-to-action-header {
+		justify-content: space-between;
+		order: 1;
+	}
+
+	.call-to-action-container {
+		justify-content: flex-start;
+	}
+
+	.call-to-action-content {
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.hero-image {
+		align-self: center;
+		margin: 0 0 2em 0;
+	}
+
+	.call-to-action-header {
+		margin: 0;
+	}
+
+	.sign-up {
+		width: 100%;
+	}
+}
