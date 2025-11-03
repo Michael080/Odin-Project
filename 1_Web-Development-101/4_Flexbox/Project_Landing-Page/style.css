@@ -60,8 +60,6 @@ span {
 }
 
 .section {
-	/*background-color: pink;*/
-	/*min-width: 75%;*/
 	width: 75%;
 	max-width: 1100px;
 }
@@ -75,7 +73,6 @@ a {
 	display: flex;
 	justify-content: space-between;
 	margin-top: 1em;
-	/*width: 1100px;*/
 }
 
 .nav-list li {
@@ -112,11 +109,6 @@ header {
 	display: flex;
 }
 
-/**.call-to-action-header {
-	flex-direction: column;
-	flex-basis: 375px;
-}**/
-
 .call-to-action-content {
 	justify-content: space-between;
 }
@@ -130,7 +122,6 @@ header {
 
 button {
 	cursor: pointer;
-	/*display: block;*/
 	font-weight: bold;
 	color: var(--dark-blue);
 	background-color: #3b82f6;
@@ -142,7 +133,6 @@ button {
 }
 
 .hero-image {
-	/*width: 65vw;*/
 	margin-left: auto;
 }
 
@@ -213,7 +203,6 @@ blockquote {
 
 .call-to-action-footer,
 .call-to-action-footer button {
-	/*color: #f5f5f5;*/
 	color: var(--white-text);
 }
 
