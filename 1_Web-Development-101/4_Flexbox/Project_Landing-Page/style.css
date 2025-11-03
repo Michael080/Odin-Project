@@ -162,7 +162,7 @@ figure {
 }
 
 figcaption {
-	font-size: .85em;
+	font-size: .75em;
 	text-wrap: wrap;
 	max-width: 125px;
 }
