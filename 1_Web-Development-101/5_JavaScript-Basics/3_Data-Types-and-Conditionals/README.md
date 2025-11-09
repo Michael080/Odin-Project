@@ -7,7 +7,7 @@
 - [X] [MDN documentation for strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 ### Conditionals
-- [ ] [Comparisons | *JavaScript.info*](http://javascript.info/comparison)
+- [X] [Comparisons | *JavaScript.info*](http://javascript.info/comparison)
 - [ ] [Logical Operators *JavaScript.info*](http://javascript.info/logical-operators)
 - [ ] [Conditionals | *MDN*](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
 - [ ] [if/else (covers same basic concept: *read as a review*)| *JavaScript.info*](http://javascript.info/ifelse)
