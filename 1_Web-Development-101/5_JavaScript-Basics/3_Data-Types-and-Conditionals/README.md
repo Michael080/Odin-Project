@@ -10,5 +10,5 @@
 - [X] [Comparisons | *JavaScript.info*](http://javascript.info/comparison)
 - [X] [Logical Operators *JavaScript.info*](http://javascript.info/logical-operators)
 - [X] [Conditionals | *MDN*](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
-- [ ] [if/else (covers same basic concept: *read as a review*)| *JavaScript.info*](http://javascript.info/ifelse)
+- [X] [if/else (covers same basic concept: *read as a review*)| *JavaScript.info*](http://javascript.info/ifelse)
 - [ ] [`switch` statement | *JavaScript.info*](https://javascript.info/switch)
