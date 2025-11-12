@@ -12,3 +12,11 @@
 - [X] [Conditionals | *MDN*](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
 - [X] [if/else (covers same basic concept: *read as a review*)| *JavaScript.info*](http://javascript.info/ifelse)
 - [X] [`switch` statement | *JavaScript.info*](https://javascript.info/switch)
+
+## Assignments
+1. Follow the instructions in the README of our javascript-exercises repository to set up your local environment. Once you have forked the repository, cloned it and installed Jest, review each README file prior to completing the following exercises in order:
+`01_helloWorld` (This exercise is intentionally very beginner-friendly to ensure that you have everything set up properly!)
+`02_addNumbers`
+`03_numberChecker`
+`04_mathEquations`
+`05_joinStrings`
