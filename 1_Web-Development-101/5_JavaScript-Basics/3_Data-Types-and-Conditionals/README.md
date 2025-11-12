@@ -20,3 +20,6 @@
 `03_numberChecker`
 `04_mathEquations`
 `05_joinStrings`
+
+### Install Jest *from `javascript-exercises/README.md`
+| *Jest installation: After cloning this repository to your local machine and installing `npm`, go into the newly created directory (`cd javascript-exercises`) and run `npm install`. This will install Jest and set up the testing platform based on our preconfigured settings. (Note: if you get warnings that packages are out of date or contain vulnerabilities, you can safely ignore them for these exercises.)*
