@@ -5,7 +5,10 @@
         - [X] [View & Change CSS](https://developer.chrome.com/docs/devtools/css/)
         - [X] [CSS Features Reference](https://developer.chrome.com/docs/devtools/css/reference/)
             - *highly detailed, properly described as a "reference"*
-    - [ ] [Get Started w/ Viewing & Changing the DOM](https://developer.chrome.com/docs/devtools/dom/)
+    - [X] [Get Started w/ Viewing & Changing the DOM](https://developer.chrome.com/docs/devtools/dom/)
+    *Add'l links referenced in article:*
+        - [ ] [DOM Change Breakpoints](https://developer.chrome.com/docs/devtools/javascript/breakpoints#dom)
+        - [ ] [Elements Panel Keyboard Shortcuts](https://developer.chrome.com/docs/devtools/shortcuts#elements)
     - **Mobile Simulation**
         - [X] 1. [Simulate mobile devices w/ Device Mode](https://developer.chrome.com/docs/devtools/device-mode/)
     - **JavaScript**
