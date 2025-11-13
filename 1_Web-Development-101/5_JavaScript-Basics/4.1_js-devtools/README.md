@@ -4,9 +4,10 @@
     - **CSS**
         - [X] [View & Change CSS](https://developer.chrome.com/docs/devtools/css/)
         - [X] [CSS Features Reference](https://developer.chrome.com/docs/devtools/css/reference/)
+            - *highly detailed, properly described as a "reference"*
     - [ ] [Get Started w/ Viewing & Changing the DOM](https://developer.chrome.com/docs/devtools/dom/)
     - **Mobile Simulation**
-        - [ ] 1. [Simulate mobile devices w/ Device Mode](https://developer.chrome.com/docs/devtools/device-mode/)
+        - [X] 1. [Simulate mobile devices w/ Device Mode](https://developer.chrome.com/docs/devtools/device-mode/)
     - **JavaScript**
         - [ ] 1. [Debug JavaScript](https://developer.chrome.com/docs/devtools/javascript/)
         - [ ] 2. [Pause your code w/ breakpoints](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
