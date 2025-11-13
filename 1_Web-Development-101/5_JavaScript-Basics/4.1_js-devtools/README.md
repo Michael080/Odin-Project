@@ -2,8 +2,8 @@
 ## Assignments
 - [ ] 1. [Chrome DevTools Docs](https://developer.chrome.com/docs/devtools/)
     - **CSS**
-        - [ ] [View & Change CSS](https://developer.chrome.com/docs/devtools/css/)
-        - [ ] [CSS Features Reference](https://developer.chrome.com/docs/devtools/css/reference/)
+        - [X] [View & Change CSS](https://developer.chrome.com/docs/devtools/css/)
+        - [X] [CSS Features Reference](https://developer.chrome.com/docs/devtools/css/reference/)
     - [ ] [Get Started w/ Viewing & Changing the DOM](https://developer.chrome.com/docs/devtools/dom/)
     - **Mobile Simulation**
         - [ ] 1. [Simulate mobile devices w/ Device Mode](https://developer.chrome.com/docs/devtools/device-mode/)
