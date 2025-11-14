@@ -8,10 +8,13 @@
     - [X] [Get Started w/ Viewing & Changing the DOM](https://developer.chrome.com/docs/devtools/dom/)
     *Add'l links referenced in article:*
         - [ ] [DOM Change Breakpoints](https://developer.chrome.com/docs/devtools/javascript/breakpoints#dom)
+            - [Demo *referenced in video tut*](https://googlechrome.github.io/devtools-samples/debug-js/get-started)
         - [ ] [Elements Panel Keyboard Shortcuts](https://developer.chrome.com/docs/devtools/shortcuts#elements)
     - **Mobile Simulation**
         - [X] 1. [Simulate mobile devices w/ Device Mode](https://developer.chrome.com/docs/devtools/device-mode/)
     - **JavaScript**
-        - [ ] 1. [Debug JavaScript](https://developer.chrome.com/docs/devtools/javascript/)
-        - [ ] 2. [Pause your code w/ breakpoints](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
+        - [X] 1. [Debug JavaScript](https://developer.chrome.com/docs/devtools/javascript/)
+        - [X] 2. [Pause your code w/ breakpoints](https://developer.chrome.com/docs/devtools/javascript/breakpoints/)
     - 2. [Chrome DevTools console overview](https://developer.chrome.com/docs/devtools/console/)
+        *Add'l consoler reference/s*
+            - [ ] [Console Utilities API reference](https://developer.chrome.com/docs/devtools/console/utilities#debug)
