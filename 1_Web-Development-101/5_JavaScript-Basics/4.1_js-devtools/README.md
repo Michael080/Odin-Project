@@ -18,3 +18,21 @@
     - 2. [Chrome DevTools console overview](https://developer.chrome.com/docs/devtools/console/)
         *Add'l consoler reference/s*
             - [ ] [Console Utilities API reference](https://developer.chrome.com/docs/devtools/console/utilities#debug)
+
+## Knowledge Check
+- How do you open developer tools?
+**Right Click** > `Inspect`, **CTRL** + **SHIFT** + i
+
+- How do you change screen size of a website using developer tools?
+Toggle device toolbar by clicking the *screen icon*, or **CTRL** + **SHIFT** + m
+
+- What is a breakpoint?
+A location or condition at which the debugger pauses code execution
+
+- How do you set a breakpoint?
+    - click the line number
+    - insert `debugger` line @ location 
+    - set an `Event Listener Breakpoint`
+
+## Add'l Resources
+- [14 Console Tricks | *Wes Bos*](https://www.youtube.com/watch?v=xkzDaKwinA8)
