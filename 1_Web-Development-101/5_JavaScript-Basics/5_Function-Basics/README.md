@@ -3,7 +3,7 @@
 - [X] 1. [Functions - *MDN*](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
     - [X] 1.1 [Functions Detailed Guide - *MDN (from section: "See Also")](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 - [X] 2. [Return Values](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values)
-- [ ] 3. [Function Basics - *JavaScript.info*](http://javascript.info/function-basics)
+- [X] 3. [Function Basics - *JavaScript.info*](http://javascript.info/function-basics)
 - [ ] 4. [Function Expressions](http://javascript.info/function-expressions)
     - [ ] [Arrow Functions](http://javascript.info/arrow-functions-basics)
 - [ ] 5. [JavaScript Call Stack](https://www.javascripttutorial.net/javascript-call-stack/)
