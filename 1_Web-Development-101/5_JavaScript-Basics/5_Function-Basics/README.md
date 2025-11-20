@@ -6,7 +6,7 @@
 - [X] 3. [Function Basics - *JavaScript.info*](http://javascript.info/function-basics)
 - [X] 4. [Function Expressions](http://javascript.info/function-expressions)
     - [X] [Arrow Functions](http://javascript.info/arrow-functions-basics)
-- [ ] 5. [JavaScript Call Stack](https://www.javascripttutorial.net/javascript-call-stack/)
+- [X] 5. [JavaScript Call Stack](https://www.javascripttutorial.net/javascript-call-stack/)
 
 ### Write funcs
 1. Write a function called add7 that takes one number and returns that number + 7.
