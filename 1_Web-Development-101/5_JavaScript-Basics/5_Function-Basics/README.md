@@ -9,17 +9,9 @@
 - [X] 5. [JavaScript Call Stack](https://www.javascripttutorial.net/javascript-call-stack/)
 
 ### Write funcs
+*[see `5_Function-Basics/assignments/exercises`](https://github.com/Michael080/Odin-Project/tree/master/1_Web-Development-101/5_JavaScript-Basics/5_Function-Basics/assignments/exercises)*
+
 1. Write a function called add7 that takes one number and returns that number + 7.
-
-
-
 2. Write a function called `multiply` that takes 2 numbers and returns their product.
-
-
 3. Write a function called `capitalize` that takes a string and returns that string with only the first letter capitalized. Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
-
-
 4. Write a function called `lastLetter` that takes a string and returns the very last letter of that string:
-
-
-
