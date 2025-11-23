@@ -12,9 +12,27 @@
 *[see `5_Function-Basics/assignments/exercises`](https://github.com/Michael080/Odin-Project/tree/master/1_Web-Development-101/5_JavaScript-Basics/5_Function-Basics/assignments/exercises)*
 
 1. Write a function called add7 that takes one number and returns that number + 7.
+```javascript
+const add7 = num => num + 7;
+```
+
 2. Write a function called `multiply` that takes 2 numbers and returns their product.
+```javascript
+const multiply = (num1, num2) => num1 * num2;
+```
+
 3. Write a function called `capitalize` that takes a string and returns that string with only the first letter capitalized. Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
+```javascript
+function capitalize(str) {
+	// capitalize first letter ONLY
+	return `${str[0].toUpperCase()}${str.slice(1, str.length).toLowerCase()}`
+}
+```
+
 4. Write a function called `lastLetter` that takes a string and returns the very last letter of that string:
+```javascript
+const lastLetter = str => str[str.length - 1];
+```
 
 ## Knowledge Check
 1. What are functions useful for?
@@ -54,3 +72,7 @@ let arrowFunc = arg => console.log('Me arg:', arg);
 
 7. What is the difference between a function declaration and a function expression?
 a *function expression* is a function stored as the value of a variable, *using same syntax as variable assignment, (w/out function name)*, they are not hoisted like *function declarations* are, but can be called in the same way, and can be *conditionally defined*
+
+## Add'l Resources
+- [What’s the difference between using “let” and “var”? - stackoverflow](https://stackoverflow.com/questions/762011/whats-the-difference-between-using-let-and-var#:~:text=The%20main%20difference%20is%20scoping,(hence%20the%20block%20scope))
+- [How JavaScript Code is executed?](https://youtu.be/iLWTnMzWtj4)
