@@ -56,23 +56,23 @@ Refer to script @ `./FizzBuzz/script.js`
 
 ### Assignment #3 - Pseudocode: What it is and How to Write it
 #### Main Constructs
-1. **SEQUENCE** represents linear tasks sequentially performed one after the other
-2. **WHILE** is a loop w/ a *condition at its beginning*
-3. **REPEAT-UNTIL** is a loop w/ a *condition at the bottom*
-4. **FOR** is another form of looping
-5. **IF-THEN-ELSE** is a conditional statemnt changing the flow of the algorithm
-6. **CASE** is the generalization form of **IF-THEN-ELSE**
+1. **`SEQUENCE`** represents linear tasks sequentially performed one after the other
+2. **`WHILE`** is a loop w/ a *condition at its beginning*
+3. **`REPEAT-UNTIL`** is a loop w/ a *condition at the bottom*
+4. **`FOR`** is another form of looping
+5. **`IF-THEN-ELSE`** is a conditional statemnt changing the flow of the algorithm
+6. **`CASE`** is the generalization form of **`IF-THEN-ELSE`**
 
 #### Pseudocode Constructs
                **SEQUENCE**
 | Type/Category |       Construct       |
 | ------------- | --------------------- |
-| Input         | READ, OBTAIN, GET     |
-| Output        | PRINT, DISPLAY, SHOW  |
-| Compute       | COMPUTE, CALCULATE, DETERMINE |
-| Initialize    | SET, INIT             |
-| Add           | INCREMENT, BUMP       |
-| Sub           | DECREMENT             |
+| Input         | `READ`, `OBTAIN`, `GET`|
+| Output        | `PRINT`, `DISPLAY`, `SHOW  `|
+| Compute       | `COMPUTE`, `CALCULATE`, `DETERMINE `|
+| Initialize    | `SET`, `INIT`|
+| Add           | `INCREMENT`, `BUMP`|
+| Sub           | `DECREMENT`|
 
 ```bash
                   **FOR**
@@ -138,9 +138,11 @@ BEGIN
 ### Pseudocode Example
 Quiz program that determines passing grade as: 80% (8 of 10 questions). And displays message about pass/fail result of quiz.
 
+```bash
 IF employee gets eight or more questions correct
     Display mesage: "Congratulations, you passed!"
     Transition to printable certificate of completion page
 ELSE
     Display message: "Try again"
     Transition back to first page of quiz
+```
