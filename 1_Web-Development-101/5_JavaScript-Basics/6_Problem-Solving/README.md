@@ -42,6 +42,7 @@ all *other numbers* => print number
         - Print `Fizz`
     - multiple of 5?
         - Print `Buzz`
+
     - multiple of both 5 & 3?
         - Print `FizzBuzz`
 
@@ -49,6 +50,97 @@ all *other numbers* => print number
 Refer to script @ `./FizzBuzz/script.js`
 
 ## Assignments
-1. Read [How to Think Like a Programmer - Lessons in Problem Solving](https://www.freecodecamp.org/news/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2/)
-2. Watch [How to Begin Thinking Like a Programmer](https://www.youtube.com/watch?v=azcrPFhaY9k)
-3. Read [Pseudocode: What It Is and How to Write It](https://www.builtin.com/data-science/pseudocode)
+- [X] 1. Read [How to Think Like a Programmer - Lessons in Problem Solving](https://www.freecodecamp.org/news/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2/)
+- [ ] 2. Watch [How to Begin Thinking Like a Programmer](https://www.youtube.com/watch?v=azcrPFhaY9k)
+- [X] 3. Read [Pseudocode: What It Is and How to Write It](https://www.builtin.com/data-science/pseudocode)
+
+### Assignment #3 - Pseudocode: What it is and How to Write it
+#### Main Constructs
+1. **SEQUENCE** represents linear tasks sequentially performed one after the other
+2. **WHILE** is a loop w/ a *condition at its beginning*
+3. **REPEAT-UNTIL** is a loop w/ a *condition at the bottom*
+4. **FOR** is another form of looping
+5. **IF-THEN-ELSE** is a conditional statemnt changing the flow of the algorithm
+6. **CASE** is the generalization form of **IF-THEN-ELSE**
+
+#### Pseudocode Constructs
+               **SEQUENCE**
+| Type/Category |       Construct       |
+| ------------- | --------------------- |
+| Input         | READ, OBTAIN, GET     |
+| Output        | PRINT, DISPLAY, SHOW  |
+| Compute       | COMPUTE, CALCULATE, DETERMINE |
+| Initialize    | SET, INIT             |
+| Add           | INCREMENT, BUMP       |
+| Sub           | DECREMENT             |
+
+```bash
+                  **FOR**
+FOR iteration bounds
+sequence
+ENDFOR
+
+                  **WHILE**
+WHILE condition
+sequence
+ENDWHILE
+
+                  **CASE**
+CASE expression OF
+condition 1: sequence 1
+condition 2: sequence 2
+OTHERS:
+default sequence
+ENDCASE
+
+                **REPEAT-UNTIL**
+REPEAT
+sequence
+UNTIL condition
+
+                **IF-THEN-ELSE**
+IF condition THEN
+  sequence 1
+ELSE
+  sequence 2
+ENDIF
+```
+
+##### Extra Pseudocode Constructs
+          **CALLING CLASSES/FUNCTIONS**
+```bash
+CALL AvgAge with StudentAges
+CALL Swap with CurrentItem and TargetItem
+CALL getBalance RETURNING aBalance
+CALL SquareRoot with orbitHeight RETURNING nominalOrbit
+```
+          **EXCEPTION HANDLING**
+```bash
+BEGIN
+    statements
+    EXCEPTION
+        WHEN exception
+            statements to handle the exception
+        WHEN another exeption
+            statements to handle the exception
+    END
+```
+
+### How to Write Pseudocode
+1. **Always** capitalize the initial word (*often one of the main six constructs*).
+2. Make only one statement per line.
+3. Indent to show hierarchy, improve readability and show nested constructs.
+4. **Always** end multi-line sections using any of the `END` keywords (`ENDIF`, `ENDWHILE`, etc.).
+5. Keep your statements programming language independent.
+6. Use the naming domain of the problem, not that of the implementation. For instance: *“Append the last name to the first name” instead of “name = first+last.”*
+7. Keep it simple, concise and readable.
+
+### Pseudocode Example
+Quiz program that determines passing grade as: 80% (8 of 10 questions). And displays message about pass/fail result of quiz.
+
+IF employee gets eight or more questions correct
+    Display mesage: "Congratulations, you passed!"
+    Transition to printable certificate of completion page
+ELSE
+    Display message: "Try again"
+    Transition back to first page of quiz
