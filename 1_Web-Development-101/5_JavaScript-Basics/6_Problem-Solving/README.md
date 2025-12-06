@@ -176,3 +176,9 @@ the logic of a program written in natural language, *can be more or less strict 
 
 7. What are the advantages of breaking a problem down and solving the smaller problems?
 breaking the problem down is the best way to deal w/ complexity
+
+## Add'l Resources
+- [Think Like a Programmer: An Introduction to Creative Problem Solving](https://nostarch.com/thinklikeaprogrammer)
+- [video on repetitive programming techniques](https://ocw.mit.edu/courses/res-tll-004-stem-concept-videos-fall-2013/resources/basic-programming-techniques/)
+  - [direct link to YT vid](https://www.youtube.com/watch?v=0BDi0d1j7u0)
+- [Jonathan Blow on solving hard problems](https://www.youtube.com/watch?v=6XAu4EPQRmY)
