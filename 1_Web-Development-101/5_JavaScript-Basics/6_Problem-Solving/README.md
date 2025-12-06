@@ -146,3 +146,33 @@ ELSE
     Display message: "Try again"
     Transition back to first page of quiz
 ```
+
+## Knowledge Check
+1. What are the three stages in the problem solving process?
+- 1. plan
+- 2. pseudocode
+- 3. divide & conquer
+
+2. Why is it important to clearly understand the problem first?
+w/out understanding the problem there is now way of verifying it has even been solved
+
+3. What can you do to help get a clearer understanding of the problem?
+- write it down on paper in *plain English*
+- draw diagrams
+- if you can explain the problem to someone in plain English, you understand it
+
+4. What are some of the things you should do in the planning stage of the problem solving process?
+- consider ui functionality, appearance, etc,. sketch out ui
+- inputs
+  - source/s: user? other program?
+- output
+  - given the inputs, what steps are required to produce desired output? 
+
+5. What is an algorithm?
+- a series of steps for solving a particular problem
+
+6. What is pseudocode?
+the logic of a program written in natural language, *can be more or less strict in terms of formatting*
+
+7. What are the advantages of breaking a problem down and solving the smaller problems?
+breaking the problem down is the best way to deal w/ complexity
