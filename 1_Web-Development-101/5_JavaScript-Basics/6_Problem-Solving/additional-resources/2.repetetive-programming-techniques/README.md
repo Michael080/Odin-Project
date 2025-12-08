@@ -51,7 +51,7 @@ function EatCereal(amount)
 }
 ```
 
-## string manipulation
+## string manipulation | *iterative solution*
 create program `down-up` which takes a string which prints out progressively smaller, then progressively larger substrings of the input
 
 ### example
@@ -116,4 +116,16 @@ function downUp(string)
 }
 ```
 
+## string manipulation | *recursive solution*
+```javascript
+function downUp(string)
+    length = string length
 
+    IF length == 1 char 
+        //downUp(string - 1 char)
+        PRINT char
+    ELSE
+        PRINT string
+        downUp(string - 1 char)
+    ENDIF
+```
