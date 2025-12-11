@@ -19,3 +19,8 @@ potential issues that you may be able to ignore
 
 3. What is one method you can use to resolve an error?
 go to the line referenced by the error
+
+## Add'l Resources
+- [MDN JavaScript Errors Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors)
+- [window console object methods | *W3schools article*](https://www.w3schools.com/jsref/obj_console.asp)
+- [video explanation on the Chrome devtools Console](https://www.youtube.com/watch?v=TqPrpglfE9c)
